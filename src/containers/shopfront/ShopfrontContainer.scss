@@ -1,0 +1,15 @@
+:local(.container){
+	width: 100%;
+	border:1px solid #efefef;
+	display: flex;
+	flex-wrap: wrap;
+	:local(.partWrapper){
+		border: 1px solid #efefef;
+		box-sizing: border-box;
+		border-radius: 5px;
+		box-shadow: 0 0 5px #666666;
+		height: 400px;
+		flex-grow: 1;
+		margin:10px;
+	}
+}

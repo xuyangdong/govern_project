@@ -1,0 +1,29 @@
+@import '~variant.scss';
+:local(.container){
+	margin:0 10%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	overflow: auto;
+	:local(.navigation){
+		// background-color:$primary-color;
+		width: 100%;
+		>img{
+			width: 100%;
+		}
+		:local(.navBar){
+
+		}
+	}
+	:local(.content){
+		width: 100%;
+		box-sizing: border-box;
+		padding:10px;
+	}
+	:local(.footer){
+		width: 100%;
+		height: 100px;
+		background-color: #57a3bd;
+	}
+}

@@ -1,0 +1,74 @@
+:local(.container){
+	width: 100%;
+	background-image: url(../../public/img/nav.gif);
+	background-origin: content-box;
+	height: 32px;
+	margin-top: -5px;
+	position: relative;
+	background-repeat: repeat-x;
+	margin-bottom: 32px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-end;
+
+	:local(.subNav){
+		position:absolute;
+		background-image: url(../../public/img/list_back.gif);
+		height: 32px;
+		top:32px;
+		width: calc( 100% - 40px );
+		left: 0px;
+		padding:0 20px;
+		&>a{
+			line-height: 32px;
+			font-size: 12px;
+		}
+	}
+}
+
+:local(.tabContainer){
+	&:nth-child(1){
+		margin-left: 40px;
+	}
+	display: block;
+	margin-right: 10px;
+	padding:3px 5px 5px;
+	color:white;
+	cursor: pointer;
+	position: relative;
+
+	// border-top-left-radius: 5px;
+	// border-top-right-radius: 5px;
+}
+:local(.tabContainer-enter){
+	display: block;
+	background-color: white;
+	margin-right: 10px;
+	padding:3px 5px 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	color:black;
+}
+
+:local(.subNavigation){
+	&>a{
+		line-height: 32px;
+		font-size: 12px;
+	}
+}
+:local(.subNavigation-rolling){
+	display: flex;
+	align-items: center;
+	height: 32px;
+	font-size: 12px;
+}
+
+:local(.rollingContainer){
+	display: block;
+	position: relative;
+	:local(.rollLink){
+		
+	}
+}
