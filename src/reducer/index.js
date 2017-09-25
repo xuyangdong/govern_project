@@ -1,13 +1,10 @@
 import {
 	combineReducers
 } from 'redux-immutablejs'
+import common from './common'
 
 const reducer = combineReducers({
-	// user,
-	// auth,
-	// alliance,
-	// affair,
-	// announcement,
+	common,
 })
 
 export default reducer

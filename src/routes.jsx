@@ -5,12 +5,14 @@ import App from './App'
 import ReactCanvasComponent from './components/ReactCanvasComponent'
 import ShopfrontContainer from './containers/shopfront/ShopfrontContainer'
 
-const routes = (<Router history={hashHistory}>
+const routes = (
+	<Router history={hashHistory}>
 		<Route path="/" component={BaseContainer}>
 			<Route path="index" component={ShopfrontContainer} />
-			<Route path="app" component={App}/>
-			<Route path="pdf" component={ReactCanvasComponent}/>
+			<Route path="app" component={App} />
+			<Route path="pdf" component={ReactCanvasComponent} />
 		</Route>
-	</Router>)
+	</Router>
+)
 
 export default routes

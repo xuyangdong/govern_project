@@ -8,18 +8,20 @@ require('codemirror/addon/fold/foldcode')
 require('codemirror/addon/fold/foldgutter')
 require('codemirror/addon/fold/foldgutter.css')
 require('codemirror/addon/fold/brace-fold')
-const JsonDisplayComponent = React.createClass({
-	getInitialState(){
-		return {
+
+export default class JsonDisplayComponent extends React.Component {
+	constructor(){
+		super()
+		this.state = {
 			code:'//codedfdf'
 		}
-	},
+	}
 	updateCode(newValue){
 		console.log("ASdf",newValue)
-	},
+	}
 	handleTest(){
 		console.log(this.codeMirror.getCodeMirror().getLineHandle(1))
-	},
+	}
 	render(){
 		var options = {
 		   mode: "javascript",
@@ -35,6 +37,4 @@ const JsonDisplayComponent = React.createClass({
 			<CodeMirror ref={(ref)=>{this.codeMirror = ref}} value={this.state.code} onChange={this.updateCode} options={options} />
 		</div>)
 	}
-})
-
-export default JsonDisplayComponent
+}
