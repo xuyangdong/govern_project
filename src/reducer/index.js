@@ -1,6 +1,6 @@
 import {
 	combineReducers
-} from 'redux-immutablejs'
+} from 'redux-immutable'
 import common from './common'
 
 const reducer = combineReducers({

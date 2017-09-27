@@ -3,6 +3,8 @@ import 'common.scss'
 import { Provider } from 'react-redux'
 import { HashRouter, Route, Link } from 'react-router-dom'
 import BaseContainer from './containers/BaseContainer'
+import Children from './components/common/SubRoutes'
+import routes from './routes'
 
 export default class WrapperComponent extends React.Component {
     render() {
@@ -11,7 +13,7 @@ export default class WrapperComponent extends React.Component {
             <Provider store={store}>
               <HashRouter>
                 <div>
-                  <Route path="/" component={BaseContainer} />
+                    <Children routes={routes} />
                 </div>
               </HashRouter>
             </Provider>
