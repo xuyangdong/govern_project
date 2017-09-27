@@ -1,8 +1,8 @@
-import { Map, List, fromJS } from 'immutable'
+import { Map, List } from 'immutable'
 
 const initialState = Map({
     breadthumb: List([{
-        name: '首页',
+        name: '首页123',
         path: '/'
     }])
 })

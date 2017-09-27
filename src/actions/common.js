@@ -1,5 +1,5 @@
 function updateBreadthumb(breadthumb) {
-    return dispatch => {
+    return (dispatch) => {
         dispatch({
             type: 'UPDATE_BREADTHUMB',
             payload: breadthumb
