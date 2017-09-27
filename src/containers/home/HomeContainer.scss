@@ -1,0 +1,39 @@
+@import '~variant.scss';
+
+:local(.container) {
+    width: 100%;
+    height: 100%;
+
+    :local(.topImg) {
+        width: 100%;
+        height: 615px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+
+        img {
+            height: 425px;
+            width: 100%;
+        }
+
+        :local(.slogan) {
+            width: 100%;
+            flex-grow: 1;
+            font-size: 26px;
+            padding-top: 50px;
+            padding-left: 36px;
+        }
+
+        :local(.queryReport) {
+            position: absolute;
+            width: 455px;
+            height: 200px;
+            background-color: white;
+            box-shadow: $box-shadow;
+            bottom: 65px;
+            right: 16px;
+            border-radius: 8px;
+        }
+    }
+}

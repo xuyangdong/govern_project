@@ -11,11 +11,9 @@ export default class WrapperComponent extends React.Component {
         const { store } = this.props
         return (
             <Provider store={store}>
-              <HashRouter>
-                <div>
+                <HashRouter>
                     <Children routes={routes} />
-                </div>
-              </HashRouter>
+                </HashRouter>
             </Provider>
         )
     }

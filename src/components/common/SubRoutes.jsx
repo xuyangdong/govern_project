@@ -6,7 +6,6 @@ const SubRoutes = (route) => (
 )
 
 const Children = ({routes}) => {
-    console.log("[DEBUG] - routes : ",routes)
     return routes.map((route, i) => (
         <SubRoutes key={i} {...route} />
     ))

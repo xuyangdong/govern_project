@@ -1,29 +1,23 @@
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
-import navigation from 'navigation'
 import styles from './BaseContainer.scss'
-import Navigation from '../components/common/Navigation'
-import topImg from '../public/img/2015-top.jpg'
-import Breadthumb from '../components/common/Breadthumb'
 import Children from '../components/common/SubRoutes'
 
 class BaseContainer extends React.Component {
 	render() {
 		return (
 			<div className={styles.container}>
-				<div className={styles.navigation}>
-					<img alt="top" src={topImg} />
-					<Navigation navigation={navigation} />
+				<div className={styles.inner}>
+					<div className={styles.header}>
+						header
+					</div>
+					<div className={styles.content}>
+						<Children routes={this.props.routes} />
+					</div>
+					<div className={styles.footer}>
+						国家固定灭火系统和耐火构件质量检验中心 版权所有 @2010 津ICP备05000541号 技术支持：公安部天津消防研究所网管中心
+					</div>
 				</div>
-				<Breadthumb />
-				<Link to="/"> Index </Link>
-				<Link to="/canvas"> Canvas </Link>
-				<Link to="/pdf"> PDF </Link>
-				<Link to="/shop"> Shop </Link>
-				<div className={styles.content}>
-					<Children routes={this.props.routes} />
-				</div>
-				<div className={styles.footer} />
 			</div>
 		)
 	}

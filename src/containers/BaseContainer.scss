@@ -1,29 +1,37 @@
 @import '~variant.scss';
-:local(.container){
-	margin:0 10%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	overflow: auto;
-	:local(.navigation){
-		// background-color:$primary-color;
-		width: 100%;
-		>img{
-			width: 100%;
-		}
-		:local(.navBar){
 
+:local(.container) {
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+	background-color: $background-color;
+	:local(.inner) {
+		margin: 0 auto;
+		width: 1180px;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+
+		:local(.header) {
+			width: 100%;
+			height: 270px;
+			flex-shrink: 0;
+			background-color: lightgray;
 		}
-	}
-	:local(.content){
-		width: 100%;
-		box-sizing: border-box;
-		padding:10px;
-	}
-	:local(.footer){
-		width: 100%;
-		height: 100px;
-		background-color: #57a3bd;
+
+		:local(.content){
+			width: 100%;
+			flex-shrink: 0;
+		}
+
+		:local(.footer){
+			width: 100%;
+			height: 100px;
+			background-color: #CCCDCE;
+			flex-shrink: 0;
+			padding: 40px 36px;
+			box-shadow: $box-shadow;
+		}
 	}
 }
