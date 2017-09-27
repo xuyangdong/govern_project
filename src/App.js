@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import JsonDisplayComponent from './components/JsonDisplayComponent'
 
 class App extends Component {
     render() {
@@ -16,7 +15,6 @@ class App extends Component {
                     <code>src/App.js</code>
                     and save to reload.
                 </p>
-                <JsonDisplayComponent/>
             </div>
         );
     }
