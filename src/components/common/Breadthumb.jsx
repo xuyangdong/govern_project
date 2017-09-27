@@ -1,11 +1,12 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import styles from './Breadthumb.scss'
 
 class Breadthumb extends React.Component {
 	static propTypes = {
-		breadthumb: PropTypes.array.isRequired,
+		breadthumb: PropTypes.object.isRequired,
 	}
 
 	render() {
