@@ -1,15 +1,4 @@
 const navigation = [{
-	title:'首页',
-	link:'',
-	type:'rolling',
-	children:[{
-		title:'关于质检中心业务接待增设直线电话的通知 [2013-01-22]',
-		link:'',
-	},{
-		title:'天津南站至北京南站列车时刻表 [2013-01-22]',
-		link:''
-	}]
-},{
 	title:'中心简介',
 	link:'',
 	children:[{
@@ -52,40 +41,44 @@ const navigation = [{
 	link:'',
 	children:[]
 },{
-	title:'图片新闻',
-	link:'',
-	children:[]
-},{
 	title:'行业动态',
 	link:''
 },{
-	title:'法律法规',
-	link:''
-},{
-	title:'技术委员会',
+	title:'全部功能',
 	link:'',
 	children:[{
-		title:'一分委',
+		title:'图片新闻',
+		link:'',
+		children:[]
+	},{
+		title:'法律法规',
 		link:''
 	},{
-		title:'二分委',
+		title:'技术委员会',
+		link:'',
+		children:[{
+			title:'一分委',
+			link:''
+		},{
+			title:'二分委',
+			link:''
+		},{
+			title:'三分委',
+			link:''
+		},{
+			title:'八份委',
+			link:''
+		},{
+			title:'ISO/TC21/SC6',
+			link:''
+		}]
+	},{
+		title:'文件下载',
 		link:''
 	},{
-		title:'三分委',
-		link:''
-	},{
-		title:'八份委',
-		link:''
-	},{
-		title:'ISO/TC21/SC6',
+		title:'公众留言',
 		link:''
 	}]
-},{
-	title:'文件下载',
-	link:''
-},{
-	title:'公众留言',
-	link:''
 }]
 
 export default navigation

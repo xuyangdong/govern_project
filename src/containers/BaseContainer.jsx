@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import styles from './BaseContainer.scss'
 import Children from '../components/common/SubRoutes'
+import PageHeaderComponent from '../components/navigate/PageHeaderComponent'
 
 class BaseContainer extends React.Component {
 	render() {
@@ -9,7 +10,7 @@ class BaseContainer extends React.Component {
 			<div className={styles.container}>
 				<div className={styles.inner}>
 					<div className={styles.header}>
-						header
+						<PageHeaderComponent />
 					</div>
 					<div className={styles.content}>
 						<Children routes={this.props.routes} />

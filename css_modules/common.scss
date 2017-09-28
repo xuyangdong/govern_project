@@ -11,3 +11,12 @@ body {
 div {
 	box-sizing: border-box;
 }
+:focus{
+	border: none;
+	outline: none;
+}
+input{
+	&:focus{
+		border:none!important;
+	}
+}
