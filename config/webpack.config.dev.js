@@ -11,6 +11,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const theme = require('./theme.js')
 require('react-hot-loader')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -287,9 +288,7 @@ module.exports = {
                     }, {
                         loader: require.resolve('less-loader'),
                         options: {
-                            modifyVars: {
-                                "@primary-color": "#1DA57A"
-                            }
+                            modifyVars: theme()
                         }
                     }
                 ]

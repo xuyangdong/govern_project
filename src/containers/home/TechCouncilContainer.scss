@@ -1,0 +1,65 @@
+@import '~variant.scss';
+
+:local(.container) {
+    width: 100%;
+    height: 336px;
+    background-color: white;
+    box-shadow: $box-shadow-light;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+
+
+    :local(.card) {
+        width: 380px;
+        padding: 40px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        :local(.title) {
+            font-size: 16px;
+            color: #333333;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        :local(.content) {
+            width: 347px;
+            height: 315px;
+            padding: 0 8px;
+
+            :local(.line) {
+                font-size: 14px;
+                color: #333333;
+                border-bottom: 1px solid #f2f2f2;
+                padding: 10px 0;
+            }
+        }
+
+        :local(.oldVersion) {
+            margin-top: 4px;
+            width: 345px;
+            height: 195px;
+            border: 1px solid #f2f2f2;
+            border-radius: 2px;
+	        background-image: url('publicRes/img/oldbg.png');
+            background-position: center;
+            background-size: 345px 195px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            :local(.description) {
+                margin-top: 42px;
+                margin-bottom: 30px;
+                font-size: 14px;
+                color: #333333;
+                width: 234px;
+            }
+        }
+    }
+}
