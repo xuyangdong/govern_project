@@ -2,6 +2,7 @@ import React from 'react'
 import Bundle from './components/common/Bundle'
 import BaseContainer from './containers/BaseContainer'
 import HomeContainer from 'bundle-loader?lazy!./containers/home/HomeContainer'
+import ContentContainer from 'bundle-loader?lazy!./containers/content/ContentContainer'
 import ShopfrontContainer from 'bundle-loader?lazy!./containers/shopfront/ShopfrontContainer'
 import PDFJSComponent from 'bundle-loader?lazy!./components/PDFJSComponent'
 import ReactCanvasComponent from 'bundle-loader?lazy!./components/ReactCanvasComponent'
@@ -27,8 +28,9 @@ const routes = [
                 component: createComponent(HomeContainer)
             },
             {
-                path: '/shop',
-                component: createComponent(ShopfrontContainer)
+                path: '/content',
+                exact: true,
+                component: createComponent(ContentContainer)
             },
             {
                 path: '/canvas',

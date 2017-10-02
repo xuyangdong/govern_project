@@ -62,9 +62,9 @@ class HomeContainer extends React.Component {
     			<div className={styles.notification}>
     				<div className={styles.left}>
     					<div className={styles.cardTitle}>
-    						<span className={styles.titleWithIcon}>
+    						<span className={styles.titleWithIcon} style={{marginLeft: '-22px'}}>
     							<img src={reportIcon} alt="" />
-    							<span>检验报告</span>
+    							<span>检验范围</span>
     						</span>
     					</div>
     					{
@@ -76,7 +76,7 @@ class HomeContainer extends React.Component {
                                 	</span>
                                 </div>
                             ))
-                          }
+                        }
     				</div>
     				<div className={styles.center}>
     					<div className={styles.cardTitle}>
