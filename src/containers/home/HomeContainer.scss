@@ -6,7 +6,6 @@
 
     :local(.topImg) {
         width: 100%;
-        height: 615px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -33,6 +32,59 @@
             }
         }
 
+        :local(.picNews) {
+            padding-top: 48px;
+            padding-bottom: 38px;
+            padding-left: 44px;
+            padding-right: 35px;
+            :local(.head) {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 15px;
+
+                >a {
+                    font-size: 16px;
+                }
+
+                :local(.title) {
+                    >img {
+                        margin-right: 12px;
+                    }
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #333333;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }   
+            }
+
+            :local(.body) {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                :local(.news) {
+                    width: 270px;
+                    height: 240px;
+                    >img {
+                        width: 100%;
+                        margin-bottom: 12px;
+                    }
+                    :local(.newsTitle) {
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        font-size: 14px;
+                        color: $title-color;
+                    }
+                }
+                
+            }
+        }
+
         :local(.queryReport) {
 	        background-image: url('publicRes/img/reportbg.png');
             background-position: center;
@@ -42,7 +94,7 @@
             height: 200px;
             background-color: white;
             box-shadow: $box-shadow-heavy;
-            bottom: 60px;
+            top: 354px;
             right: 20px;
             border-radius: 6px;
             :local(.title) {

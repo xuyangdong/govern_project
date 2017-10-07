@@ -3,6 +3,8 @@ import styles from './ContentContainer.scss'
 import reportIcon from 'publicRes/img/report.png'
 import fireIcon from 'publicRes/img/fireicon.png'
 import CommonButton from '../../components/common/Button'
+import Breadthumb from '../../components/common/Breadthumb'
+import ListContent from './ListContent.jsx'
 
 class ContentContainer extends React.Component {
     state = {
@@ -46,10 +48,10 @@ class ContentContainer extends React.Component {
     render() {
         return (
             <div className={styles.container}>
-                <div className={styles.breadthumb}>当前位置：</div>
+                <div className={styles.breadthumb}><Breadthumb /></div>
                 <div className={styles.content}>
                     <div className={styles.left}>
-                        详细内容
+                        <ListContent />
                     </div>
                     <div className={styles.right}>
                         <div className={styles.box1}>

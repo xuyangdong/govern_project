@@ -1,5 +1,10 @@
 import React from 'react'
 import banner from 'publicRes/img/banner.png'
+import pic1 from 'publicRes/img/pic1.png'
+import pic2 from 'publicRes/img/pic2.png'
+import pic3 from 'publicRes/img/pic3.png'
+import pic4 from 'publicRes/img/pic4.png'
+import picNewsIcon from 'publicRes/img/pic.png'
 import reportIcon from 'publicRes/img/report.png'
 import noticeIcon from 'publicRes/img/notice.png'
 import contactIcon from 'publicRes/img/contact.png'
@@ -27,7 +32,24 @@ class HomeContainer extends React.Component {
         }, {
             name: '非3C认证产品',
             url: ''
-        }]
+        }],
+        news: [{
+            pic: pic1,
+            title: '检测中心以优异的成绩顺利通过CNAS现场评审'
+        },{
+            pic: pic2,
+            title: '检测中心以优异的成绩顺利通过CNAS现场评审'
+        },{
+            pic: pic3,
+            title: '检测中心以优异的成绩顺利通过CNAS现场评审'
+        },{
+            pic: pic4,
+            title: '检测中心以优异的成绩顺利通过CNAS现场评审'
+        },]
+    }
+
+    handleMorePicNews() {
+        console.log('more pic news')
     }
     handleQueryReport() {
         console.log('query report')
@@ -45,6 +67,25 @@ class HomeContainer extends React.Component {
     					<br />
     					<span>Improve quality, pay attention to fire fighting</span>
     				</div>
+                    <div className={styles.picNews}>
+                        <div className={styles.head}>
+                            <div className={styles.title}>
+                                <img src={picNewsIcon} alt="" />
+                                <span>图片新闻</span>
+                            </div>
+                            <a onClick={this.handleMorePicNews}> 更多 > </a>
+                        </div>
+                        <div className={styles.body}>
+                            {
+                                this.state.news.map((n, index) => (
+                                <div key={index} className={styles.news}>
+                                    <img src={n.pic} />
+                                    <div className={styles.newsTitle}>{n.title}</div>
+                                </div>
+                                ))
+                            }
+                        </div>
+                    </div>
     				<div className={styles.queryReport}>
     					<div className={styles.title}>
     						<img src={reportIcon} alt="" />

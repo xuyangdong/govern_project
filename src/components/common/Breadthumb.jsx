@@ -13,11 +13,12 @@ class Breadthumb extends React.Component {
 		const breadthumb = this.props.breadthumb
 		return (
 			<div className={styles.container}>
-				当前位置：
+                当前位置：
 				{
-					breadthumb.map(b => (
-						<span key={b.path}> {b.name} </span>
-					))
+					breadthumb.map((b, index) => {
+                        const suffix = index < breadthumb.size - 1 ? '>' : '';
+                        return <span key={index}> {b.name + " " + suffix} </span>
+					})
 				}
 			</div>
 		)
