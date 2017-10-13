@@ -5,6 +5,8 @@
 	height: 100%;
 	overflow: scroll;
 	background-color: $background-color;
+    position: relative;
+
 	:local(.inner) {
 		margin: 0 auto;
 		width: 1200px;
