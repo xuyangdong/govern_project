@@ -1,0 +1,206 @@
+@import '~variant.scss';
+
+:local(.container) {
+    width: 100%;
+    height: 100%;
+    background-color: #FAFAFA;
+    padding: 24px 30px;
+    padding-bottom: 75px;
+    font-size: $primary-font;
+    color: $title-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    :local(.breadthumb) {
+        margin-bottom: 6px;
+        width: 100%;
+    }
+
+    :local(.content) {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        :local(.left) {
+            width: 66%;
+            height: 100%;
+            padding-top: 15px;
+
+            :local(.line) {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                font-size: 14px;
+
+                :local(.title) {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+
+                    :local(.date) {
+                        color: $content-color;
+                    }
+                }
+
+                :local(.preview) {
+                    font-size: 12px;
+                    color: $content-color
+                }
+            }
+        }
+
+        :local(.right) {
+            width: 34%;
+            height: 100%;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            :local(.box3) {
+                width: 100%;
+                padding-top: 24px;
+                padding-bottom: 24px;
+                background-image: url('publicRes/img/box3.png');
+                background-position: center;
+                background-size: 435px;
+                box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+                border-radius: 6px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                :local(.title) {
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #333333;
+                }
+
+                :local(.recommend) {
+                    border-radius: 6px;
+                    width: 347px;
+                    height: 315px;
+                    padding: 0 28px;
+
+                    :local(.line) {
+                        border-bottom: 1px solid #f2f2f2;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        :local(.mainLine) {
+                            font-size: 16px;
+                            color: #1a2753;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                        :local(.subLine) {
+                            font-size: 14px;
+                            color: #999999;
+                            margin-top: 2px;
+                        }
+                    }
+
+                }
+            }
+
+            :local(.box2) {
+                margin-bottom: 24px;
+                width: 100%;
+                padding-top: 25px;
+                padding-bottom: 35px;
+                background-image: url('publicRes/img/box2.png');
+                background-position: center;
+                background-size: 435px 380px;
+                box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+                border-radius: 6px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                :local(.title) {
+                    margin-left: -22px;
+                    margin-bottom: 10px;
+                    >img {
+                        margin-right: 12px;
+                    }
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #333333;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                :local(.product) {
+                    width: 100%;
+                    margin-top: 10px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: row;
+                    >span {
+                        width: 174px;
+                        height: 100%;
+                        border: 1px solid #cccccc;
+                        border-radius: 6px;
+                        font-size: 15px;
+                        color: #333333;
+                        padding-left: 20px;
+                        padding-right: 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: row;
+                        >img {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+
+            :local(.box1) {
+                margin-bottom: 24px;
+                background-image: url('publicRes/img/reportbg.png');
+                background-position: center;
+                background-size: 390px 236px;
+                width: 100%;
+                height: 199px;
+                background-color: white;
+                box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+                border-radius: 6px;
+                :local(.title) {
+                    >img {
+                        margin-right: 12px;
+                    }
+                    width: 100%;
+                    margin-top: 24px;
+                    margin-bottom: 25px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #333333;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                :local(.reportDes) {
+                    color: #1a2752;
+                    font-size: 14px;
+                    text-align: center;
+                }
+
+                :local(.reportFooter) {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    margin-top: 32px;
+                }
+            }
+        }
+    }
+}

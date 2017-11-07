@@ -9,16 +9,19 @@ const cx = classnames.bind(styles)
 
 class NavigationTab extends React.Component {
 	static propTypes = {
-		title:PropTypes.string,
-		link:PropTypes.string,
-		isActive:PropTypes.bool
+		title: PropTypes.string,
+		link: PropTypes.string,
+		isActive: PropTypes.bool
 	}
+
 	static defaultProps = {
 		subNav:[]
 	}
+
 	handleMouseEnter = () => {
 		this.props.onMouseEnter()
 	}
+
 	render(){
 		const {subNav} = this.props
 		return (
@@ -33,14 +36,16 @@ class NavigationTab extends React.Component {
 
 class SubNavigation extends React.Component {
 	static propTypes = {
-		navTabItem:PropTypes.object
+		navTabItem: PropTypes.object
 	}
+
 	constructor(){
 		super()
 		this.state = {
 			activeKey:-1
 		}
 	}
+
 	handleMouseEnter = (key) => {
 		const {navTabItem} = this.props
 		const subNav = navTabItem.children||[]
@@ -49,6 +54,7 @@ class SubNavigation extends React.Component {
 			activeKey:key
 		})
 	}
+
 	render(){
 		const {navTabItem} = this.props
 		const type = navTabItem.type
