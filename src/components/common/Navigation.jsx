@@ -90,11 +90,10 @@ class ThirdNavigationPanel extends React.Component {
 	}
 	render(){
 		const {thrirdNavigation} = this.props
-		console.log(thrirdNavigation)
 		return (
 			<div className={styles.thirdNavigationContainer}>
 			{thrirdNavigation.map((v,k) => {
-				return <div className={styles.thirdNavigationItem}>{v.title}</div>
+				return <div key={k} className={styles.thirdNavigationItem}>{v.title}</div>
 			})}
 			</div>
 		)
