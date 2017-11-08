@@ -74,7 +74,7 @@ class SubNavigation extends React.Component {
 				<div className={styles.subNavigation}>
 					{subNav.map((v,k) => {
 						return <NavigationTab
-						isActive={this.state.activeKey==k}
+						isActive={this.state.activeKey==k && (v.children && v.children.length>0)}
 						onMouseEnter={this.handleMouseEnter.bind(this,k)}
 						title={v.title} key={k} subNav={v.children}/>
 					})}
