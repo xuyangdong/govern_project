@@ -70,3 +70,45 @@ export function getArticleByCategory(id) {
         })
     }
 }
+
+export const GET_ARTICLE_LIST_BY_CATEGORY = actionNames('GET_ARTICLE_LIST_BY_CATEGORY');
+export function getArticleListByCategory(id) {
+    return dispatch => {
+        return fetch(config.api.article.getListByCategory(id), {
+            method: 'GET',
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                dispatch({
+                    type: GET_ARTICLE_LIST_BY_CATEGORY[1],
+                    payload: res.obj
+                })
+                return true
+            } else {
+                notification.error({
+                    message: '失败',
+                    description: '服务器错误，获取文章列表失败'
+                })
+                return false
+            }
+        })
+    }
+}
+
+export const GET_CATEGORY = actionNames('GET_CATEGORY');
+export function getCategory() {
+    return (dispatch, getState) => {
+        const cache = getState().getIn(['article', 'category'])
+        if (cache.size === 0) {
+            return fetch(config.api.category.get, {
+                method: 'GET',
+            }).then(res => res.json()).then(res => {
+                dispatch({
+                    type: GET_CATEGORY[1],
+                    payload: res
+                })
+            })
+        } else {
+            return cache
+        }
+    }
+}

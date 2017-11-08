@@ -15,18 +15,9 @@ const config = _.extend({
             get: `${baseURL}/category/selectAllCategory`
         },
 		article: {
-			add: `${baseURL}/article/insertArticle`,
-			update: `${baseURL}/article/updateArticle`,
-			updateContent: `${baseURL}/article/updateContentById`,
-			getAll: `${baseURL}/article/selectArticleInfoByCategoryId`,
+			getListByCategory: (categoryId) => `${baseURL}/article/selectArticleInfoByCategoryId?categoryId=${categoryId}`,
 			getByCategory: (categoryId) => `${baseURL}/article/selectArticleByCategoryId?categoryId=${categoryId}`,
 			getById: (id) => `${baseURL}/article/selectArticleById?id=${id}`,
-			deleteById: (id) => `${baseURL}/article/deleteById/${id}`,
-			isSingle: (id) => `${baseURL}/article/articleIfExist?id=${id}`
-		},
-		upload: {
-			image: `${baseURL}/upload/uploadNewsImg`,
-			attach: `${baseURL}/upload/uploadNewsAttach`,
 		}
     }
 })

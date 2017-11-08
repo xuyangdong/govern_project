@@ -4,24 +4,50 @@ import reportIcon from 'publicRes/img/report.png'
 import fireIcon from 'publicRes/img/fireicon.png'
 import CommonButton from '../../components/common/Button'
 import Breadthumb from '../../components/common/Breadthumb'
-import ListContent from './ListContent'
+import ArticleContent from './ArticleContent'
 import RightBlockContainer from './RightBlockContainer'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router-dom'
+import { getCategory, getArticleByCategory } from '../../actions/article'
 
 class ContentContainer extends React.Component {
     state = {
+        showContent: false,
+        article: null
     }
 
     constructor(props) {
         super(props)
     }
 
+    componentWillMount() {
+        if (!this.props.category.size) {
+            this.props.getCategory().then(res => {
+                const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
+                this.props.getArticleByCategory(categoryId).then(res => {
+                    this.setState({showContent: true, article: this.props.articleByCategory[0]})
+                })
+            })
+        } else {
+            const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
+            this.props.getArticleByCategory(categoryId).then(res => {
+                this.setState({showContent: true, article: this.props.articleByCategory[0]})
+            })
+        }
+    }
+
     render() {
         return (
             <div className={styles.container}>
-                <div className={styles.breadthumb}><Breadthumb /></div>
+                <div className={styles.breadthumb}>
+                    <Breadthumb />
+                </div>
                 <div className={styles.content}>
                     <div className={styles.left}>
-                        <ListContent />
+                        {
+                            this.state.showContent ? <ArticleContent article={this.state.article} /> : null
+                        }
                     </div>
                     <div className={styles.right}>
                         <RightBlockContainer></RightBlockContainer>
@@ -32,4 +58,14 @@ class ContentContainer extends React.Component {
     }
 }
 
-export default ContentContainer
+const mapStateToProps = state => ({
+	category: state.getIn(['article', 'category']),
+    articleByCategory: state.getIn(['article', 'articleByCategory'])
+})
+
+const mapDispatchToProps = dispatch => ({
+    getCategory: bindActionCreators(getCategory, dispatch),
+    getArticleByCategory: bindActionCreators(getArticleByCategory, dispatch),
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ContentContainer))
