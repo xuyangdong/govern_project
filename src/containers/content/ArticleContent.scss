@@ -5,4 +5,19 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
+
+    :local(.title) {
+        color: #00005C;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    :local(.info) {
+        color: #747576;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+    }
 }

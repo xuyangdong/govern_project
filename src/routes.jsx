@@ -10,10 +10,10 @@ import ReactCanvasComponent from 'bundle-loader?lazy!./components/ReactCanvasCom
 
 const Loading = () => (<div>Loading...</div>)
 
-const createComponent = (component) => (props) => (
+const createComponent = (component, contentName) => (props) => (
     <Bundle load={component}>
         {
-            (Comp) => (Comp ? <Comp {...props}/> : <Loading />)
+            (Comp) => (Comp ? <Comp contentName={contentName} {...props}/> : <Loading />)
         }
     </Bundle>
 )
