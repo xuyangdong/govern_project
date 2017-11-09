@@ -3,82 +3,56 @@ const navigation = [{
 	link:'',
 	children:[{
 		title:'中心概况',
-		link:''
+		path: ['中心简介', '中心概况'],
+		link:'center_intro'
 	},{
 		title:'法律地位',
-		link:''
+		path: ['中心简介', '法律地位'],
+		link:'center_law'
 	},{
 		title:'授权证书',
-		link:''
+		path: ['中心简介', '授权证书'],
+		link:'center_certificate'
 	},{
 		title:'重点设备',
-		link:''
+		path: ['中心简介', '重点设备'],
+		link:'center_facility'
 	},{
 		title:'地理位置',
-		link:''
+		path: ['中心简介', '地理位置'],
+		link:'center_address'
 	}]
 },{
 	title:'检验范围',
 	link:'',
 	children:[{
 		title:'火灾报警产品',
-		link:''
+		path: ['检验范围', '火灾报警产品'],
+		link:'inspect_119'
 	},{
 		title:'火灾防护产品',
-		link:''
+		path: ['检验范围', '火灾防护产品'],
+		link:'inspect_protect'
 	},{
 		title:'灭火设备产品',
-		link:''
+		path: ['检验范围', '灭火设备产品'],
+		link:'inspect_outfire'
 	},{
 		title:'消防装备产品',
-		link:''
+		link:'inspect_equipment'
 	},{
 		title:'非3C认证产品',
-		link:''
+		link:'inspect_3c'
 	}]
 },{
 	title:'通知公告',
-	link:'',
-	children:[]
+	link:'notification'
 },{
 	title:'行业动态',
-	link:''
+	link:'trends'
 },{
 	title:'全部功能',
-	link:'',
-	children:[{
-		title:'图片新闻',
-		link:'',
-		children:[]
-	},{
-		title:'法律法规',
-		link:''
-	},{
-		title:'技术委员会',
-		link:'',
-		children:[{
-			title:'一分委',
-			link:''
-		},{
-			title:'二分委',
-			link:''
-		},{
-			title:'三分委',
-			link:''
-		},{
-			title:'八份委',
-			link:''
-		},{
-			title:'ISO/TC21/SC6',
-			link:''
-		}]
-	},{
-		title:'文件下载',
-		link:''
-	},{
-		title:'公众留言',
-		link:''
-	}]
+	link:'all_features'
 }]
 
 export default navigation

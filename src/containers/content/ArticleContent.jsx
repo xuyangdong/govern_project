@@ -39,7 +39,12 @@ class ArticleContent extends React.Component {
                     {title}
                 </div>
                 <div className={styles.info}>
-                    发布时间：{moment(info.time).format('YYYY-MM-DD HH:mm:ss')}
+                    {
+                        info.time ?
+                        <span>发布时间：{moment(info.time).format('YYYY-MM-DD HH:mm:ss')}</span>
+                        :
+                        null
+                    }
                 </div>
                 <div className={styles.content} dangerouslySetInnerHTML={{__html: content}}>
                 </div>

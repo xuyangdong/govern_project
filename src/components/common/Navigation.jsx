@@ -22,16 +22,28 @@ class NavigationTab extends React.Component {
 		this.props.onMouseEnter()
 	}
 
+	handleJump = () => {
+		if(this.props.link !== '') {
+			this.context.router.history.push(this.props.link)
+		}
+	}
+
 	render(){
 		const {subNav} = this.props
 		return (
 			<div className={cx('tabContainer',{
 				'tabContainer-enter':this.props.isActive
-			})} onMouseEnter={this.handleMouseEnter}>
+			})} onMouseEnter={this.handleMouseEnter} onClick={this.handleJump}>
 				<a>{this.props.title}</a>
 			</div>
 		)
 	}
+}
+
+NavigationTab.contextTypes = {
+	router: PropTypes.shape({
+		history: PropTypes.object.isRequired,
+	}),
 }
 
 class SubNavigation extends React.Component {
@@ -72,12 +84,18 @@ class SubNavigation extends React.Component {
 		}else{
 			return (
 				<div className={styles.subNavigation}>
-					{subNav.map((v,k) => {
-						return <NavigationTab
-						isActive={this.state.activeKey==k && (v.children && v.children.length>0)}
-						onMouseEnter={this.handleMouseEnter.bind(this,k)}
-						title={v.title} key={k} subNav={v.children}/>
-					})}
+					{
+						subNav.map((v,k) => (
+							<NavigationTab
+								isActive={this.state.activeKey==k && (v.children && v.children.length>0)}
+								onMouseEnter={this.handleMouseEnter.bind(this,k)}
+								title={v.title}
+								link={v.link}
+								key={k}
+								subNav={v.children}
+							/>
+						))
+					}
 				</div>
 			)
 		}
@@ -135,7 +153,7 @@ export default class Navigation extends React.Component {
 							return <NavigationTab
 							isActive={this.state.activeKey==k}
 							onMouseEnter={this.handleMouseEnter.bind(this,k)}
-							title={v.title} key={k} subNav={v.children}/>
+							title={v.title} key={k} link={v.link} subNav={v.children}/>
 						})}
 					</div>
 					<div className={styles.searchBar}>

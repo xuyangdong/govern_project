@@ -10,6 +10,16 @@ $page-header-color:#161E44
 	justify-content: flex-end;
 	background-image: url('publicRes/img/topbg.png');
 
+	:local(.index) {
+		position: absolute;
+		width: 168px;
+		height: 60px;
+		opacity: 0;
+		top: 41px;
+		left: 24px;
+		cursor: pointer;
+	}
+
 	&::before{
 		// content: ' ';
 		height: 20px;

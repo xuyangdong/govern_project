@@ -26,13 +26,13 @@ class ListContainer extends React.Component {
             this.props.getCategory().then(res => {
                 const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
                 this.props.getArticleListByCategory(categoryId).then(res => {
-                    console.log(this.props.articleByCategory);
+                    // console.log(this.props.articleByCategory);
                 })
             })
         } else {
             const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
             this.props.getArticleListByCategory(categoryId).then(res => {
-                console.log(this.props.articleByCategory);
+                // console.log(this.props.articleByCategory);
             })
         }
     }
@@ -43,12 +43,16 @@ class ListContainer extends React.Component {
         })
     }
 
+    handleGoBack = () => {
+        this.setState({showDetail: false})
+    }
+
     render() {
         const list = this.props.articleByCategory
         return (
             <div className={styles.container}>
                 <div className={styles.breadthumb}>
-                    <Breadthumb />
+                    <Breadthumb goBack={this.handleGoBack}/>
                 </div>
                 <div className={styles.content}>
                     <div className={styles.left}>
