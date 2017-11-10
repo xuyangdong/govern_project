@@ -1,8 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './RightBlockContainer.scss'
 import reportIcon from 'publicRes/img/report.png'
 import fireIcon from 'publicRes/img/fireicon.png'
 import CommonButton from '../../components/common/Button'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router-dom'
 
 class RightBlockContainer extends React.Component {
     state = {
@@ -25,24 +29,30 @@ class RightBlockContainer extends React.Component {
 
         products: [{
             name: '火灾警报产品',
-            url: ''
+            url: '/inspect_119'
         }, {
             name: '火灾防护产品',
-            url: ''
+            url: '/inspect_protect'
         }, {
             name: '灭火设备产品',
-            url: ''
+            url: '/inspect_outfire'
         }, {
             name: '消防设备产品',
-            url: ''
+            url: '/inspect_equipment'
         }, {
             name: '非3C认证产品',
-            url: ''
+            url: '/inspect_3c'
         }]
     }
 
     handleQueryReport() {
         console.log('query report')
+    }
+
+    handleJump = (path) => {
+        if (path !== this.props.location.pathname) {
+            this.context.router.history.push(path)
+        }
     }
 
     render() {
@@ -68,7 +78,7 @@ class RightBlockContainer extends React.Component {
                     </div>
                     {
                         this.state.products.map((p, index) => (
-                            <div key={index} className={styles.product}>
+                            <div key={index} onClick={this.handleJump.bind(this, p.url)} className={styles.product}>
                                 <span>
                                     <img src={fireIcon} />
                                     {p.name}
@@ -99,4 +109,18 @@ class RightBlockContainer extends React.Component {
     }
 }
 
-export default RightBlockContainer
+RightBlockContainer.contextTypes = {
+	router: PropTypes.shape({
+		history: PropTypes.object.isRequired,
+	}),
+}
+
+const mapStateToProps = state => ({
+    // category: state.getIn(['article', 'category']),
+})
+
+const mapDispatchToProps = dispatch => ({
+    // getCategory: bindActionCreators(getCategory, dispatch),
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RightBlockContainer))

@@ -89,6 +89,26 @@ const routes = [
                 name: '法律法规',
                 component: createComponent(ListContainer, '法律法规')
             },{
+                path: '/committee_one_work',
+                name: '技术委员会 > 一分委工作动态',
+                component: createComponent(ListContainer, '一分委工作动态')
+            },{
+                path: '/committee_two_work',
+                name: '技术委员会 > 二分委工作动态',
+                component: createComponent(ListContainer, '二分委工作动态')
+            },{
+                path: '/committee_three_work',
+                name: '技术委员会 > 三分委工作动态',
+                component: createComponent(ListContainer, '三分委工作动态')
+            },{
+                path: '/committee_eight_work',
+                name: '技术委员会 > 八分委工作动态',
+                component: createComponent(ListContainer, '八分委工作动态')
+            },{
+                path: '/committee_iso_work',
+                name: '技术委员会 > ISO/TC21/SC6工作动态',
+                component: createComponent(ListContainer, 'ISO/TC21/SC6工作动态')
+            },{
                 path: '/committee_one',
                 name: '技术委员会 > 一分委',
                 component: createComponent(CommitteeContainer, '一分委')

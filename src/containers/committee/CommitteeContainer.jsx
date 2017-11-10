@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './CommitteeContainer.scss'
 import Breadthumb from '../../components/common/Breadthumb'
 import RightBlockContainer from '../content/RightBlockContainer'
@@ -7,7 +8,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 import { getCommitteeInfo } from '../../actions/committee'
+import { getCategory, getArticleByCategory } from '../../actions/article'
 import { Form, Button, Input, Icon } from 'antd'
+import moment from 'moment'
 
 const FormItem = Form.Item;
 
@@ -40,6 +43,10 @@ class CommitteeContainer extends React.Component {
     }
 
     componentWillMount() {
+        this.props.getCategory().then(res => {
+            const categoryId = this.props.category.find(i => i.name === this.props.contentName + '工作动态').id
+            this.props.getArticleByCategory(categoryId)
+        })
         let committeeName = ''
         let committeeId = 1
         switch (this.props.contentName) {
@@ -130,6 +137,14 @@ class CommitteeContainer extends React.Component {
                 title = "分委简介"
         }
         this.setState({showMore: true, moreContent: {title, content: this.props.committeeInfo[type]}})
+    }
+
+    handleCheckWorkDetail = (article) => {
+        this.setState({showMore: true, moreContent: article})
+    }
+
+    handleCheckWorkList = () => {
+        this.context.router.history.push(this.props.location.pathname+'_work')
     }
 
     renderStandard() {
@@ -235,6 +250,7 @@ class CommitteeContainer extends React.Component {
     }
 
     render() {
+        console.log(this.props.articleByCategory);
         const { committeeName, moduleIndex, standardIndex, showMore, moreContent } = this.state
         return (
             <div className={styles.container}>
@@ -279,7 +295,18 @@ class CommitteeContainer extends React.Component {
                             </div>
                             <div className={styles.card}>
                                 <div className={styles.navigate}>
-                                    <span>工作动态</span>
+                                    <div className={styles.work}>
+                                        <span>工作动态</span>
+                                        {
+                                            this.props.articleByCategory.slice(0,6).map(a => (
+                                                <div onClick={this.handleCheckWorkDetail.bind(this, a)} key={a.articleId} className={styles.article}>
+                                                    <span>{a.title}</span>
+                                                    <span>{moment(a.publishTime).format('YYYY-MM-DD')}</span>
+                                                </div>
+                                            ))
+                                        }
+                                        <div className={styles.more}><a onClick={this.handleCheckWorkList}>更多></a></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -293,14 +320,24 @@ class CommitteeContainer extends React.Component {
     }
 }
 
+CommitteeContainer.contextTypes = {
+	router: PropTypes.shape({
+		history: PropTypes.object.isRequired,
+	}),
+}
+
 const WrappedCommitteeContainer = Form.create()(CommitteeContainer);
 
 const mapStateToProps = state => ({
+    category: state.getIn(['article', 'category']),
+    articleByCategory: state.getIn(['article', 'articleByCategory']),
 	committeeInfo: state.getIn(['committee', 'committeeInfo']),
 })
 
 const mapDispatchToProps = dispatch => ({
     getCommitteeInfo: bindActionCreators(getCommitteeInfo, dispatch),
+    getArticleByCategory: bindActionCreators(getArticleByCategory, dispatch),
+    getCategory: bindActionCreators(getCategory, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WrappedCommitteeContainer))

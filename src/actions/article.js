@@ -97,18 +97,13 @@ export function getArticleListByCategory(id) {
 export const GET_CATEGORY = actionNames('GET_CATEGORY');
 export function getCategory() {
     return (dispatch, getState) => {
-        const cache = getState().getIn(['article', 'category'])
-        if (cache.size === 0) {
-            return fetch(config.api.category.get, {
-                method: 'GET',
-            }).then(res => res.json()).then(res => {
-                dispatch({
-                    type: GET_CATEGORY[1],
-                    payload: res
-                })
+        return fetch(config.api.category.get, {
+            method: 'GET',
+        }).then(res => res.json()).then(res => {
+            dispatch({
+                type: GET_CATEGORY[1],
+                payload: res
             })
-        } else {
-            return cache
-        }
+        })
     }
 }

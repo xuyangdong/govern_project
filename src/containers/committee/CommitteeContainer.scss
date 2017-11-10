@@ -55,6 +55,42 @@
                         color: #8C8D8E;
                         cursor: pointer;
                     }
+
+                    :local(.work) {
+                        display: flex;
+                        justify-content: flex-start;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+
+                        >span {
+                            padding: 0 6px;
+                            font-size: 15px;
+                            color: #8C8D8E;
+                            cursor: pointer;
+                            margin-bottom: 20px;
+                        }
+
+                        :local(.article) {
+                            width: 100%;
+                            margin-bottom: 15px;
+                            font-size: 14px;
+                            border-bottom: 1px solid #cccccc;
+                            padding-bottom: 4px;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            cursor: pointer;
+                        }
+
+                        :local(.more) {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: flex-end;
+                        }
+                    }
                 }
 
                 :local(.module) {

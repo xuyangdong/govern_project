@@ -5,6 +5,24 @@ import RightBlockContainer from '../../containers/content/RightBlockContainer'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
+import pic1 from 'publicRes/img/all_features/中心简介.png'
+import pic1_hover from 'publicRes/img/all_features/中心简介hover.png'
+import pic2 from 'publicRes/img/all_features/检验范围.png'
+import pic2_hover from 'publicRes/img/all_features/检验范围hover.png'
+import pic3 from 'publicRes/img/all_features/技术委员会.png'
+import pic3_hover from 'publicRes/img/all_features/技术委员会hover.png'
+import pic4 from 'publicRes/img/all_features/通知公告.png'
+import pic4_hover from 'publicRes/img/all_features/通知公告hover.png'
+import pic5 from 'publicRes/img/all_features/图片新闻.png'
+import pic5_hover from 'publicRes/img/all_features/图片新闻hover.png'
+import pic6 from 'publicRes/img/all_features/行业动态.png'
+import pic6_hover from 'publicRes/img/all_features/行业动态hover.png'
+import pic7 from 'publicRes/img/all_features/法律法规.png'
+import pic7_hover from 'publicRes/img/all_features/法律法规hover.png'
+import pic8 from 'publicRes/img/all_features/文件下载.png'
+import pic8_hover from 'publicRes/img/all_features/文件下载hover.png'
+import pic9 from 'publicRes/img/all_features/公众留言.png'
+import pic9_hover from 'publicRes/img/all_features/公众留言hover.png'
 
 class AllFeatures extends React.Component {
     state = {
@@ -84,7 +102,7 @@ class AllFeatures extends React.Component {
                             全部功能
                         </div>
                         <div className={styles.body}>
-                            <div className={styles.box} onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover.bind(this, 1)}>
+                            <div className={styles.box} style={hoverIndex === 1 ? {backgroundImage: 'url('+pic1_hover+')'} : {backgroundImage: 'url('+pic1+')'}} onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover.bind(this, 1)}>
                                 {
                                     hoverIndex === 1 ?
                                     hoverList[hoverIndex-1].map((i, index) => (
@@ -94,7 +112,7 @@ class AllFeatures extends React.Component {
                                     '中心简介>'
                                 }
                             </div>
-                            <div className={styles.box} onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover.bind(this, 2)}>
+                            <div className={styles.box} style={hoverIndex === 2 ? {backgroundImage: 'url('+pic2_hover+')'} : {backgroundImage: 'url('+pic2+')'}} onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover.bind(this, 2)}>
                                 {
                                     hoverIndex === 2 ?
                                     hoverList[hoverIndex-1].map((i, index) => (
@@ -104,11 +122,43 @@ class AllFeatures extends React.Component {
                                     '检验范围>'
                                 }
                             </div>
-                            <div className={styles.box} onClick={this.handleJump.bind(this, '/notification')}>通知公告></div>
-                            <div className={styles.box} onClick={this.handleJump.bind(this, '/imgNews')}>图片新闻></div>
-                            <div className={styles.box} onClick={this.handleJump.bind(this, '/trends')}>行业动态></div>
-                            <div className={styles.box} onClick={this.handleJump.bind(this, '/law')}>法律法规></div>
-                            <div className={styles.box} onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover.bind(this, 3)}>
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/notification')}
+                                style={hoverIndex === 4 ? {backgroundImage: 'url('+pic4_hover+')'} : {backgroundImage: 'url('+pic4+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 4)}
+                            >
+                                通知公告>
+                            </div>
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/imgNews')}
+                                style={hoverIndex === 5 ? {backgroundImage: 'url('+pic5_hover+')'} : {backgroundImage: 'url('+pic5+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 5)}
+                            >
+                                图片新闻>
+                            </div>
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/trends')}
+                                style={hoverIndex === 6 ? {backgroundImage: 'url('+pic6_hover+')'} : {backgroundImage: 'url('+pic6+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 6)}
+                            >
+                                行业动态>
+                            </div>
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/law')}
+                                style={hoverIndex === 7 ? {backgroundImage: 'url('+pic7_hover+')'} : {backgroundImage: 'url('+pic7+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 7)}
+                            >
+                                法律法规>
+                            </div>
+                            <div className={styles.box} style={hoverIndex === 3 ? {backgroundImage: 'url('+pic3_hover+')'} : {backgroundImage: 'url('+pic3+')'}} onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover.bind(this, 3)}>
                                 {
                                     hoverIndex === 3 ?
                                     hoverList[hoverIndex-1].map((i, index) => (
@@ -119,8 +169,22 @@ class AllFeatures extends React.Component {
                                 }
 
                             </div>
-                            <div className={styles.box}>文件下载></div>
-                            <div className={styles.box}>公众留言></div>
+                            <div
+                                className={styles.box}
+                                style={hoverIndex === 8 ? {backgroundImage: 'url('+pic8_hover+')'} : {backgroundImage: 'url('+pic8+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 8)}
+                            >
+                                文件下载>
+                            </div>
+                            <div
+                                className={styles.box}
+                                style={hoverIndex === 9 ? {backgroundImage: 'url('+pic9_hover+')'} : {backgroundImage: 'url('+pic9+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 9)}
+                            >
+                                公众留言>
+                            </div>
 
                         </div>
                     </div>
