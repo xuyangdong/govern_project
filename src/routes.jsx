@@ -10,6 +10,8 @@ import ShopfrontContainer from 'bundle-loader?lazy!./containers/shopfront/Shopfr
 import PDFJSComponent from 'bundle-loader?lazy!./components/PDFJSComponent'
 import ReactCanvasComponent from 'bundle-loader?lazy!./components/ReactCanvasComponent'
 
+import TestComponent from './components/modal/TestComponent'
+
 const Loading = () => (<div>Loading...</div>)
 
 const createComponent = (component, contentName) => (props) => (
@@ -138,7 +140,10 @@ const routes = [
             },{
                 path: '/pdf',
                 component: createComponent(PDFJSComponent)
-            },
+            },{
+                path: '/test',
+                component: TestComponent
+            }
         ]
     }
 ]

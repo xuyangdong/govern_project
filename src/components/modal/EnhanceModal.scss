@@ -1,0 +1,21 @@
+:local(.wrapperModal){
+	:global(.ant-modal){
+		:global(.ant-modal-content){
+			:global(.ant-modal-close){
+				:global(.ant-modal-close-x){
+					color: white;
+				}
+			}
+			:global(.ant-modal-header){
+				background:#182252;
+				:global(.ant-modal-title){
+					color:white;
+				}
+			}
+			:global(.ant-modal-footer){
+				border-top: none;
+				padding: 20px 16px 30px 10px;
+			}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+:local(.modalFooter){
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	:global(.ant-btn){
+		background-color: #182252;
+		color: white;
+		padding:0px 30px;
+	}
+}
+
+:local(.validNum){
+	position: absolute;
+	height: 30px;
+	width: 100px;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	top: 0px;
+	right: -100px;
+	cursor: pointer;
+}
