@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './TechCouncilContainer.scss'
 import oldVersion from 'publicRes/img/oldbg.png'
 import CommonButton from '../../components/common/Button'
@@ -7,19 +8,19 @@ class TechCouncilContainer extends React.Component {
     state = {
         techCouncil: [{
             name: '一分委',
-            url: ''
+            url: '/committee_one'
         },{
             name: '二分委',
-            url: ''
+            url: '/committee_two'
         },{
             name: '三分委',
-            url: ''
+            url: '/committee_three'
         },{
             name: '八分委',
-            url: ''
+            url: '/committee_eight'
         },{
             name: 'ISO/TC21/SC6',
-            url: ''
+            url: '/committee_iso'
         },],
         files: [{
             name: '开具增值税专用发票申请表',
@@ -35,9 +36,11 @@ class TechCouncilContainer extends React.Component {
     constructor(props) {
         super(props)
     }
-    handleTechDetail(index) {
-        console.log(index)
+
+    handleTechDetail = (path) => {
+        this.context.router.history.push(path)
     }
+
     handleBackToOld() {
         window.open("http://www.cncf.com.cn/manage/html/index.html")
     }
@@ -50,7 +53,7 @@ class TechCouncilContainer extends React.Component {
                     <div className={styles.content}>
                         {
                             this.state.techCouncil.map((t, index) => (
-                                <div key={index} className={styles.line} onClick={this.handleTechDetail.bind(this,index)}>
+                                <div key={index} className={styles.line} onClick={this.handleTechDetail.bind(this, t.url)}>
                                     {t.name}
                                 </div>
                             ))
@@ -81,6 +84,13 @@ class TechCouncilContainer extends React.Component {
             </div>
         )
     }
+}
+
+
+TechCouncilContainer.contextTypes = {
+	router: PropTypes.shape({
+		history: PropTypes.object.isRequired,
+	}),
 }
 
 export default TechCouncilContainer

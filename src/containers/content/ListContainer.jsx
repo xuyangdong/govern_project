@@ -22,18 +22,22 @@ class ListContainer extends React.Component {
     }
 
     componentWillMount() {
-        if (!this.props.category.size) {
-            this.props.getCategory().then(res => {
+        if (this.props.hasDetailId !== -1) {
+            this.setState({showDetail: true})
+        } else {
+            if (!this.props.category.size) {
+                this.props.getCategory().then(res => {
+                    const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
+                    this.props.getArticleListByCategory(categoryId).then(res => {
+                        // console.log(this.props.articleByCategory);
+                    })
+                })
+            } else {
                 const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
                 this.props.getArticleListByCategory(categoryId).then(res => {
                     // console.log(this.props.articleByCategory);
                 })
-            })
-        } else {
-            const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
-            this.props.getArticleListByCategory(categoryId).then(res => {
-                // console.log(this.props.articleByCategory);
-            })
+            }
         }
     }
 
@@ -81,7 +85,8 @@ class ListContainer extends React.Component {
 const mapStateToProps = state => ({
 	category: state.getIn(['article', 'category']),
     articleByCategory: state.getIn(['article', 'articleByCategory']),
-    articleDetail: state.getIn(['article', 'articleDetail'])
+    articleDetail: state.getIn(['article', 'articleDetail']),
+    hasDetailId: state.getIn(['article', 'hasDetailId'])
 })
 
 const mapDispatchToProps = dispatch => ({

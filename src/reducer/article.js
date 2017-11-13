@@ -1,5 +1,5 @@
 import { Map, List } from 'immutable'
-import { GET_ARTICLE_LIST_BY_CATEGORY, GET_ARTICLE_LIST, GET_ARTICLE_DETAIL, GET_ARTICLE_BY_CATEGORY, GET_CATEGORY } from '../actions/article'
+import { SET_DETAIL_ID, GET_ARTICLE_LIST_BY_CATEGORY, GET_ARTICLE_LIST, GET_ARTICLE_DETAIL, GET_ARTICLE_BY_CATEGORY, GET_CATEGORY } from '../actions/article'
 
 const initialState = Map({
     category: List([]),
@@ -7,6 +7,7 @@ const initialState = Map({
     articleDetail: {},
     articleByCategory: [],
     articleListByCategory: [],
+    hasDetailId: -1
 })
 
 const article = (state = initialState, action) => {
@@ -26,6 +27,8 @@ const article = (state = initialState, action) => {
             return state.set('articleByCategory', action.payload)
         case GET_ARTICLE_LIST_BY_CATEGORY[1]:
             return state.set('articleByCategory', action.payload)
+        case SET_DETAIL_ID:
+            return state.set('hasDetailId', action.payload.id)
     default:
         return state
     }

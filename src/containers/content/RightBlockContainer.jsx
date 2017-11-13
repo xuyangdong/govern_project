@@ -78,8 +78,8 @@ class RightBlockContainer extends React.Component {
                     </div>
                     {
                         this.state.products.map((p, index) => (
-                            <div key={index} onClick={this.handleJump.bind(this, p.url)} className={styles.product}>
-                                <span>
+                            <div key={index}className={styles.product}>
+                                <span onClick={this.handleJump.bind(this, p.url)} >
                                     <img src={fireIcon} />
                                     {p.name}
                                 </span>

@@ -179,6 +179,7 @@ class AllFeatures extends React.Component {
                             </div>
                             <div
                                 className={styles.box}
+                                onClick={this.handleJump.bind(this, '/leave_message')}
                                 style={hoverIndex === 9 ? {backgroundImage: 'url('+pic9_hover+')'} : {backgroundImage: 'url('+pic9+')'}}
                                 onMouseLeave={this.handleLeave}
                                 onMouseEnter={this.handleHover.bind(this, 9)}

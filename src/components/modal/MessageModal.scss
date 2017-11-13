@@ -13,6 +13,22 @@
 	}
 }
 
+:local(.form) {
+    margin-top: 40px;
+
+	:local(.captchaContainer) {
+		display: flex;
+	    flex-direction: row;
+	    justify-content: flex-start;
+
+		>input {
+			height: 32px;
+			margin-right: 29px;
+		}
+	}
+}
+
+
 :local(.validNum){
 	position: absolute;
 	height: 30px;

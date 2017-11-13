@@ -59,7 +59,7 @@
                     flex-direction: row;
                     justify-content: center;
                     align-items: center;
-                }   
+                }
             }
 
             :local(.body) {
@@ -81,7 +81,7 @@
                         color: $title-color;
                     }
                 }
-                
+
             }
         }
 
@@ -179,6 +179,21 @@
             flex-grow: 1;
             padding-left: 20px;
             padding-right: 20px;
+
+            :local(.lineContaienr) {
+                margin-top: 20px;
+                :local(.line) {
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #333333;
+                    margin-bottom: 18px;
+                    padding-left: 40px;
+                    padding-right: 68px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
         }
         :local(.right) {
             height: 100%;

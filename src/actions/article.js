@@ -72,6 +72,7 @@ export function getArticleByCategory(id) {
 }
 
 export const GET_ARTICLE_LIST_BY_CATEGORY = actionNames('GET_ARTICLE_LIST_BY_CATEGORY');
+
 export function getArticleListByCategory(id) {
     return dispatch => {
         return fetch(config.api.article.getListByCategory(id), {
@@ -82,7 +83,7 @@ export function getArticleListByCategory(id) {
                     type: GET_ARTICLE_LIST_BY_CATEGORY[1],
                     payload: res.obj
                 })
-                return true
+                return res.obj
             } else {
                 notification.error({
                     message: '失败',
@@ -104,6 +105,18 @@ export function getCategory() {
                 type: GET_CATEGORY[1],
                 payload: res
             })
+        })
+    }
+}
+
+export const SET_DETAIL_ID = 'SET_DETAIL_ID';
+export function setDetailId(id) {
+    return (dispatch) => {
+        dispatch({
+            type: SET_DETAIL_ID,
+            payload: {
+                id,
+            }
         })
     }
 }

@@ -7,7 +7,7 @@ export default class EnhanceModal extends React.Component {
 	render(){
 		return (
 			<Modal wrapClassName={styles.wrapperModal} {..._.omit(this.props,['children'])}>
-			{this.props.children}
+				{this.props.children}
 			</Modal>
 		)
 	}

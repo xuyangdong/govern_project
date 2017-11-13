@@ -6,6 +6,7 @@ import HomeContainer from 'bundle-loader?lazy!./containers/home/HomeContainer'
 import ContentContainer from 'bundle-loader?lazy!./containers/content/ContentContainer'
 import ListContainer from 'bundle-loader?lazy!./containers/content/ListContainer'
 import CommitteeContainer from 'bundle-loader?lazy!./containers/committee/CommitteeContainer'
+import LeaveMessageContainer from 'bundle-loader?lazy!./containers/message/LeaveMessageContainer'
 import ShopfrontContainer from 'bundle-loader?lazy!./containers/shopfront/ShopfrontContainer'
 import PDFJSComponent from 'bundle-loader?lazy!./components/PDFJSComponent'
 import ReactCanvasComponent from 'bundle-loader?lazy!./components/ReactCanvasComponent'
@@ -130,6 +131,10 @@ const routes = [
                 path: '/committee_iso',
                 name: '技术委员会 > ISO/TC21/SC6',
                 component: createComponent(CommitteeContainer, 'ISO')
+            },{
+                path: '/leave_message',
+                name: '公众留言',
+                component: createComponent(LeaveMessageContainer)
             },{
                 path: '/content',
                 exact: true,

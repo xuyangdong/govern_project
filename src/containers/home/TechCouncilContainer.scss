@@ -32,6 +32,7 @@
             padding: 0 8px;
 
             :local(.line) {
+                cursor: pointer;
                 font-size: 14px;
                 color: #333333;
                 border-bottom: 1px solid #f2f2f2;
