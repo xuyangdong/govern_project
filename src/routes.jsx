@@ -7,6 +7,7 @@ import ContentContainer from 'bundle-loader?lazy!./containers/content/ContentCon
 import ListContainer from 'bundle-loader?lazy!./containers/content/ListContainer'
 import CommitteeContainer from 'bundle-loader?lazy!./containers/committee/CommitteeContainer'
 import LeaveMessageContainer from 'bundle-loader?lazy!./containers/message/LeaveMessageContainer'
+import SearchReportContainer from 'bundle-loader?lazy!./containers/report/SearchReportContainer'
 import ShopfrontContainer from 'bundle-loader?lazy!./containers/shopfront/ShopfrontContainer'
 import PDFJSComponent from 'bundle-loader?lazy!./components/PDFJSComponent'
 import ReactCanvasComponent from 'bundle-loader?lazy!./components/ReactCanvasComponent'
@@ -135,6 +136,10 @@ const routes = [
                 path: '/leave_message',
                 name: '公众留言',
                 component: createComponent(LeaveMessageContainer)
+            },{
+                path: '/search_report',
+                name: '检验报告查询',
+                component: createComponent(SearchReportContainer)
             },{
                 path: '/content',
                 exact: true,
