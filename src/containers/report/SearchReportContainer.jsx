@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './SearchReportContainer.scss'
 import Breadthumb from '../../components/common/Breadthumb'
 import { connect } from 'react-redux'
@@ -11,7 +12,6 @@ import CommonButton from '../../components/common/Button'
 class SearchReportContainer extends React.Component {
     state = {
         isLoading: false,
-        currentPage: 0,
     }
 
     constructor(props) {
@@ -20,15 +20,19 @@ class SearchReportContainer extends React.Component {
 
     componentWillMount() {
         this.setState({isLoading: true})
-        this.props.getReportList(0, 10).then(res => this.setState({isLoading: false}))
+        this.props.getReportList().then(res => this.setState({isLoading: false}))
     }
 
     handleSearchReport = () => {
 
     }
 
+    handleCheckDetail = (record) => {
+        this.context.router.history.push(`/search_report/${record.pactNumber}`)
+    }
+
     render() {
-        const { isLoading, currentPage } = this.state
+        const { isLoading } = this.state
 
         const columns = [{
             title: '报告编号',
@@ -48,7 +52,7 @@ class SearchReportContainer extends React.Component {
             key: 'checkTypeName',
         }];
 
-        const data = this.props.reportList.get(currentPage + '')
+        const data = this.props.reportList
 
         return (
             <div className={styles.container}>
@@ -69,12 +73,18 @@ class SearchReportContainer extends React.Component {
 
                     </div>
                     <div className={styles.reportList}>
-                        <Table loading={isLoading} rowKey={record => record.rid} columns={columns} dataSource={data} />
+                        <Table onRowClick={this.handleCheckDetail} loading={isLoading} rowKey={record => record.rid} columns={columns} dataSource={data} />
                     </div>
                 </div>
             </div>
         )
     }
+}
+
+SearchReportContainer.contextTypes = {
+	router: PropTypes.shape({
+		history: PropTypes.object.isRequired,
+	}),
 }
 
 const mapStateToProps = state => ({

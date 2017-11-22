@@ -4,19 +4,15 @@ import _ from "lodash";
 import { notification } from 'antd'
 
 export const GET_REPORT_LIST = actionNames('GET_REPORT_LIST');
-export function getReportList(page, pageSize) {
+export function getReportList() {
     return dispatch => {
-        // return fetch(config.api.message.getMessageByPage, {
-        return fetch(config.api.report.getReportByPage(page, pageSize), {
+        return fetch(config.api.report.getReportByPage, {
             method: 'GET',
         }).then(res => res.json()).then(res => {
             if (res.status === 1) {
                 dispatch({
                     type: GET_REPORT_LIST[1],
-                    payload: {
-                        page,
-                        list: res.obj
-                    }
+                    payload: res.obj
                 })
             } else {
                 notification.error({
