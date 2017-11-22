@@ -78,8 +78,8 @@ class HomeContainer extends React.Component {
         this.context.router.history.push('/imgNews')
     }
 
-    handleQueryReport() {
-        console.log('query report')
+    handleQueryReport = () => {
+        this.context.router.history.push('/search_report')
     }
 
     handleMoreContact() {

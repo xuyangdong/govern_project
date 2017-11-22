@@ -35,7 +35,10 @@ const config = _.extend({
 			leaveMessage: `${baseURL}/user/leaveMessage/insertLeaveMessage`,
 			getMessageByPage: `${baseURL}/user/leaveMessage/selectAllLeaveMessageByPage`
 			// getMessageByPage: (page, pageSize) => `${baseURL}/user/leaveMessage/selectAllLeaveMessageByPage?page=${page}&pageSize=${pageSize}`
-		}
+		},
+        report: {
+            getReportByPage: (page, pageSize) => `${baseURL}/user/reportInfo/selectAllReportInfoByPage?page=${page}&pageSize=${pageSize}`,
+        }
     }
 })
 

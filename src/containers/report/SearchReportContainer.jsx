@@ -4,13 +4,14 @@ import Breadthumb from '../../components/common/Breadthumb'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getCategory, getArticleByCategory } from '../../actions/article'
+import { getReportList } from '../../actions/report'
 import { Input, Table } from 'antd'
 import CommonButton from '../../components/common/Button'
 
 class SearchReportContainer extends React.Component {
     state = {
-        article: null
+        isLoading: false,
+        currentPage: 0,
     }
 
     constructor(props) {
@@ -18,7 +19,8 @@ class SearchReportContainer extends React.Component {
     }
 
     componentWillMount() {
-
+        this.setState({isLoading: true})
+        this.props.getReportList(0, 10).then(res => this.setState({isLoading: false}))
     }
 
     handleSearchReport = () => {
@@ -26,36 +28,27 @@ class SearchReportContainer extends React.Component {
     }
 
     render() {
-        const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  key: 'name',
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-  key: 'age',
-}, {
-  title: 'Address',
-  dataIndex: 'address',
-  key: 'address',
-}];
+        const { isLoading, currentPage } = this.state
 
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park',
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 42,
-  address: 'London No. 1 Lake Park',
-}, {
-  key: '3',
-  name: 'Joe Black',
-  age: 32,
-  address: 'Sidney No. 1 Lake Park',
-}];
+        const columns = [{
+            title: '报告编号',
+            dataIndex: 'pactNumber',
+            key: 'pactNumber',
+        }, {
+            title: '产品名称',
+            dataIndex: 'productName',
+            key: 'productName',
+        }, {
+            title: '生产单位',
+            dataIndex: 'productUnit',
+            key: 'productUnit',
+        }, {
+            title: '检验类别',
+            dataIndex: 'checkTypeName',
+            key: 'checkTypeName',
+        }];
+
+        const data = this.props.reportList.get(currentPage + '')
 
         return (
             <div className={styles.container}>
@@ -76,7 +69,7 @@ const data = [{
 
                     </div>
                     <div className={styles.reportList}>
-                        <Table columns={columns} dataSource={data} />
+                        <Table loading={isLoading} rowKey={record => record.rid} columns={columns} dataSource={data} />
                     </div>
                 </div>
             </div>
@@ -85,11 +78,11 @@ const data = [{
 }
 
 const mapStateToProps = state => ({
-	// category: state.getIn(['article', 'category']),
+	reportList: state.getIn(['report', 'reportList']),
 })
 
 const mapDispatchToProps = dispatch => ({
-    // getCategory: bindActionCreators(getCategory, dispatch),
+    getReportList: bindActionCreators(getReportList, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchReportContainer))
