@@ -144,6 +144,7 @@ const routes = [
                 component: createComponent(SearchReportContainer)
             },{
                 path: '/search_report/:id',
+                hasProps: '/search_report',
                 name: '检验报告详情',
                 component: createComponent(ReportDetailContainer)
             },{

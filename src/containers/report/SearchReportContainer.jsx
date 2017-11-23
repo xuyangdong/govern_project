@@ -5,13 +5,16 @@ import Breadthumb from '../../components/common/Breadthumb'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getReportList } from '../../actions/report'
+import { getReportList, searchReport } from '../../actions/report'
 import { Input, Table } from 'antd'
 import CommonButton from '../../components/common/Button'
 
 class SearchReportContainer extends React.Component {
     state = {
         isLoading: false,
+        pactNumber: '',
+        productName: '',
+        producer: ''
     }
 
     constructor(props) {
@@ -24,11 +27,28 @@ class SearchReportContainer extends React.Component {
     }
 
     handleSearchReport = () => {
-
+        const {pactNumber, productName, producer} = this.state
+        let formData = new FormData()
+        formData.append('pactNumber', pactNumber)
+        formData.append('productName', productName)
+        formData.append('productUnit', producer)
+        this.props.searchReport(formData)
     }
 
     handleCheckDetail = (record) => {
-        this.context.router.history.push(`/search_report/${record.pactNumber}`)
+        this.context.router.history.push(`/search_report/${record.rid}`)
+    }
+
+    handlePactNumberChange = (e) => {
+        this.setState({pactNumber: e.target.value})
+    }
+
+    handleProductNameChange = (e) => {
+        this.setState({productName: e.target.value})
+    }
+
+    handleProducerChange = (e) => {
+        this.setState({producer: e.target.value})
     }
 
     render() {
@@ -63,11 +83,11 @@ class SearchReportContainer extends React.Component {
                     <div className={styles.filter}>
 
                         <span>报告编号：</span>
-                        <Input />
+                        <Input onChange={this.handlePactNumberChange}/>
                         <span>产品名称：</span>
-                        <Input />
+                        <Input onChange={this.handleProductNameChange}/>
                         <span>生产单位：</span>
-                        <Input />
+                        <Input onChange={this.handleProducerChange}/>
 
 						<CommonButton onClick={this.handleSearchReport} height={28} width={60} content="查询" />
 
@@ -93,6 +113,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getReportList: bindActionCreators(getReportList, dispatch),
+    searchReport: bindActionCreators(searchReport, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchReportContainer))
