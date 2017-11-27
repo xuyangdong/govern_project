@@ -12,7 +12,7 @@ import CommonButton from '../../components/common/Button'
 class SearchReportContainer extends React.Component {
     state = {
         isLoading: false,
-        pactNumber: '',
+        reportNumber: '',
         productName: '',
         producer: ''
     }
@@ -27,9 +27,9 @@ class SearchReportContainer extends React.Component {
     }
 
     handleSearchReport = () => {
-        const {pactNumber, productName, producer} = this.state
+        const {reportNumber, productName, producer} = this.state
         let formData = new FormData()
-        formData.append('pactNumber', pactNumber)
+        formData.append('reportNumber', reportNumber)
         formData.append('productName', productName)
         formData.append('productUnit', producer)
         this.props.searchReport(formData)
@@ -39,8 +39,8 @@ class SearchReportContainer extends React.Component {
         this.context.router.history.push(`/search_report/${record.rid}`)
     }
 
-    handlePactNumberChange = (e) => {
-        this.setState({pactNumber: e.target.value})
+    handleReportNumberChange = (e) => {
+        this.setState({reportNumber: e.target.value})
     }
 
     handleProductNameChange = (e) => {
@@ -56,8 +56,8 @@ class SearchReportContainer extends React.Component {
 
         const columns = [{
             title: '报告编号',
-            dataIndex: 'pactNumber',
-            key: 'pactNumber',
+            dataIndex: 'reportNumber',
+            key: 'reportNumber',
         }, {
             title: '产品名称',
             dataIndex: 'productName',
@@ -83,7 +83,7 @@ class SearchReportContainer extends React.Component {
                     <div className={styles.filter}>
 
                         <span>报告编号：</span>
-                        <Input onChange={this.handlePactNumberChange}/>
+                        <Input onChange={this.handleReportNumberChange}/>
                         <span>产品名称：</span>
                         <Input onChange={this.handleProductNameChange}/>
                         <span>生产单位：</span>

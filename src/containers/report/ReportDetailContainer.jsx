@@ -44,12 +44,12 @@ class ReportDetailContainer extends React.Component {
                                 <img src={reportIcon} /> 企业信息
                             </div>
                             <div className={styles.line}>
-                                <div>生产单位：{report.customerName}</div>
-                                <div>曾用名：{report.oldName}</div>
-                                <div>地区：{report.customerFrom}</div>
-                                <div>地址：{report.address}</div>
-                                <div>邮编：{report.postalcode}</div>
-                                <div>电话：{report.tel}</div>
+                                <div>生产单位：{ report.productUnit }</div>
+                                <div>曾用名：{ report.oldName }</div>
+                                <div>地区：{ report.area }</div>
+                                <div>地址：{ report.address }</div>
+                                <div>邮编：{ report.postalcode }</div>
+                                <div>电话：{ report.tel }</div>
                             </div>
                         </div>
                         <div className={styles.relatedProduct}>
@@ -67,16 +67,16 @@ class ReportDetailContainer extends React.Component {
                                 <img src={reportIcon} /> 产品信息
                             </div>
                             <div className={styles.line}>
-                                <div>报告编号：{report.reportNumber}</div>
-                                <div>产品名称：{report.productName}</div>
-                                <div>型号规格：{report.checkProductType}</div>
-                                <div>生产单位：{report.customerName}</div>
-                                <div>检验类别：{report.checkTypeName}</div>
-                                <div>检验依据：{report.criterionName}</div>
+                                <div>报告编号：{ report.reportNumber }</div>
+                                <div>产品名称：{ report.productName }</div>
+                                <div>型号规格：{ report.specification }</div>
+                                <div>生产单位：{ report.productUnit }</div>
+                                <div>检验类别：{ report.checkTypeName }</div>
+                                <div>检验依据：{ report.checkBasis }</div>
                                 <div>样品等级：</div>
-                                <div>检验项目：{report.criterionMemo}</div>
+                                <div>检验项目：{ report.checkItem }</div>
                                 <div>检验结论：<span dangerouslySetInnerHTML={{__html: report.testResult}}></span></div>
-                                <div>签发日期：{report.signatureDate}</div>
+                                <div>签发日期：{ report.signatureDate }</div>
                             </div>
                         </div>
                         <div className={styles.report}>
