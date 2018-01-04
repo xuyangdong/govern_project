@@ -46,7 +46,7 @@ class RightBlockContainer extends React.Component {
     }
 
     handleQueryReport() {
-        console.log('query report')
+        this.context.router.history.push('/search_report')
     }
 
     handleJump = (path) => {
