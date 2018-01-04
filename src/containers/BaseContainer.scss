@@ -9,8 +9,8 @@
 
 	:local(.inner) {
 		margin: 0 auto;
-		// width: 1200px;
-		height: 100%;
+		width: 1200px;
+		// height: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -24,6 +24,8 @@
 
 		:local(.content){
 			width: 100%;
+            height: calc( 100% - 370px );
+            // min-height: 1050px;
 			flex-shrink: 0;
 		}
 
