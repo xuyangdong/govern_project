@@ -2,7 +2,9 @@
 
 :local(.container) {
     width: 100%;
-    height: 100%;
+    height: 560px;
+    background-size: contain;
+    background-image: url('publicRes/img/homepage/homepage-background.jpg');
 
     :local(.topImg) {
         width: 100%;
