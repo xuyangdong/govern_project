@@ -88,17 +88,17 @@ class HomeContainer extends React.Component {
 
     render() {
         const checkoutRangeItemPos = [{
-            right:0,top:50
+            right:0,top:40
         },{
-            right:174,top:50
+            right:174,top:40
         },{
-            right:0,top:85
+            right:0,top:75
         },{
-            right:174,top:85
+            right:174,top:75
         },{
-            right:174*2,top:85
+            right:174*2,top:75
         },{
-            right:174*3,top:85
+            right:174*3,top:75
         }]
     	return (
     		<div className={styles.container}>
@@ -122,6 +122,27 @@ class HomeContainer extends React.Component {
                         }
                     </div>
                 </div>
+                <div className={styles.picNews}>
+                    {/*
+            		<div className={styles.head}>
+            			<div className={styles.title}>
+            				<img src={picNewsIcon} alt="" />
+            				<span>图片新闻</span>
+            			</div>
+            			<a onClick={this.handleMorePicNews}> 更多 > </a>
+            		</div>
+                    */}
+            		<div className={styles.body}>
+            			{
+            				this.state.news.map((n, index) => (
+            				<div key={index} className={styles.news}>
+            					<img src={n.pic} />
+            					<div className={styles.newsTitle}>{n.title}</div>
+            				</div>
+            				))
+            			}
+            		</div>
+            	</div>
     		</div>
     	)
     }
