@@ -73,6 +73,93 @@
         }
     }
 
+    :local(.contact) {
+        background-image: url('publicRes/img/homepage/ribbon.png');
+        background-size: contain;
+        width: 610px;
+        height: 226px;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 220px;
+        top: 330px;
+
+        :local(.contactCardTitle) {
+            position: absolute;
+            top: 15px;
+            left: 280px;
+        }
+
+        :local(.infoPanel) {
+            position: absolute;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            width: 190px;
+            top: 50px;
+            color: white;
+
+            &>div:nth-child(1){
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap-reverse;
+                height: 52px;
+                &>span:nth-child(3){
+                    align-self: flex-end;
+                }
+            }
+
+            &>div:nth-child(2){
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 12px;
+                
+                :global(.ant-btn){
+                    background-color: red;
+                    color: white;
+                    border:none;
+                }
+            }
+        }
+    }
+
+    :local(.center){
+        position: absolute;
+        left: 250px;
+        top: 350px;
+        display: flex;
+        flex-direction: column;
+        width: 430px;
+        height: 160px;
+
+        :local(.notificationCardTitle){
+
+        }
+
+        :local(.lineContaienr){
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            flex-grow: 2;
+            margin-top: 10px;
+
+            :local(.line){
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                font-size: 12px;
+                width: 180px;
+                margin-bottom: 2px;
+                &::before {
+                   content: '.  ';
+                   font-size: 15px;
+                   color: red;
+                   line-height: 15px;
+                }
+            }
+        }
+    }
+
     :local(.topImg) {
         width: 100%;
         display: flex;

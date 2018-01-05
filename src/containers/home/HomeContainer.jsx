@@ -15,6 +15,7 @@ import CommonButton from '../../components/common/Button'
 import LawContainer from './LawContainer.jsx'
 import TechCouncilContainer from './TechCouncilContainer.jsx'
 import RecommendContainer from './RecommendContainer.jsx'
+import { Button } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
@@ -143,6 +144,74 @@ class HomeContainer extends React.Component {
             			}
             		</div>
             	</div>
+
+                <div className={styles.center}>
+            		<div className={styles.notificationCardTitle}>
+            			<span className={styles.titleWithIcon}>
+            				<img src={noticeIcon} alt="" />
+            				<span>通知公告</span>
+            			</span>
+            		</div>
+            		<div className={styles.lineContaienr}>
+            			{
+            				// this.state.notification.slice(0,10).map((l, index) => (
+            				// 	<div key={index} onClick={this.handleNotificationDetail.bind(this, l.articleId)} className={styles.line}>
+            				// 		{l.title}
+            				// 	</div>
+            				// ))
+            			}
+                        <div key={0} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={2} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={3} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={4} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={5} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={6} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={7} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={8} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={9} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+                        <div key={10} className={styles.line}>
+                            阿斯顿发送到发送到发送的发送的发送的发送的发送
+                        </div>
+            		</div>
+            	</div>
+
+                <div className={styles.contact}>
+                    <div className={styles.contactCardTitle}>
+                        <span className={styles.titleWithIcon}>
+                            <img src={contactIcon} alt="" />
+                            <span>联系电话</span>
+                        </span>
+                    </div>
+                    <div className={styles.infoPanel}>
+                        <div>
+                            <span>022-58387846</span>
+                            <span>022-58387826</span>
+                            <span>认证咨询电话：</span>
+                        </div>
+                        <div>
+                            <Button>查看更多</Button>
+                        </div>
+                    </div>
+                </div>
+
     		</div>
     	)
     }
