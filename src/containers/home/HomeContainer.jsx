@@ -87,9 +87,41 @@ class HomeContainer extends React.Component {
     }
 
     render() {
+        const checkoutRangeItemPos = [{
+            right:0,top:50
+        },{
+            right:174,top:50
+        },{
+            right:0,top:85
+        },{
+            right:174,top:85
+        },{
+            right:174*2,top:85
+        },{
+            right:174*3,top:85
+        }]
     	return (
     		<div className={styles.container}>
-    			
+    			<div className={styles.checkoutRange}>
+                    <div className={styles.left}>
+                        <div className={styles.cardTitle}>
+                            <span className={styles.titleWithIcon} style={{marginLeft: '-22px'}}>
+                                <img src={reportIcon} alt="" />
+                                <span>检验范围</span>
+                            </span>
+                        </div>
+                        {
+                            this.state.products.map((p, index) => (
+                                <div key={index} className={styles.product} style={checkoutRangeItemPos[index]}>
+                                    <span style={{cursor: 'pointer'}} onClick={this.handleJump.bind(this, p.url)}>
+                                        <img src={fireIcon} />
+                                        {p.name}
+                                    </span>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
     		</div>
     	)
     }
