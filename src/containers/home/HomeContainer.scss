@@ -58,18 +58,59 @@
                     font-size: 12px;
                     color: white;
                     margin-top: -35px;
-                }
-                &::after {
-                    content: ' ';
-                    width: 100%;
-                    height: 18px;
                     position: absolute;
-                    bottom: 0px;
-                    opacity: 0.4;
-                    background-color: black;
+                    bottom:0px;
+                    left: 0px;
+                    width: 170px;
+                    background-color: rgba(72,70,70,0.7);
                 }
             }
 
+        }
+    }
+
+    :local(.checkoutReport) {
+        position: absolute;
+        top: 40px;
+        left: 230px;
+
+        :local(.queryReport) {
+            border-radius: 6px;
+            :local(.title) {
+                >img {
+                    margin-right: 12px;
+                    width: 160px;
+                    margin-bottom: 15px;
+                }
+                width: 100%;
+                font-size: 16px;
+                font-weight: bold;
+                color: #333333;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+            }
+
+            :local(.content) {
+                color: white;
+                font-size: 14px;
+                text-align: left;
+                margin-bottom: 15px;
+            }
+
+            :local(.footer) {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                :global(.ant-btn) {
+                    padding: 0px 30px;
+                    background-color: red;
+                    border: none;
+                    color: white;
+                }
+            }
         }
     }
 
@@ -112,7 +153,7 @@
                 display: flex;
                 justify-content: flex-end;
                 padding-right: 12px;
-                
+
                 :global(.ant-btn){
                     background-color: red;
                     color: white;
@@ -149,7 +190,7 @@
                 overflow: hidden;
                 font-size: 12px;
                 width: 180px;
-                margin-bottom: 2px;
+                margin-bottom: 5px;
                 &::before {
                    content: '.  ';
                    font-size: 15px;
@@ -160,79 +201,6 @@
         }
     }
 
-    :local(.topImg) {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        position: relative;
-
-        >img {
-            height: 425px;
-            width: 100%;
-        }
-
-        :local(.slogan) {
-            width: 100%;
-            flex-grow: 1;
-            padding-top: 54px;
-            padding-left: 44px;
-            color: #767d98;
-
-            >span:first-child {
-                font-size: 30px;
-            }
-
-            >span:nth-child(n+2) {
-                font-size: 24px;
-            }
-        }
-
-
-
-        :local(.queryReport) {
-	        background-image: url('publicRes/img/reportbg.png');
-            background-position: center;
-            background-size: 495px 250px;
-            position: absolute;
-            width: 455px;
-            height: 200px;
-            background-color: white;
-            box-shadow: $box-shadow-heavy;
-            top: 354px;
-            right: 20px;
-            border-radius: 6px;
-            :local(.title) {
-                >img {
-                    margin-right: 12px;
-                }
-                width: 100%;
-                margin-top: 24px;
-                margin-bottom: 40px;
-                font-size: 16px;
-                font-weight: bold;
-                color: #333333;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-            }
-
-            :local(.content) {
-                color: #1a2752;
-                font-size: 14px;
-                text-align: center;
-            }
-
-            :local(.footer) {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                margin-top: 32px;
-            }
-        }
-
-    }
 
     :local(.checkoutRange) {
         position: absolute;
@@ -273,63 +241,6 @@
         }
     }
 
-    :local(.notification) {
-        box-shadow: $box-shadow-light;
-        width: 100%;
-        height: 320px;
-        background-color: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding-top: 24px;
-
-
-        :local(.center) {
-            padding-left: 80px;
-            height: 100%;
-            flex-grow: 1;
-            padding-left: 20px;
-            padding-right: 20px;
-
-            :local(.lineContaienr) {
-                margin-top: 20px;
-                :local(.line) {
-                    cursor: pointer;
-                    font-size: 14px;
-                    color: #333333;
-                    margin-bottom: 18px;
-                    padding-left: 40px;
-                    padding-right: 68px;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                }
-            }
-        }
-        :local(.right) {
-            height: 100%;
-            width: 390px;
-            :local(.aboveTel) {
-                font-size: 14px;
-                color: #1a2753;
-                margin-top: 60px;
-                padding-left: 60px;
-                margin-bottom: 30px;
-            }
-            :local(.tel) {
-                text-align: center;
-                font-size: 14px;
-                color: #333333;
-                margin-bottom: 10px;
-            }
-            :local(.contactMore) {
-                margin-top: 28px;
-                display: flex;
-                justify-content: center;
-                flex-direction: row;
-            }
-        }
-    }
 }
 
 :local(.titleWithIcon) {

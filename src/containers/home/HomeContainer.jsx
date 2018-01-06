@@ -6,7 +6,7 @@ import pic2 from 'publicRes/img/pic2.png'
 import pic3 from 'publicRes/img/pic3.png'
 import pic4 from 'publicRes/img/pic4.png'
 import picNewsIcon from 'publicRes/img/pic.png'
-import reportIcon from 'publicRes/img/report.png'
+import reportIcon from 'publicRes/img/homepage/title-logo.png'
 import noticeIcon from 'publicRes/img/notice.png'
 import contactIcon from 'publicRes/img/contact.png'
 import fireIcon from 'publicRes/img/fireicon.png'
@@ -103,6 +103,19 @@ class HomeContainer extends React.Component {
         }]
     	return (
     		<div className={styles.container}>
+                <div className={styles.checkoutReport}>
+                    <div className={styles.queryReport}>
+                        <div className={styles.title}>
+                            <img src={reportIcon} alt="" />
+                        </div>
+                        <div className={styles.content}>
+                              检验报告原件作废查询 >
+                          </div>
+                        <div className={styles.footer}>
+                            <Button onClick={this.handleQueryReport} height={48} width={120}>查询报告</Button>
+                        </div>
+                    </div>
+                </div>
     			<div className={styles.checkoutRange}>
                     <div className={styles.left}>
                         <div className={styles.cardTitle}>
