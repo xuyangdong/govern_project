@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './PageHeaderComponent.scss'
 import Navigation from '../common/Navigation'
+import cncfLogo from 'publicRes/img/homepage/cncf-logo.png'
+import textLogo from 'publicRes/img/homepage/text.png'
 
 class PageHeaderComponent extends React.Component {
 	constructor(props) {
@@ -16,8 +18,13 @@ class PageHeaderComponent extends React.Component {
 	render(){
 		return (
 			<div className={styles.container}>
-				<div className={styles.index} onClick={this.handleGoToIndex}></div>
-				<Navigation />
+				<div className={styles.logo}>
+					<img src={cncfLogo} onClick={this.handleGoToIndex}/>
+				</div>
+				<div className={styles.rightPanel}>
+					<img src={textLogo} style={{width:600,marginTop:20}}/>
+					<Navigation />
+				</div>
 			</div>
 		)
 	}

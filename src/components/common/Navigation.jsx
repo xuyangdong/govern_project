@@ -22,9 +22,9 @@ class NavigationTab extends React.Component {
 		this.props.onMouseEnter()
 	}
 
-	handleJump = () => {
-		if(this.props.link !== '') {
-			this.context.router.history.push(this.props.link)
+	handleJump = (link) => {
+		if(link !== '') {
+			this.context.router.history.push(link)
 		}
 	}
 
@@ -35,6 +35,17 @@ class NavigationTab extends React.Component {
 				'tabContainer-enter':this.props.isActive
 			})} onMouseEnter={this.handleMouseEnter} onClick={this.handleJump}>
 				<a>{this.props.title}</a>
+				<div className={styles.dropDownPanel} style={this.props.isActive?{display:'block'}:{display:'none'}}>
+					<ul>
+					{subNav.map((v,k) => {
+						return (
+							<li key={k} onClick={() => {
+								this.handleJump(v.link)
+							}}>{v.title}</li>
+						)
+					})}
+					</ul>
+				</div>
 			</div>
 		)
 	}
@@ -137,6 +148,11 @@ export default class Navigation extends React.Component {
 			activeKey:key
 		})
 	}
+	handleMouseLeave = () => {
+		this.setState({
+			activeKey:-1
+		})
+	}
 	handleChooseSubItem = (subItem) => {
 		this.setState({
 			thirdNavigationItem:subItem
@@ -146,9 +162,9 @@ export default class Navigation extends React.Component {
 		const navigation = this.props.navigation
 		const navTabItem = navigation[this.state.activeKey]||{}
 		return (
-			<div className={styles.container}>
+			<div className={styles.container} onMouseLeave={this.handleMouseLeave}>
 				<div className={styles.navigationWrapper}>
-					<div className={styles.navigation}>
+					<div className={styles.navigation} >
 						{navigation.map((v,k) => {
 							return <NavigationTab
 							isActive={this.state.activeKey==k}
@@ -160,13 +176,6 @@ export default class Navigation extends React.Component {
 						<SearchInput />
 					</div>
 				</div>
-				<div className={styles.subNav}>
-					<SubNavigation navTabItem={navTabItem} onChooseSubItem={this.handleChooseSubItem}/>
-				</div>
-				{(this.state.thirdNavigationItem.children&&this.state.thirdNavigationItem.children.length>0)?
-					(<div className={styles.dropDownPanel}>
-						<ThirdNavigationPanel thrirdNavigation={this.state.thirdNavigationItem.children}/>
-				</div>):null}
 			</div>
 		)
 	}

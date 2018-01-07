@@ -2,108 +2,31 @@
 
 :local(.container) {
     width: 100%;
-    height: 100%;
+    height: 560px;
+    background-size: contain;
+    position: relative;
+    background-image: url('publicRes/img/homepage/homepage-background.jpg');
 
-    :local(.topImg) {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        position: relative;
+    :local(.picNews) {
+        position: absolute;
+        left: 250px;
+        width: 700px;
+        top: 230px;
+        :local(.head) {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
 
-        >img {
-            height: 425px;
-            width: 100%;
-        }
-
-        :local(.slogan) {
-            width: 100%;
-            flex-grow: 1;
-            padding-top: 54px;
-            padding-left: 44px;
-            color: #767d98;
-
-            >span:first-child {
-                font-size: 30px;
+            >a {
+                font-size: 16px;
             }
 
-            >span:nth-child(n+2) {
-                font-size: 24px;
-            }
-        }
-
-        :local(.picNews) {
-            padding-top: 48px;
-            padding-bottom: 38px;
-            padding-left: 44px;
-            padding-right: 35px;
-            :local(.head) {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 15px;
-
-                >a {
-                    font-size: 16px;
-                }
-
-                :local(.title) {
-                    >img {
-                        margin-right: 12px;
-                    }
-                    font-size: 16px;
-                    font-weight: bold;
-                    color: #333333;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                }
-            }
-
-            :local(.body) {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                :local(.news) {
-                    width: 270px;
-                    height: 240px;
-                    >img {
-                        width: 100%;
-                        margin-bottom: 12px;
-                    }
-                    :local(.newsTitle) {
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        font-size: 14px;
-                        color: $title-color;
-                    }
-                }
-
-            }
-        }
-
-        :local(.queryReport) {
-	        background-image: url('publicRes/img/reportbg.png');
-            background-position: center;
-            background-size: 495px 250px;
-            position: absolute;
-            width: 455px;
-            height: 200px;
-            background-color: white;
-            box-shadow: $box-shadow-heavy;
-            top: 354px;
-            right: 20px;
-            border-radius: 6px;
             :local(.title) {
                 >img {
                     margin-right: 12px;
                 }
-                width: 100%;
-                margin-top: 24px;
-                margin-bottom: 40px;
                 font-size: 16px;
                 font-weight: bold;
                 color: #333333;
@@ -112,57 +35,200 @@
                 justify-content: center;
                 align-items: center;
             }
+        }
+
+        :local(.body) {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            :local(.news) {
+                width: 170px;
+                height: 80px;
+                position: relative;
+                >img {
+                    width: 100%;
+                    margin-bottom: 12px;
+                    object-fit: cover;
+                    height: 100%;
+                }
+                :local(.newsTitle) {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    font-size: 12px;
+                    color: white;
+                    margin-top: -35px;
+                    position: absolute;
+                    bottom:0px;
+                    left: 0px;
+                    width: 170px;
+                    background-color: rgba(72,70,70,0.7);
+                }
+            }
+
+        }
+    }
+
+    :local(.checkoutReport) {
+        position: absolute;
+        top: 40px;
+        left: 230px;
+
+        :local(.queryReport) {
+            border-radius: 6px;
+            :local(.title) {
+                >img {
+                    margin-right: 12px;
+                    width: 160px;
+                    margin-bottom: 15px;
+                }
+                width: 100%;
+                font-size: 16px;
+                font-weight: bold;
+                color: #333333;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+            }
 
             :local(.content) {
-                color: #1a2752;
+                color: white;
                 font-size: 14px;
-                text-align: center;
+                text-align: left;
+                margin-bottom: 15px;
             }
 
             :local(.footer) {
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
-                margin-top: 32px;
+                justify-content: flex-start;
+                :global(.ant-btn) {
+                    padding: 0px 30px;
+                    background-color: red;
+                    border: none;
+                    color: white;
+                }
             }
         }
-
     }
 
-    :local(.notification) {
-        box-shadow: $box-shadow-light;
-        width: 100%;
-        height: 320px;
-        background-color: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding-top: 24px;
+    :local(.contact) {
+        background-image: url('publicRes/img/homepage/ribbon.png');
+        background-size: contain;
+        width: 610px;
+        height: 226px;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 220px;
+        top: 330px;
 
-        :local(.left) {
-            height: 100%;
-            width: 360px;
+        :local(.contactCardTitle) {
+            position: absolute;
+            top: 15px;
+            left: 280px;
+        }
+
+        :local(.infoPanel) {
+            position: absolute;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            width: 190px;
+            top: 50px;
+            color: white;
+
+            &>div:nth-child(1){
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap-reverse;
+                height: 52px;
+                &>span:nth-child(3){
+                    align-self: flex-end;
+                }
+            }
+
+            &>div:nth-child(2){
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 12px;
+
+                :global(.ant-btn){
+                    background-color: red;
+                    color: white;
+                    border:none;
+                }
+            }
+        }
+    }
+
+    :local(.center){
+        position: absolute;
+        left: 250px;
+        top: 350px;
+        display: flex;
+        flex-direction: column;
+        width: 430px;
+        height: 160px;
+
+        :local(.notificationCardTitle){
+
+        }
+
+        :local(.lineContaienr){
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            flex-wrap: wrap;
+            flex-grow: 2;
+            margin-top: 10px;
+
+            :local(.line){
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                font-size: 12px;
+                width: 180px;
+                margin-bottom: 5px;
+                &::before {
+                   content: '.  ';
+                   font-size: 15px;
+                   color: red;
+                   line-height: 15px;
+                }
+            }
+        }
+    }
+
+
+    :local(.checkoutRange) {
+        position: absolute;
+        right: 250px;
+        top:100px;
+
+        :local(.left) {
+            height: 100%;
+            width: 500px;
+            position: relative;
 
             :local(.product) {
-                width: 100%;
-                margin-top: 10px;
-                height: 40px;
+                height: 30px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: row;
+                position: absolute;
+                right: 0px;
                 >span {
-                    width: 174px;
+                    width: 120px;
                     height: 100%;
                     border: 1px solid #cccccc;
                     border-radius: 6px;
-                    font-size: 15px;
+                    font-size: 12px;
                     color: #333333;
-                    padding-left: 20px;
-                    padding-right: 30px;
+                    padding-left: 5px;
+                    padding-right: 8px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -173,52 +239,8 @@
                 }
             }
         }
-        :local(.center) {
-            padding-left: 80px;
-            height: 100%;
-            flex-grow: 1;
-            padding-left: 20px;
-            padding-right: 20px;
-
-            :local(.lineContaienr) {
-                margin-top: 20px;
-                :local(.line) {
-                    cursor: pointer;
-                    font-size: 14px;
-                    color: #333333;
-                    margin-bottom: 18px;
-                    padding-left: 40px;
-                    padding-right: 68px;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                }
-            }
-        }
-        :local(.right) {
-            height: 100%;
-            width: 390px;
-            :local(.aboveTel) {
-                font-size: 14px;
-                color: #1a2753;
-                margin-top: 60px;
-                padding-left: 60px;
-                margin-bottom: 30px;
-            }
-            :local(.tel) {
-                text-align: center;
-                font-size: 14px;
-                color: #333333;
-                margin-bottom: 10px;
-            }
-            :local(.contactMore) {
-                margin-top: 28px;
-                display: flex;
-                justify-content: center;
-                flex-direction: row;
-            }
-        }
     }
+
 }
 
 :local(.titleWithIcon) {
@@ -226,17 +248,17 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     color: #333333;
     >img {
         margin-right: 12px;
+        width: 12px;
     }
 }
 
 :local(.cardTitle) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+    position: absolute;
+    right: 0px;
+    top: 15px;
 }
