@@ -8,6 +8,7 @@ import ListContainer from 'bundle-loader?lazy!./containers/content/ListContainer
 import CommitteeContainer from 'bundle-loader?lazy!./containers/committee/CommitteeContainer'
 import LeaveMessageContainer from 'bundle-loader?lazy!./containers/message/LeaveMessageContainer'
 import SearchReportContainer from 'bundle-loader?lazy!./containers/report/SearchReportContainer'
+import ReportDetailContainer from 'bundle-loader?lazy!./containers/report/ReportDetailContainer'
 import ShopfrontContainer from 'bundle-loader?lazy!./containers/shopfront/ShopfrontContainer'
 import PDFJSComponent from 'bundle-loader?lazy!./components/PDFJSComponent'
 import ReactCanvasComponent from 'bundle-loader?lazy!./components/ReactCanvasComponent'
@@ -138,8 +139,14 @@ const routes = [
                 component: createComponent(LeaveMessageContainer)
             },{
                 path: '/search_report',
+                exact: true,
                 name: '检验报告查询',
                 component: createComponent(SearchReportContainer)
+            },{
+                path: '/search_report/:id',
+                hasProps: '/search_report',
+                name: '检验报告详情',
+                component: createComponent(ReportDetailContainer)
             },{
                 path: '/content',
                 exact: true,

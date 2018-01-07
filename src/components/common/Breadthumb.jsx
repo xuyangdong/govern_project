@@ -16,7 +16,13 @@ class Breadthumb extends React.Component {
 
 	componentWillMount() {
 		const pathname = this.props.location.pathname
-		const data = routes[0].routes.find(v => v.path === pathname)
+		const data = routes[0].routes.find(v => {
+            if(v.hasProps) {
+                return v.hasProps === '/' + pathname.split('/')[1]
+            } else {
+                return v.path === pathname
+            }
+        })
 		const array = data.name.split(' > ')
 		const breadthumb = array.map((b, index) => {
 			if (index === array.length -1) {
@@ -42,6 +48,9 @@ class Breadthumb extends React.Component {
 		return (
 			<div className={styles.container}>
                 当前位置：<span onClick={this.handleJump.bind(this, '/')} style={{cursor: 'pointer'}}>首页 > </span>
+                {
+                    breadthumb[0].name === '检验报告详情' ? <span onClick={this.handleJump.bind(this, '/search_report')} style={{cursor: 'pointer'}}>检验报告列表 > </span> : null
+                }
 				{
 					breadthumb.map((b, index) => {
                         const suffix = index < breadthumb.length - 1 ? '> ' : '';

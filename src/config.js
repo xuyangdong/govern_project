@@ -35,7 +35,14 @@ const config = _.extend({
 			leaveMessage: `${baseURL}/user/leaveMessage/insertLeaveMessage`,
 			getMessageByPage: `${baseURL}/user/leaveMessage/selectAllLeaveMessageByPage`
 			// getMessageByPage: (page, pageSize) => `${baseURL}/user/leaveMessage/selectAllLeaveMessageByPage?page=${page}&pageSize=${pageSize}`
-		}
+		},
+        report: {
+            getReportList: `${baseURL}/user/firstReportView/selectAllFirstReportViewByPage`,
+            getReportDetail: (id) => `${baseURL}/user/secondReportView/selectByRid/${id}`,
+            search: `${baseURL}/user/firstReportView/fuzzySearchFirstReportView`
+
+            // getReportByPage: (page, pageSize) => `${baseURL}/user/reportInfo/selectAllReportInfoByPage?page=${page}&pageSize=${pageSize}`,
+        }
     }
 })
 
