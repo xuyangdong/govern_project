@@ -22,7 +22,7 @@ const navigation = [{
 		path: ['中心简介', '地理位置'],
 		link:'/center_address'
 	}]
-},{
+}, {
 	title:'检验范围',
 	link:'',
 	children:[{
@@ -44,13 +44,16 @@ const navigation = [{
 		title:'非3C认证产品',
 		link:'/inspect_3c'
 	}]
-},{
-	title:'通知公告',
-	link:'/notification'
-},{
+}, {
 	title:'行业动态',
 	link:'/trends'
-},{
+}, {
+	title:'通知公告',
+	link:'/notification'
+}, {
+	title:'报告查询',
+	link:'/search_report'
+}, {
 	title:'全部功能',
 	link:'/all_features'
 }]

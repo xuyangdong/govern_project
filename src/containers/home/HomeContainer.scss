@@ -2,263 +2,242 @@
 
 :local(.container) {
     width: 100%;
-    height: 560px;
-    background-size: contain;
-    position: relative;
-    background-image: url('publicRes/img/homepage/homepage-background.jpg');
+    height: 100%;
+    background: #F2F3F4;
 
-    :local(.picNews) {
-        position: absolute;
-        left: 250px;
-        width: 700px;
-        top: 230px;
-        :local(.head) {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
+    :local(.top) {
+        background-image: url('publicRes/img/homepage/top-background.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 530px;
 
-            >a {
-                font-size: 16px;
-            }
+        :local(.topInner) {
+            width: 1210px;
+            margin: 0 auto;
+            height: 100%;
 
-            :local(.title) {
-                >img {
-                    margin-right: 12px;
-                }
-                font-size: 16px;
-                font-weight: bold;
-                color: #333333;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-
-        :local(.body) {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            :local(.news) {
-                width: 170px;
-                height: 80px;
-                position: relative;
-                >img {
-                    width: 100%;
-                    margin-bottom: 12px;
-                    object-fit: cover;
-                    height: 100%;
-                }
-                :local(.newsTitle) {
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    font-size: 12px;
-                    color: white;
-                    margin-top: -35px;
-                    position: absolute;
-                    bottom:0px;
-                    left: 0px;
-                    width: 170px;
-                    background-color: rgba(72,70,70,0.7);
-                }
-            }
-
-        }
-    }
-
-    :local(.checkoutReport) {
-        position: absolute;
-        top: 40px;
-        left: 230px;
-
-        :local(.queryReport) {
-            border-radius: 6px;
-            :local(.title) {
-                >img {
-                    margin-right: 12px;
-                    width: 160px;
-                    margin-bottom: 15px;
-                }
+            :local(.inspect) {
+                height: 340px;
                 width: 100%;
-                font-size: 16px;
-                font-weight: bold;
-                color: #333333;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-
-            }
-
-            :local(.content) {
-                color: white;
-                font-size: 14px;
-                text-align: left;
-                margin-bottom: 15px;
-            }
-
-            :local(.footer) {
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
-                :global(.ant-btn) {
-                    padding: 0px 30px;
-                    background-color: red;
-                    border: none;
-                    color: white;
-                }
-            }
-        }
-    }
 
-    :local(.contact) {
-        background-image: url('publicRes/img/homepage/ribbon.png');
-        background-size: contain;
-        width: 610px;
-        height: 226px;
-        background-repeat: no-repeat;
-        position: absolute;
-        right: 220px;
-        top: 330px;
-
-        :local(.contactCardTitle) {
-            position: absolute;
-            top: 15px;
-            left: 280px;
-        }
-
-        :local(.infoPanel) {
-            position: absolute;
-            right: 15px;
-            display: flex;
-            flex-direction: column;
-            width: 190px;
-            top: 50px;
-            color: white;
-
-            &>div:nth-child(1){
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap-reverse;
-                height: 52px;
-                &>span:nth-child(3){
-                    align-self: flex-end;
-                }
-            }
-
-            &>div:nth-child(2){
-                display: flex;
-                justify-content: flex-end;
-                padding-right: 12px;
-
-                :global(.ant-btn){
-                    background-color: red;
-                    color: white;
-                    border:none;
-                }
-            }
-        }
-    }
-
-    :local(.center){
-        position: absolute;
-        left: 250px;
-        top: 350px;
-        display: flex;
-        flex-direction: column;
-        width: 430px;
-        height: 160px;
-
-        :local(.notificationCardTitle){
-
-        }
-
-        :local(.lineContaienr){
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-            flex-grow: 2;
-            margin-top: 10px;
-
-            :local(.line){
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                font-size: 12px;
-                width: 180px;
-                margin-bottom: 5px;
-                &::before {
-                   content: '.  ';
-                   font-size: 15px;
-                   color: red;
-                   line-height: 15px;
-                }
-            }
-        }
-    }
-
-
-    :local(.checkoutRange) {
-        position: absolute;
-        right: 250px;
-        top:100px;
-
-        :local(.left) {
-            height: 100%;
-            width: 500px;
-            position: relative;
-
-            :local(.product) {
-                height: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: row;
-                position: absolute;
-                right: 0px;
-                >span {
-                    width: 120px;
+                :local(.inspectLeft) {
                     height: 100%;
-                    border: 1px solid #cccccc;
-                    border-radius: 6px;
-                    font-size: 12px;
-                    color: #333333;
-                    padding-left: 5px;
-                    padding-right: 8px;
+                    width: 260px;
+                    padding-top: 85px;
+                    padding-left: 38px;
+
+                    :local(.title) {
+                        width: 100%;
+
+                        >img {
+                            margin-bottom: 25px;
+                        }
+                    }
+
+                    :local(.content) {
+                        color: white;
+                        font-size: 16px;
+                        text-align: left;
+                        margin-bottom: 30px;
+                        letter-spacing: 2px;
+                    }
+
+                    :local(.footer) {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+
+                        :local(.checkoutBtn) {
+                            background-color: #CD1F17;
+                        }
+                    }
+                }
+                :local(.inspectRight) {
+                    height: 100%;
+                    width: 980px;
                     display: flex;
-                    justify-content: center;
-                    align-items: center;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    padding-right: 40px;
+
+                    :local(.productLine) {
+                        margin-top: 10px;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-end;
+
+                        :local(.productTitle) {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            >span {
+                                font-size: 16px;
+                                font-weight: bold;
+                                margin-left: 13px;
+                            }
+                        }
+
+                        :local(.product) {
+                            margin-left: 30px;
+                            cursor: pointer;
+                            background-color: #F2F3F4;
+                            height: 40px;
+                            width: 175px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-direction: row;
+                            border: 1px solid #cccccc;
+                            border-radius: 6px;
+                            font-size: 16px;
+                            color: #333333;
+                            font-weight: bold;
+                            >img {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+
+
+                }
+            }
+
+            :local(.pic) {
+                padding: 43px 40px 0 35px;
+                height: 180px;
+                width: 100%;
+                :local(.body) {
+                   display: flex;
+                   flex-direction: row;
+                   justify-content: space-between;
+                   :local(.news) {
+                       width: 270px;
+                       height: 138px;
+                       position: relative;
+                       >img {
+                           width: 100%;
+                           object-fit: cover;
+                           height: 100%;
+                       }
+                       :local(.newsTitle) {
+                           padding: 1px 4px;
+                           white-space: nowrap;
+                           text-overflow: ellipsis;
+                           overflow: hidden;
+                           font-size: 14px;
+                           color: white;
+                           position: absolute;
+                           bottom:0px;
+                           left: 0px;
+                           width: 270px;
+                           background-color: rgba(72,70,70,0.7);
+                       }
+                   }
+               }
+
+            }
+
+
+        }
+
+    }
+
+    :local(.bottom) {
+        background-image: url('publicRes/img/homepage/bottom-background.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        height: calc(100% - 555px);
+        margin-top: 25px;
+        min-height: 285px;
+
+        :local(.bottomInner) {
+            width: 1210px;
+            margin: 0 auto;
+            height: 100%;
+            background-image: url('publicRes/img/homepage/ribbon.png');
+            background-size: initial;
+            background-position: right;
+            background-position-y: top;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: row;
+            padding-top: 40px;
+
+            :local(.notice) {
+                width: 685px;
+                height: 100%;
+
+                :local(.noticeIcon) {
+                    width: 100%;
+                    display: flex;
                     flex-direction: row;
-                    >img {
-                        margin-right: 5px;
+                    align-items: center;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+                :local(.lineContaienr) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    margin-top: 25px;
+                    height: 180px;
+
+                    :local(.line){
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        font-size: 14px;
+                        width: 255px;
+                        margin-bottom: 15px;
+                        &::before {
+                           content: '■  ';
+                           font-size: 10px;
+                           color: #CD1F17;
+                           margin-right: 8px;
+                        }
                     }
                 }
             }
+
+            :local(.contact) {
+                width: 525px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-right: 43px;
+
+                :local(.noticeIcon) {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                }
+
+                :local(.tel) {
+                    width: 100%;
+                    color: white;
+                    text-align: right;
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                }
+
+                :local(.contactBtn) {
+                    text-align: right;
+                    margin-top: 10px;
+                }
+            }
         }
     }
-
-}
-
-:local(.titleWithIcon) {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
-    font-size: 12px;
-    font-weight: bold;
-    color: #333333;
-    >img {
-        margin-right: 12px;
-        width: 12px;
-    }
-}
-
-:local(.cardTitle) {
-    position: absolute;
-    right: 0px;
-    top: 15px;
 }

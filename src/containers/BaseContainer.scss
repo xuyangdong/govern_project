@@ -9,37 +9,42 @@
 
 	:local(.inner) {
 		margin: 0 auto;
-		width: 1200px;
-		// height: 100%;
+		// width: 1200px;
+        width: 100%;
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 
 		:local(.header) {
 			width: 100%;
-			height: 140px;
 			flex-shrink: 0;
-			background-color: lightgray;
+			background-color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
 		}
 
 		:local(.content){
 			width: 100%;
-            height: calc( 100% - 370px );
-            // min-height: 650px;
+            // height: calc( 100% - 370px );
+            min-height: 840px;
+            height: calc( 100% - 245px );
 			flex-shrink: 0;
     		// background-image: url('publicRes/img/detail-background.jpg');
 			// background-size: contain;
 		}
 
 		:local(.footer){
-            font-size: 12px;
+            font-size: 14px;
 			font-weight: lighter;
             color: white;
 			width: 100%;
-			height: 50px;
+			height: 60px;
+            line-height: 60px;
 			background-color: #1d5690;
 			flex-shrink: 0;
-			padding: 15px 52px;
+			// padding: 15px 52px;
 			text-align: center;
 			box-shadow: $box-shadow-light;
 		}

@@ -22,7 +22,8 @@ class NavigationTab extends React.Component {
 		this.props.onMouseEnter()
 	}
 
-	handleJump = (link) => {
+	handleJump = (e, link) => {
+        e.preventDefault()
 		if(link !== '') {
 			this.context.router.history.push(link)
 		}
@@ -33,17 +34,15 @@ class NavigationTab extends React.Component {
 		return (
 			<div className={cx('tabContainer',{
 				'tabContainer-enter':this.props.isActive
-			})} onMouseEnter={this.handleMouseEnter} onClick={this.handleJump}>
+			})} onMouseEnter={this.handleMouseEnter} onClick={(e) => this.handleJump(e, this.props.link)}>
 				<a>{this.props.title}</a>
 				<div className={styles.dropDownPanel} style={this.props.isActive?{display:'block'}:{display:'none'}}>
 					<ul>
-					{subNav.map((v,k) => {
-						return (
-							<li key={k} onClick={() => {
-								this.handleJump(v.link)
-							}}>{v.title}</li>
+					{subNav.map((v,k) =>
+						(
+							<li key={k} onClick={(e) => this.handleJump(e, v.link)}>{v.title}</li>
 						)
-					})}
+					)}
 					</ul>
 				</div>
 			</div>
@@ -82,13 +81,13 @@ class SubNavigation extends React.Component {
 		const {navTabItem} = this.props
 		const type = navTabItem.type
 		const subNav = navTabItem.children||[]
-		if(type=='rolling'){
+		if(type == 'rolling'){
 			return (
 				<div className={styles['subNavigation-rolling']}>
 					<img src={notice} />滚动公告：
 					<div className={styles.rollingContainer}>
-					{subNav.map((v,k) => {
-						return (<a className={styles.rollLink} key={k}>{k!=0?' | ':null}{v.title}</a>)
+					{subNav.map((v, k) => {
+						return (<a className={styles.rollLink} key={k}>{k!=0?' | ' : null}{v.title}</a>)
 					})}
 					</div>
 				</div>)
@@ -98,7 +97,7 @@ class SubNavigation extends React.Component {
 					{
 						subNav.map((v,k) => (
 							<NavigationTab
-								isActive={this.state.activeKey==k && (v.children && v.children.length>0)}
+								isActive={this.state.activeKey == k && (v.children && v.children.length>0)}
 								onMouseEnter={this.handleMouseEnter.bind(this,k)}
 								title={v.title}
 								link={v.link}
@@ -160,7 +159,7 @@ export default class Navigation extends React.Component {
 	}
 	render(){
 		const navigation = this.props.navigation
-		const navTabItem = navigation[this.state.activeKey]||{}
+		const navTabItem = navigation[this.state.activeKey] || {}
 		return (
 			<div className={styles.container} onMouseLeave={this.handleMouseLeave}>
 				<div className={styles.navigationWrapper}>
