@@ -106,7 +106,7 @@
                 justify-content: flex-start;
                 :global(.ant-btn) {
                     padding: 0px 30px;
-                    background-color: red;
+                    background-color: #CF0C17;
                     border: none;
                     color: white;
                 }
@@ -155,7 +155,7 @@
                 padding-right: 12px;
 
                 :global(.ant-btn){
-                    background-color: red;
+                    background-color: #CF0C17;
                     color: white;
                     border:none;
                 }
@@ -194,7 +194,7 @@
                 &::before {
                    content: '.  ';
                    font-size: 15px;
-                   color: red;
+                   color: #CF0C17;
                    line-height: 15px;
                 }
             }
