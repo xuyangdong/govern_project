@@ -2,7 +2,8 @@
 
 :local(.container) {
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    height: calc( 100vh - 245px );
     background: #F2F3F4;
 
     :local(.top) {
@@ -180,6 +181,10 @@
                     align-items: center;
                     font-size: 16px;
                     font-weight: bold;
+
+                    >img {
+                        margin-right: 10px;
+                    }
                 }
 
                 :local(.lineContaienr) {
@@ -191,6 +196,7 @@
                     height: 180px;
 
                     :local(.line){
+                        cursor: pointer;
                         white-space: nowrap;
                         text-overflow: ellipsis;
                         overflow: hidden;
@@ -215,7 +221,7 @@
                 justify-content: flex-start;
                 padding-right: 43px;
 
-                :local(.noticeIcon) {
+                :local(.contactIcon) {
                     width: 100%;
                     display: flex;
                     flex-direction: row;
@@ -223,6 +229,10 @@
                     font-size: 16px;
                     font-weight: bold;
                     margin-bottom: 20px;
+
+                    >img {
+                        margin-right: 10px;
+                    }
                 }
 
                 :local(.tel) {

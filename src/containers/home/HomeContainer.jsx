@@ -8,8 +8,8 @@ import pic4 from 'publicRes/img/pic4.png'
 import picNewsIcon from 'publicRes/img/pic.png'
 import reportLogo from 'publicRes/img/homepage/title-logo.png'
 import reportIcon from 'publicRes/img/report.png'
-import noticeIcon from 'publicRes/img/notice.png'
-import contactIcon from 'publicRes/img/contact.png'
+import noticeIcon from 'publicRes/img/homepage/notice-logo.png'
+import contactIcon from 'publicRes/img/homepage/contact-logo.png'
 import fireIcon from 'publicRes/img/fireicon.png'
 import styles from './HomeContainer.scss'
 import LawContainer from './LawContainer.jsx'
@@ -44,7 +44,7 @@ class HomeContainer extends React.Component {
         this.props.getCategory().then(res => {
             let categoryId = this.props.category.find(i => i.name === '通知公告').id
             this.props.getArticleListByCategory(categoryId).then(res => {
-                this.setState({notification: res.slice(0, 7)})
+                this.setState({notification: res.slice(0, 10)})
             })
         })
     }
@@ -73,19 +73,7 @@ class HomeContainer extends React.Component {
     }
 
     render() {
-        const checkoutRangeItemPos = [{
-            right:0,top:40
-        },{
-            right:174,top:40
-        },{
-            right:0,top:75
-        },{
-            right:174,top:75
-        },{
-            right:174*2,top:75
-        },{
-            right:174*3,top:75
-        }]
+        const { notification } = this.state
     	return (
     		<div className={styles.container}>
                 <div className={styles.top}>
@@ -159,42 +147,18 @@ class HomeContainer extends React.Component {
                 				<span>通知公告</span>
                     		</div>
                             <div className={styles.lineContaienr}>
-                                <div key={0} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={2} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={3} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={4} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={5} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={6} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={7} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={8} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={9} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                                <div key={10} className={styles.line}>
-                                    阿斯顿发送到发送到发送的发送的发送的发送的发送
-                                </div>
-                    		</div>
-
+                                {
+                                    notification.map((noti, index) => (
+                                        <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
+                                            {noti.title}
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         </div>
                         <div className={styles.contact}>
-                            <div className={styles.noticeIcon}>
-                				<img src={noticeIcon} alt="" />
+                            <div className={styles.contactIcon}>
+                				<img src={contactIcon} alt="" />
                 				<span>联系电话</span>
                     		</div>
                             <div className={styles.tel}>认证咨询电话：022-58387846</div>

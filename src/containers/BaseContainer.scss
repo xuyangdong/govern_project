@@ -25,14 +25,33 @@
             justify-content: center;
 		}
 
-		:local(.content){
+		:local(.homepageContent){
 			width: 100%;
-            // height: calc( 100% - 370px );
             min-height: 840px;
-            height: calc( 100% - 245px );
 			flex-shrink: 0;
-    		// background-image: url('publicRes/img/detail-background.jpg');
-			// background-size: contain;
+		}
+
+		:local(.content) {
+			width: 100%;
+            min-height: 840px;
+			flex-shrink: 0;
+
+            :local(.innerContent) {
+                background-image: url('publicRes/img/homepage/bottom-background.jpg');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                padding-top: 30px;
+                padding-bottom: 120px;
+
+                :local(.gallery) {
+                    width: 1200px;
+                    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
+                }
+            }
 		}
 
 		:local(.footer){
