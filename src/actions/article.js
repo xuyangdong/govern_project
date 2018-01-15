@@ -120,3 +120,28 @@ export function setDetailId(id) {
         })
     }
 }
+
+
+export const SEARCH_ARTICLE = 'SEARCH_ARTICLE'
+export const searchArticle = (formData) => {
+    return dispatch => {
+        return fetch(config.api.article.search, {
+            method:'POST',
+            body: formData,
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                dispatch({
+                    type: SEARCH_ARTICLE,
+                    payload: res.obj
+                })
+                return true
+            } else {
+                notification.error({
+                    message: '失败',
+                    description: res.errorMes
+                })
+                return false
+            }
+        })
+    }
+}

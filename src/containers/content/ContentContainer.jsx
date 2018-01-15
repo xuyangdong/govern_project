@@ -22,7 +22,14 @@ class ContentContainer extends React.Component {
     }
 
     componentWillMount() {
-        if (!this.props.category.size) {
+        if (this.props.contentName === '联系电话') {
+            const article = {
+                title: '联系电话',
+                publishTime: 1509687891000,
+                content: 'default'
+            }
+            this.setState({showContent: true, article})
+        } else if (!this.props.category.size) {
             this.props.getCategory().then(res => {
                 const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
                 this.props.getArticleByCategory(categoryId).then(res => {
@@ -38,6 +45,7 @@ class ContentContainer extends React.Component {
     }
 
     render() {
+        console.log(this.state.article);
         return (
             <div className={styles.container}>
                 <div className={styles.breadthumb}>

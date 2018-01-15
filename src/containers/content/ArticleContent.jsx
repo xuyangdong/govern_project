@@ -46,8 +46,19 @@ class ArticleContent extends React.Component {
                         null
                     }
                 </div>
-                <div className={styles.content} dangerouslySetInnerHTML={{__html: content}}>
-                </div>
+                {
+                    content === 'default' ?
+                    <div><p style={{marginTop: 15, textIndent: 28, color: 'rgb(0, 0, 0)', fontFamily: 'Arial', fontSize: 14, textAlign: 'justify'}}>认证咨询电话：022-58387846，022-58387826</p>
+                        <p style={{marginTop: 15, textIndent: 28, color: 'rgb(0, 0, 0)', fontFamily: 'Arial', fontSize: 14, textAlign: 'justify'}}>业务咨询电话：022-58387823，022-58387827，022-58387829</p>
+                        <p style={{marginTop: 15, textIndent: 28, color: 'rgb(0, 0, 0)', fontFamily: 'Arial', fontSize: 14, textAlign: 'justify'}}>业务接待大厅传真：022-58387878</p>
+                        <p style={{marginTop: 15, textIndent: 28, color: 'rgb(0, 0, 0)', fontFamily: 'Arial', fontSize: 14, textAlign: 'justify'}}>样品库电话：022-58387889</p>
+                        <p style={{marginTop: 15, textIndent: 28, color: 'rgb(0, 0, 0)', fontFamily: 'Arial', fontSize: 14, textAlign: 'justify'}}>监督投诉电话：022-58387887</p>
+                        <p style={{marginTop: 15, textIndent: 28, color: 'rgb(0, 0, 0)', fontFamily: 'Arial', fontSize: 14, textAlign: 'justify'}}>总机：022-58387888</p>
+                    </div>
+                    :
+                    <div className={styles.content} dangerouslySetInnerHTML={{__html: content}}>
+                    </div>
+                }
             </div>
         )
     }

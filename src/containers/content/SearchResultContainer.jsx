@@ -8,10 +8,10 @@ import RightBlockContainer from './RightBlockContainer'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getCategory, getArticleListByCategory, getArticleDetail } from '../../actions/article'
+import { searchArticle, getArticleDetail } from '../../actions/article'
 import moment from 'moment'
 
-class ListContainer extends React.Component {
+class SearchResultContainer extends React.Component {
     state = {
         showDetail: false,
     }
@@ -25,15 +25,19 @@ class ListContainer extends React.Component {
         if (this.props.hasDetailId !== -1) {
             this.setState({showDetail: true})
         } else {
-            if (!this.props.category.size) {
-                this.props.getCategory().then(res => {
-                    const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
-                    this.props.getArticleListByCategory(categoryId)
-                })
-            } else {
-                const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
-                this.props.getArticleListByCategory(categoryId)
-            }
+            let formData = new FormData()
+            formData.append('partTitle', this.props.match.params.keyword)
+            this.props.searchArticle(formData)
+
+            // if (!this.props.category.size) {
+            //     this.props.getCategory().then(res => {
+            //         const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
+            //         this.props.getArticleListByCategory(categoryId)
+            //     })
+            // } else {
+            //     const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
+            //     this.props.getArticleListByCategory(categoryId)
+            // }
         }
     }
 
@@ -48,7 +52,7 @@ class ListContainer extends React.Component {
     }
 
     render() {
-        const list = this.props.articleByCategory
+        const list = this.props.searchResult
         return (
             <div className={styles.container}>
                 <div className={styles.breadthumb}>
@@ -79,16 +83,14 @@ class ListContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	category: state.getIn(['article', 'category']),
-    articleByCategory: state.getIn(['article', 'articleByCategory']),
+	searchResult: state.getIn(['article', 'searchResult']),
     articleDetail: state.getIn(['article', 'articleDetail']),
     hasDetailId: state.getIn(['article', 'hasDetailId'])
 })
 
 const mapDispatchToProps = dispatch => ({
-    getCategory: bindActionCreators(getCategory, dispatch),
-    getArticleListByCategory: bindActionCreators(getArticleListByCategory, dispatch),
+    searchArticle: bindActionCreators(searchArticle, dispatch),
     getArticleDetail: bindActionCreators(getArticleDetail, dispatch),
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchResultContainer))
