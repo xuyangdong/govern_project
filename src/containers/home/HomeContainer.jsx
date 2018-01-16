@@ -12,9 +12,9 @@ import noticeIcon from 'publicRes/img/homepage/notice-logo.png'
 import contactIcon from 'publicRes/img/homepage/contact-logo.png'
 import fireIcon from 'publicRes/img/fireicon.png'
 import styles from './HomeContainer.scss'
-import LawContainer from './LawContainer.jsx'
-import TechCouncilContainer from './TechCouncilContainer.jsx'
-import RecommendContainer from './RecommendContainer.jsx'
+// import LawContainer from './LawContainer.jsx'
+// import TechCouncilContainer from './TechCouncilContainer.jsx'
+// import RecommendContainer from './RecommendContainer.jsx'
 import CommonButton from '../../components/common/Button'
 import { Button } from 'antd'
 import { connect } from 'react-redux'
@@ -68,8 +68,8 @@ class HomeContainer extends React.Component {
         this.context.router.history.push('/search_report')
     }
 
-    handleMoreContact() {
-        console.log('more contact')
+    handleShowMoreContact = () => {
+        this.context.router.history.push('/contact')
     }
 
     render() {
@@ -164,7 +164,7 @@ class HomeContainer extends React.Component {
                             <div className={styles.tel}>认证咨询电话：022-58387846</div>
                             <div className={styles.tel}>022-58387826</div>
                             <div className={styles.contactBtn}>
-                                <CommonButton width={120} height={30} content="查看更多"/>
+                                <CommonButton onClick={this.handleShowMoreContact} width={120} height={30} content="查看更多"/>
                             </div>
                         </div>
                     </div>

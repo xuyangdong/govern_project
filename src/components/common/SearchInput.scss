@@ -16,13 +16,15 @@
 	:local(.inputWrapper){
 		padding:5px;
 		>input {
-			border:none;
-			&:focus{
-				border:none;
+			border: none;
+			&:focus {
+				border: none !important;
+                box-shadow: none;
 			}
 		}
 	}
 	:local(.addonAfter){
+        cursor: pointer;
 		height: 30px;
 		width: 30px;
 		display: flex;

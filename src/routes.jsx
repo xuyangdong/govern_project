@@ -5,6 +5,7 @@ import AllFeatures from 'bundle-loader?lazy!./components/common/AllFeatures'
 import HomeContainer from 'bundle-loader?lazy!./containers/home/HomeContainer'
 import ContentContainer from 'bundle-loader?lazy!./containers/content/ContentContainer'
 import ListContainer from 'bundle-loader?lazy!./containers/content/ListContainer'
+import SearchResultContainer from 'bundle-loader?lazy!./containers/content/SearchResultContainer'
 import CommitteeContainer from 'bundle-loader?lazy!./containers/committee/CommitteeContainer'
 import LeaveMessageContainer from 'bundle-loader?lazy!./containers/message/LeaveMessageContainer'
 import SearchReportContainer from 'bundle-loader?lazy!./containers/report/SearchReportContainer'
@@ -77,6 +78,14 @@ const routes = [
                 path: '/inspect_3c',
                 name: '检验范围 > 非3C认证产品',
                 component: createComponent(ListContainer, '非3C认证产品')
+            },{
+                path: '/search/:keyword',
+                name: '搜索结果',
+                component: createComponent(SearchResultContainer)
+            },{
+                path: '/contact',
+                name: '联系电话',
+                component: createComponent(ContentContainer, '联系电话')
             },{
                 path: '/notification',
                 name: '通知公告',

@@ -15,7 +15,7 @@ class Breadthumb extends React.Component {
 	}
 
 	componentWillMount() {
-		const pathname = this.props.location.pathname
+		const pathname = this.props.match.path
 		const data = routes[0].routes.find(v => {
             if(v.hasProps) {
                 return v.hasProps === '/' + pathname.split('/')[1]
@@ -36,11 +36,16 @@ class Breadthumb extends React.Component {
 
 	handleJump = (path) => {
 		if (path === '') return
-		if(path !== this.props.location.pathname) {
+        if (this.props.goBack) {
+            this.props.goBack()
+            return
+        } else {
 			this.context.router.history.push(path)
-		} else {
-			this.props.goBack && this.props.goBack()
-		}
+        }
+		// if(path !== this.props.location.pathname) {
+		// } else {
+		// 	this.props.goBack && this.props.goBack()
+		// }
 	}
 
 	render() {
