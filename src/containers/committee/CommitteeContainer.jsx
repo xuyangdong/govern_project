@@ -250,7 +250,6 @@ class CommitteeContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.articleByCategory);
         const { committeeName, moduleIndex, standardIndex, showMore, moreContent } = this.state
         return (
             <div className={styles.container}>

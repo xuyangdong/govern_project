@@ -22,7 +22,7 @@ class PageHeaderComponent extends React.Component {
 					<img src={cncfLogo} onClick={this.handleGoToIndex}/>
 				</div>
 				<div className={styles.rightPanel}>
-					<img src={textLogo} style={{width:600,marginTop:20}}/>
+					<img src={textLogo} style={{marginTop: 35}}/>
 					<Navigation />
 				</div>
 			</div>
