@@ -4,9 +4,12 @@ import styles from './RightBlockContainer.scss'
 import reportIcon from 'publicRes/img/report.png'
 import fireIcon from 'publicRes/img/fireicon.png'
 import CommonButton from '../../components/common/Button'
+import moment from 'moment'
+import categoryUrl from 'categoryUrl'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
+import { getRecommendArticle, getArticleDetail, setDetailId } from '../../actions/article'
 
 class RightBlockContainer extends React.Component {
     state = {
@@ -45,6 +48,10 @@ class RightBlockContainer extends React.Component {
         }]
     }
 
+    componentWillMount() {
+        this.props.getRecommendArticle()
+    }
+
     handleQueryReport = () => {
         this.context.router.history.push('/search_report')
     }
@@ -52,6 +59,19 @@ class RightBlockContainer extends React.Component {
     handleJump = (path) => {
         if (path !== this.props.location.pathname) {
             this.context.router.history.push(path)
+        }
+    }
+
+    handleCheckDetail(articleId, categoryId) {
+        this.props.setDetailId(-1)
+        const forwardUrl = categoryUrl.find(c => c.id === categoryId).url
+        if (forwardUrl === this.props.match.path.split('/')[1]) {
+            this.props.onCheckDetail(articleId)
+        } else {
+            this.props.getArticleDetail(articleId).then(res => {
+                this.props.setDetailId(articleId)
+                this.props.history.push(`/${forwardUrl}`)
+            })
         }
     }
 
@@ -93,11 +113,12 @@ class RightBlockContainer extends React.Component {
                     </div>
                     <div className={styles.recommend}>
                         {
-                            this.state.articles.map((a, index) => (
+                            this.props.recommendList.map((a, index) => (
+                            // this.state.articles.map((a, index) => (
                                 <div className={styles.line} key={index}>
-                                    <div className={styles.mainLine}>{a.title}</div>
+                                    <div onClick={this.handleCheckDetail.bind(this, a.articleId, a.categoryId)} className={styles.mainLine}>{a.title}</div>
                                     <div className={styles.subLine}>
-                                        {a.from + " " + a.time}
+                                        {a.source + " " + moment(a.publishTime).format('YYYY-MM-DD')}
                                     </div>
                                 </div>
                             ))
@@ -116,11 +137,14 @@ RightBlockContainer.contextTypes = {
 }
 
 const mapStateToProps = state => ({
-    // category: state.getIn(['article', 'category']),
+    recommendList: state.getIn(['article', 'recommendList']),
+    category: state.getIn(['article', 'category']),
 })
 
 const mapDispatchToProps = dispatch => ({
-    // getCategory: bindActionCreators(getCategory, dispatch),
+    getRecommendArticle: bindActionCreators(getRecommendArticle, dispatch),
+    getArticleDetail: bindActionCreators(getArticleDetail, dispatch),
+    setDetailId: bindActionCreators(setDetailId, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RightBlockContainer))

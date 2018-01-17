@@ -25,6 +25,23 @@ export function getArticleList() {
     }
 }
 
+export const GET_RECOMMEND_ARTICLE = actionNames('GET_RECOMMEND_ARTICLE');
+export function getRecommendArticle() {
+    return dispatch => {
+        return fetch(config.api.article.getRecommend, {
+            method: 'GET',
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                dispatch({
+                    type: GET_RECOMMEND_ARTICLE[1],
+                    payload: res.obj
+                })
+            }
+            return true
+        })
+    }
+}
+
 export const GET_ARTICLE_DETAIL = actionNames('GET_ARTICLE_DETAIL');
 export function getArticleDetail(id) {
     return dispatch => {

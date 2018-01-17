@@ -8,7 +8,7 @@ import RightBlockContainer from './RightBlockContainer'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getCategory, getArticleListByCategory, getArticleDetail } from '../../actions/article'
+import { getCategory, getArticleListByCategory, getArticleDetail, setDetailId } from '../../actions/article'
 import moment from 'moment'
 
 class ListContainer extends React.Component {
@@ -37,18 +37,40 @@ class ListContainer extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.hasDetailId === -1) {
+            this.setState({showDetail: false})
+        }
+    }
+
     handleCheckDetail(articleId) {
+        this.props.setDetailId(articleId)
         this.props.getArticleDetail(articleId).then(res => {
             this.setState({showDetail: true})
         })
     }
 
     handleGoBack = () => {
-        this.setState({showDetail: false})
+        const categoryId = this.props.category.find(i => i.name === this.props.contentName).id
+        this.props.getArticleListByCategory(categoryId).then(res => {
+            this.setState({showDetail: false})
+        })
+
     }
 
     render() {
-        const list = this.props.articleByCategory
+        const original = this.props.articleByCategory
+        const redList = original.filter(a => a.isRed)
+        redList.sort((a,b) => b.publishTime > a.publishTime)
+        const notRedList = original.filter(a => !a.isRed)
+        notRedList.sort((a, b) => {
+            if (b.isTop && !a.isTop) {
+                return true
+            } else {
+                return b.publishTime > a.publishTime
+            }
+        })
+        const list = redList.concat(notRedList)
         return (
             <div className={styles.container}>
                 <div className={styles.breadthumb}>
@@ -61,7 +83,7 @@ class ListContainer extends React.Component {
                             list.map((l, index) => (
                                 <div key={index} className={styles.line}>
                                     <div className={styles.title} onClick={this.handleCheckDetail.bind(null, l.articleId)}>
-                                        <span>{l.title}</span>
+                                        <span style={l.isRed ? {color: '#d23d38'} : null}>{l.title}</span>
                                         <span className={styles.time}>{moment(l.publishTime).format('YYYY-MM-DD')}</span>
                                     </div>
                                 </div>
@@ -70,7 +92,7 @@ class ListContainer extends React.Component {
                         }
                     </div>
                     <div className={styles.right}>
-                        <RightBlockContainer></RightBlockContainer>
+                        <RightBlockContainer onCheckDetail={this.handleCheckDetail}></RightBlockContainer>
                     </div>
                 </div>
             </div>
@@ -87,6 +109,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getCategory: bindActionCreators(getCategory, dispatch),
+    setDetailId: bindActionCreators(setDetailId, dispatch),
     getArticleListByCategory: bindActionCreators(getArticleListByCategory, dispatch),
     getArticleDetail: bindActionCreators(getArticleDetail, dispatch),
 })
