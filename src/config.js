@@ -18,7 +18,8 @@ const config = _.extend({
 			getListByCategory: (categoryId) => `${baseURL}/user/article/selectArticleInfoByCategoryId?categoryId=${categoryId}`,
 			getByCategory: (categoryId) => `${baseURL}/user/article/selectArticleByCategoryId?categoryId=${categoryId}`,
 			getById: (id) => `${baseURL}/user/article/selectArticleById?id=${id}`,
-			search: `${baseURL}/user/article/fuzzySearchArticle`
+			search: `${baseURL}/user/article/fuzzySearchArticle`,
+            getRecommend: `${baseURL}/user/article/getRecommendArticle`
 		},
 		committee: {
 			getById: (id) => `${baseURL}/btc/btc/selectBtcById?id=${id}`,

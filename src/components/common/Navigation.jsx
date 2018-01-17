@@ -4,6 +4,10 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import notice from 'publicRes/img/notice.gif'
 import navigation from 'navigation'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router-dom'
+import { setDetailId } from '../../actions/article'
 import SearchInput from '../common/SearchInput'
 const cx = classnames.bind(styles)
 
@@ -24,8 +28,9 @@ class NavigationTab extends React.Component {
 
 	handleJump = (e, link) => {
         e.preventDefault()
-		if(link !== '') {
-			this.context.router.history.push(link)
+        this.props.setDetailId(-1)
+		if (link !== '' && link !== this.props.currentPath) {
+            this.context.router.history.push(link)
 		}
 	}
 
@@ -49,6 +54,7 @@ class NavigationTab extends React.Component {
 		)
 	}
 }
+
 
 NavigationTab.contextTypes = {
 	router: PropTypes.shape({
@@ -128,7 +134,7 @@ class ThirdNavigationPanel extends React.Component {
 	}
 }
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
 	static propTypes = {
 		navigation:PropTypes.array
 	}
@@ -166,6 +172,8 @@ export default class Navigation extends React.Component {
 					<div className={styles.navigation} >
 						{navigation.map((v,k) => {
 							return <NavigationTab
+                            currentPath={this.props.location.pathname}
+                            setDetailId={this.props.setDetailId}
 							isActive={this.state.activeKey==k}
 							onMouseEnter={this.handleMouseEnter.bind(this,k)}
 							title={v.title} key={k} link={v.link} subNav={v.children}/>
@@ -179,3 +187,12 @@ export default class Navigation extends React.Component {
 		)
 	}
 }
+
+const mapStateToProps = state => ({
+})
+
+const mapDispatchToProps = dispatch => ({
+    setDetailId: bindActionCreators(setDetailId, dispatch),
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navigation))
