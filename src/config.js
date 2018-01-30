@@ -40,7 +40,7 @@ const config = _.extend({
 		},
         report: {
             getReportList: `${baseURL}/user/firstReportView/selectAllFirstReportViewByPage`,
-            getReportDetail: (id) => `${baseURL}/user/secondReportView/selectByRid/${id}`,
+            getReportDetail: (id) => `${baseURL}/user/secondReportView/selectById/${id}`,
             search: `${baseURL}/user/firstReportView/fuzzySearchFirstReportView`
 
             // getReportByPage: (page, pageSize) => `${baseURL}/user/reportInfo/selectAllReportInfoByPage?page=${page}&pageSize=${pageSize}`,

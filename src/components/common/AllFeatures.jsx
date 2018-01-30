@@ -23,6 +23,8 @@ import pic8 from 'publicRes/img/all_features/文件下载.png'
 import pic8_hover from 'publicRes/img/all_features/文件下载hover.png'
 import pic9 from 'publicRes/img/all_features/公众留言.png'
 import pic9_hover from 'publicRes/img/all_features/公众留言hover.png'
+import pic10 from 'publicRes/img/all_features/企业用户.png'
+import pic10_hover from 'publicRes/img/all_features/企业用户hover.png'
 
 class AllFeatures extends React.Component {
     state = {
@@ -185,6 +187,15 @@ class AllFeatures extends React.Component {
                                 onMouseEnter={this.handleHover.bind(this, 9)}
                             >
                                 公众留言>
+                            </div>
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/enterprise_user')}
+                                style={hoverIndex === 10 ? {backgroundImage: 'url('+pic10_hover+')'} : {backgroundImage: 'url('+pic10+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 10)}
+                            >
+                                企业用户>
                             </div>
 
                         </div>

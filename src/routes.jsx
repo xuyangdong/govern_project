@@ -8,6 +8,8 @@ import ListContainer from 'bundle-loader?lazy!./containers/content/ListContainer
 import SearchResultContainer from 'bundle-loader?lazy!./containers/content/SearchResultContainer'
 import CommitteeContainer from 'bundle-loader?lazy!./containers/committee/CommitteeContainer'
 import LeaveMessageContainer from 'bundle-loader?lazy!./containers/message/LeaveMessageContainer'
+import EnterpriseUserContainer from 'bundle-loader?lazy!./containers/user/EnterpriseUserContainer'
+import EnterpriseInfoContainer from 'bundle-loader?lazy!./containers/user/EnterpriseInfoContainer'
 import SearchReportContainer from 'bundle-loader?lazy!./containers/report/SearchReportContainer'
 import ReportDetailContainer from 'bundle-loader?lazy!./containers/report/ReportDetailContainer'
 import ShopfrontContainer from 'bundle-loader?lazy!./containers/shopfront/ShopfrontContainer'
@@ -146,6 +148,14 @@ const routes = [
                 path: '/leave_message',
                 name: '公众留言',
                 component: createComponent(LeaveMessageContainer)
+            },{
+                path: '/enterprise_user',
+                name: '企业用户',
+                component: createComponent(EnterpriseUserContainer)
+            },{
+                path: '/enterprise_info',
+                name: '企业信息查询',
+                component: createComponent(EnterpriseInfoContainer)
             },{
                 path: '/search_report',
                 exact: true,
