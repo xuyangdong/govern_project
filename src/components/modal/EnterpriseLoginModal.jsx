@@ -72,7 +72,7 @@ class EnterpriseLoginModal extends React.Component {
         ]
         return (
             <EnhanceModal
-				title={isInner ? '登录查看企业信息' : '登录'}
+	            title={isInner ? '登录查看企业信息' : '登录'}
                 {...this.props}
                 footer={modalFooter}
 			>

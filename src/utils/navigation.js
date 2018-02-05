@@ -50,9 +50,9 @@ const navigation = [{
 }, {
 	title:'通知公告',
 	link:'/notification'
-}, {
-	title:'报告查询',
-	link:'/search_report'
+// }, {
+// 	title:'报告查询',
+// 	link:'/search_report'
 }, {
 	title:'全部功能',
 	link:'/all_features'

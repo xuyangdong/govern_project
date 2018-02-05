@@ -43,6 +43,62 @@ export const getEnterpriseById = (id) => {
     }
 }
 
+export const MODIFY_PUBLIC_PASSWORD = 'MODIFY_PUBLIC_PASSWORD'
+export const modifyPublicPassword = (formData) => {
+    return dispatch => {
+        return fetch(config.api.enterprise.publicPassword, {
+            method:'POST',
+            headers: {
+                'enterprise_inner_authorization': sessionStorage.getItem('enterprisePrivateAccessToken')
+            },
+            body: formData
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                notification.success({
+                    message:'修改成功',
+                    description: res.errorMes
+                })
+                console.log(res);
+                return true
+            } else {
+                notification.error({
+                    message:'修改失败',
+                    description: res.errorMes
+                })
+                return false
+            }
+        })
+    }
+}
+
+export const MODIFY_PRIVATE_PASSWORD = 'MODIFY_PRIVATE_PASSWORD'
+export const modifyPrivatePassword = (formData) => {
+    return dispatch => {
+        return fetch(config.api.enterprise.privatePassword, {
+            method:'POST',
+            headers: {
+                'enterprise_inner_authorization': sessionStorage.getItem('enterprisePrivateAccessToken')
+            },
+            body: formData
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                notification.success({
+                    message:'修改成功',
+                    description: res.errorMes
+                })
+                return true
+            } else {
+                notification.error({
+                    message:'修改失败',
+                    description: res.errorMes
+                })
+                return false
+            }
+        })
+    }
+}
+
+
 export const ENTERPRISE_LOGIN_SUCCESS = 'ENTERPRISE_LOGIN_SUCCESS'
 export const enterpriseLogin = (enterpriseName, password) => {
     return dispatch => {

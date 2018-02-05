@@ -5,7 +5,7 @@ import reportIcon from 'publicRes/img/report.png'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getReportDetail } from '../../actions/report'
+import { getReportFile, getReportDetail } from '../../actions/report'
 import { Input, Table } from 'antd'
 import CommonButton from '../../components/common/Button'
 
@@ -21,6 +21,7 @@ class ReportDetailContainer extends React.Component {
     componentWillMount() {
         const id = this.props.match.params.id
         this.props.getReportDetail(id)
+        this.props.getReportFile(id)
     }
 
     handleSearchReport = () => {
@@ -97,6 +98,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getReportDetail: bindActionCreators(getReportDetail, dispatch),
+    getReportFile: bindActionCreators(getReportFile, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReportDetailContainer))

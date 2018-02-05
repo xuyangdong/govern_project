@@ -59,7 +59,7 @@ class LoginModal extends React.Component {
         ]
         return (
             <EnhanceModal
-				title='登录'
+	            title='登录'
                 {...this.props}
                 footer={modalFooter}
 			>
