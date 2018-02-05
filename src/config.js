@@ -32,6 +32,12 @@ const config = _.extend({
 			updatePassword: `${baseURL}/user/user/updatePassword`,
 			findPassword: `${baseURL}/user/user/retrievePassword`
 		},
+		enterprise: {
+			getEnterprise: `${baseURL}/user/enterprise/getEnterprise`,
+			getEnterpriseById: (id) => `${baseURL}/user/enterprise/getEnterpriseById?id=${id}`,
+			publicLogin: `${baseURL}/user/enterprise/userLogin`,
+			privateLogin: `${baseURL}/user/enterprise/enterpriseLogin`,
+		},
 		message: {
 			getCaptcha: `${baseURL}/user/leaveMessage/getCaptcha`,
 			leaveMessage: `${baseURL}/user/leaveMessage/insertLeaveMessage`,

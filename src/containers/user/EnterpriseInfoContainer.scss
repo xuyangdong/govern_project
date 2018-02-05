@@ -11,5 +11,49 @@
     color: $title-color;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start
+    justify-content: flex-start;
+    padding-left: 47px;
+
+    :local(.inner) {
+        margin-top: 20px;
+        width: 1105px;
+        height: 290px;
+        background-image: url('publicRes/img/enterpriseInfo.png');
+        box-shadow: $box-shadow-light;
+        border-radius: 6px;
+        background-position: center;
+        padding: 45px 40px;
+
+        :local(.producer) {
+            color: #A2A6B3;
+            font-size: 14px;
+            margin-bottom: 50px;
+        }
+
+        :local(.account) {
+            color: #233b8a;
+            font-size: 14px;
+            margin-bottom: 80px;
+        }
+
+        :local(.operation) {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+        }
+
+        :local(.icon) {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            color: #233b8a;
+            margin-right: 25px;
+            cursor: pointer;
+
+            >img {
+                margin-right: 7px;
+            }
+        }
+    }
 }
