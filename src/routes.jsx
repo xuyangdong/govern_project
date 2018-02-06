@@ -11,6 +11,7 @@ import LeaveMessageContainer from 'bundle-loader?lazy!./containers/message/Leave
 import EnterpriseUserContainer from 'bundle-loader?lazy!./containers/user/EnterpriseUserContainer'
 import EnterpriseInfoContainer from 'bundle-loader?lazy!./containers/user/EnterpriseInfoContainer'
 import SearchReportContainer from 'bundle-loader?lazy!./containers/report/SearchReportContainer'
+import SearchInvalidReportContainer from 'bundle-loader?lazy!./containers/report/SearchInvalidReportContainer'
 import ReportDetailContainer from 'bundle-loader?lazy!./containers/report/ReportDetailContainer'
 import ShopfrontContainer from 'bundle-loader?lazy!./containers/shopfront/ShopfrontContainer'
 import PDFJSComponent from 'bundle-loader?lazy!./components/PDFJSComponent'
@@ -161,6 +162,11 @@ const routes = [
                 exact: true,
                 name: '检验报告查询',
                 component: createComponent(SearchReportContainer)
+            },{
+                path: '/search_invalid_report',
+                exact: true,
+                name: '检验报告原件作废查询',
+                component: createComponent(SearchInvalidReportContainer)
             },{
                 path: '/search_report/:id',
                 hasProps: '/search_report',

@@ -95,7 +95,7 @@ class HomeContainer extends React.Component {
                                 <div className={styles.title}>
                                     <img src={reportLogo} alt="" />
                                 </div>
-                                <div className={styles.content}>
+                                <div className={styles.content} style={{ cursor: 'pointer' }} onClick={this.handleJump.bind(this, '/search_invalid_report')}>
                                       检验报告原件作废查询 >
                                   </div>
                                 <div className={styles.footer}>

@@ -48,6 +48,7 @@ const config = _.extend({
 		},
         report: {
             getReportList: `${baseURL}/user/firstReportView/selectAllFirstReportViewByPage`,
+            getInvalidReportList: `${baseURL}/user/invalidReportView/getAllInvalidReportView`,
             getReportDetail: (id) => `${baseURL}/user/secondReportView/selectById/${id}`,
             search: `${baseURL}/user/firstReportView/fuzzySearchFirstReportView`,
 			reportFile: (id) => `${baseURL}/user/report/getReportFilePathById?id=${id}`,

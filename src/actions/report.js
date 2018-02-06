@@ -25,6 +25,28 @@ export function getReportList() {
     }
 }
 
+export const GET_INVALID_REPORT_LIST = actionNames('GET_INVALID_REPORT_LIST');
+export function getInvalidReportList() {
+    return dispatch => {
+        return fetch(config.api.report.getInvalidReportList, {
+            method: 'GET',
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                dispatch({
+                    type: GET_INVALID_REPORT_LIST[1],
+                    payload: res.obj
+                })
+            } else {
+                notification.error({
+                    message: '失败',
+                    description: res.errorMes
+                })
+            }
+            return true
+        })
+    }
+}
+
 export const GET_REPORT_DETAIL = actionNames('GET_REPORT_DETAIL');
 export function getReportDetail(id) {
     return dispatch => {
