@@ -8,10 +8,12 @@ import { withRouter } from 'react-router-dom'
 import { getReportFile, getReportDetail } from '../../actions/report'
 import { Input, Table } from 'antd'
 import CommonButton from '../../components/common/Button'
+import PDFModal from '../../components/modal/PDFModal'
 
 class ReportDetailContainer extends React.Component {
     state = {
         isLoading: false,
+        PDF_MODAL_STATE: false,
     }
 
     constructor(props) {
@@ -24,14 +26,15 @@ class ReportDetailContainer extends React.Component {
         this.props.getReportFile(id)
     }
 
-    handleSearchReport = () => {
-
+    handleModalControl = (state) => {
+        this.setState({ PDF_MODAL_STATE: state })
     }
 
     render() {
-        const { isLoading } = this.state
+        const { isLoading, PDF_MODAL_STATE } = this.state
 
         const report = this.props.reportDetail
+        const file = this.props.reportFile
 
         return (
             <div className={styles.container}>
@@ -87,6 +90,13 @@ class ReportDetailContainer extends React.Component {
                         </div>
                     </div>
                 </div>
+                {
+                    file ? <PDFModal
+                        visible={PDF_MODAL_STATE}
+                        onOk={this.handleModalControl.bind(this, false)}
+                        file={file}
+                    /> : null
+                }
             </div>
         )
     }
@@ -94,6 +104,7 @@ class ReportDetailContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	reportDetail: state.getIn(['report', 'reportDetail']),
+	reportFile: state.getIn(['report', 'reportFile']),
 })
 
 const mapDispatchToProps = dispatch => ({

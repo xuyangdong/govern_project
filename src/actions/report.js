@@ -57,10 +57,12 @@ export function getReportFile(id) {
             }
         }).then(res => res.json()).then(res => {
             if (res.status === 1) {
-                // dispatch({
-                //     type: GET_REPORT_FILE[1],
-                //     payload: res.obj
-                // })
+                fetch(res.obj).then(res => res.blob()).then(res => {
+                    dispatch({
+                        type: GET_REPORT_FILE[1],
+                        payload: res
+                    })
+                })
             }
             return true
         })
