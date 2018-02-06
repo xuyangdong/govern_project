@@ -22,7 +22,7 @@ class PDFModal extends React.Component {
                 onOk={onOk}
                 onCancel={onCancel}
                 width={1000}
-                // footer={null}
+                footer={null}
             >
                 <PDFJSComponent file={file} />
             </Modal>
