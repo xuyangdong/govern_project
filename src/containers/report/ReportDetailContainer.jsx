@@ -35,6 +35,7 @@ class ReportDetailContainer extends React.Component {
 
         const report = this.props.reportDetail
         const file = this.props.reportFile
+        console.log(file);
 
         return (
             <div className={styles.container}>
@@ -87,16 +88,28 @@ class ReportDetailContainer extends React.Component {
                             <div className={styles.header}>
                                 <img src={reportIcon} /> 检验报告
                             </div>
+                            <div className={styles.line} style={{ cursor: 'pointer' }} onClick={this.handleModalControl.bind(this, true)}>
+                                点击查看
+                            </div>
                         </div>
                     </div>
                 </div>
                 {
-                    file ? <PDFModal
+                    file ?
+                    <PDFModal
                         visible={PDF_MODAL_STATE}
                         onOk={this.handleModalControl.bind(this, false)}
+                        onCancel={this.handleModalControl.bind(this, false)}
                         file={file}
-                    /> : null
+                    />
+                    : null
                 }
+                {/* <PDFModal
+                    visible={PDF_MODAL_STATE}
+                    onOk={this.handleModalControl.bind(this, false)}
+                    onCancel={this.handleModalControl.bind(this, false)}
+                    file={file}
+                /> */}
             </div>
         )
     }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 export default class PDFJSComponent extends React.Component {
 	static propTypes = {
-		file:PropTypes.object.isrequire
+		file:PropTypes.object
 	}
 	constructor(){
 		super()
@@ -19,7 +19,6 @@ export default class PDFJSComponent extends React.Component {
 			let base64 = e.target.result
 			let loadingTask = PDFJS.getDocument({data:atob(base64.split(',')[1])})
 			loadingTask.then(pdf => {
-				console.log(pdf)
 				this.setState({
 					pdf:pdf,
 				})

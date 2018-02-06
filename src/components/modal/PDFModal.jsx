@@ -16,13 +16,15 @@ class PDFModal extends React.Component {
         const { visible, onOk, onCancel, file } = this.props
         return (
             <Modal
+                className={styles.container}
                 title="检验报告详情"
                 visible={visible}
                 onOk={onOk}
                 onCancel={onCancel}
-                footer={null}
+                width={1000}
+                // footer={null}
             >
-                {/* <PDFJSComponent file={file} /> */}
+                <PDFJSComponent file={file} />
             </Modal>
         )
     }
