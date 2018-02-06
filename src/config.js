@@ -32,6 +32,14 @@ const config = _.extend({
 			updatePassword: `${baseURL}/user/user/updatePassword`,
 			findPassword: `${baseURL}/user/user/retrievePassword`
 		},
+		enterprise: {
+			getEnterprise: `${baseURL}/user/enterprise/getEnterprise`,
+			getEnterpriseById: (id) => `${baseURL}/user/enterprise/getEnterpriseById?id=${id}`,
+			publicLogin: `${baseURL}/user/enterprise/userLogin`,
+			privateLogin: `${baseURL}/user/enterprise/enterpriseLogin`,
+			publicPassword: `${baseURL}/user/enterprise/modifyPassword`,
+			privatePassword: `${baseURL}/user/enterprise/modifyInnerPassword`,
+		},
 		message: {
 			getCaptcha: `${baseURL}/user/leaveMessage/getCaptcha`,
 			leaveMessage: `${baseURL}/user/leaveMessage/insertLeaveMessage`,
@@ -40,8 +48,9 @@ const config = _.extend({
 		},
         report: {
             getReportList: `${baseURL}/user/firstReportView/selectAllFirstReportViewByPage`,
-            getReportDetail: (id) => `${baseURL}/user/secondReportView/selectByRid/${id}`,
-            search: `${baseURL}/user/firstReportView/fuzzySearchFirstReportView`
+            getReportDetail: (id) => `${baseURL}/user/secondReportView/selectById/${id}`,
+            search: `${baseURL}/user/firstReportView/fuzzySearchFirstReportView`,
+			reportFile: (id) => `${baseURL}/user/report/getReportFilePathById?id=${id}`,
 
             // getReportByPage: (page, pageSize) => `${baseURL}/user/reportInfo/selectAllReportInfoByPage?page=${page}&pageSize=${pageSize}`,
         }

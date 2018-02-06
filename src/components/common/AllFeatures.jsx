@@ -23,11 +23,16 @@ import pic8 from 'publicRes/img/all_features/文件下载.png'
 import pic8_hover from 'publicRes/img/all_features/文件下载hover.png'
 import pic9 from 'publicRes/img/all_features/公众留言.png'
 import pic9_hover from 'publicRes/img/all_features/公众留言hover.png'
+import pic10 from 'publicRes/img/all_features/企业用户.png'
+import pic10_hover from 'publicRes/img/all_features/企业用户hover.png'
+import EnterpriseLoginModal from '../../components/modal/EnterpriseLoginModal'
+import { getEnterprise } from '../../actions/enterprise'
 
 class AllFeatures extends React.Component {
     state = {
         hoverIndex: 0,
         hoverState: [0,0,0],
+        enterpriseLoginModalState: false,
         hoverList: [[{
             name: '中心概况',
             path: '/center_intro'
@@ -89,11 +94,33 @@ class AllFeatures extends React.Component {
     }
 
     handleJump = (path) => {
-        this.context.router.history.push(path)
+        const token = sessionStorage.getItem('enterpriseAccessToken')
+        if (path === '/enterprise_user' && !token) {
+            this.setState({ enterpriseLoginModalState: true })
+        } else if (path === '/enterprise_user' && token) {
+            this.props.getEnterprise().then(res => {
+                if (res.obj) {
+                    this.context.router.history.push(path)
+                } else {
+                    this.setState({ enterpriseLoginModalState: true })
+                }
+            })
+        } else {
+            this.context.router.history.push(path)
+        }
+    }
+
+    handleLoginSuccess = () => {
+        this.handleModalControl(false)
+        this.context.router.history.push('/enterprise_user')
+    }
+
+    handleModalControl = (state) => {
+        this.setState({ enterpriseLoginModalState: state })
     }
 
     render() {
-        const { hoverIndex, hoverState, hoverList } = this.state
+        const { enterpriseLoginModalState, hoverIndex, hoverState, hoverList } = this.state
         return (
             <div className={styles.container}>
                 <div className={styles.content}>
@@ -186,6 +213,15 @@ class AllFeatures extends React.Component {
                             >
                                 公众留言>
                             </div>
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/enterprise_user')}
+                                style={hoverIndex === 10 ? {backgroundImage: 'url('+pic10_hover+')'} : {backgroundImage: 'url('+pic10+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 10)}
+                            >
+                                企业用户>
+                            </div>
 
                         </div>
                     </div>
@@ -193,6 +229,11 @@ class AllFeatures extends React.Component {
                         <RightBlockContainer></RightBlockContainer>
                     </div>
                 </div>
+                <EnterpriseLoginModal
+                    visible={enterpriseLoginModalState}
+                    onOk={this.handleLoginSuccess}
+                    onCancel={this.handleModalControl.bind(this, false)}
+                />
             </div>
         )
     }
@@ -209,7 +250,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    // getCategory: bindActionCreators(getCategory, dispatch),
+    getEnterprise: bindActionCreators(getEnterprise, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AllFeatures))

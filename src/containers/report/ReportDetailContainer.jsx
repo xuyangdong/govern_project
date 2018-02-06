@@ -5,13 +5,15 @@ import reportIcon from 'publicRes/img/report.png'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getReportDetail } from '../../actions/report'
+import { getReportFile, getReportDetail } from '../../actions/report'
 import { Input, Table } from 'antd'
 import CommonButton from '../../components/common/Button'
+import PDFModal from '../../components/modal/PDFModal'
 
 class ReportDetailContainer extends React.Component {
     state = {
         isLoading: false,
+        PDF_MODAL_STATE: false,
     }
 
     constructor(props) {
@@ -21,16 +23,19 @@ class ReportDetailContainer extends React.Component {
     componentWillMount() {
         const id = this.props.match.params.id
         this.props.getReportDetail(id)
+        this.props.getReportFile(id)
     }
 
-    handleSearchReport = () => {
-
+    handleModalControl = (state) => {
+        this.setState({ PDF_MODAL_STATE: state })
     }
 
     render() {
-        const { isLoading } = this.state
+        const { isLoading, PDF_MODAL_STATE } = this.state
 
         const report = this.props.reportDetail
+        const file = this.props.reportFile
+        console.log(file);
 
         return (
             <div className={styles.container}>
@@ -83,9 +88,28 @@ class ReportDetailContainer extends React.Component {
                             <div className={styles.header}>
                                 <img src={reportIcon} /> 检验报告
                             </div>
+                            <div className={styles.line} style={{ cursor: 'pointer' }} onClick={this.handleModalControl.bind(this, true)}>
+                                点击查看
+                            </div>
                         </div>
                     </div>
                 </div>
+                {
+                    file ?
+                    <PDFModal
+                        visible={PDF_MODAL_STATE}
+                        onOk={this.handleModalControl.bind(this, false)}
+                        onCancel={this.handleModalControl.bind(this, false)}
+                        file={file}
+                    />
+                    : null
+                }
+                {/* <PDFModal
+                    visible={PDF_MODAL_STATE}
+                    onOk={this.handleModalControl.bind(this, false)}
+                    onCancel={this.handleModalControl.bind(this, false)}
+                    file={file}
+                /> */}
             </div>
         )
     }
@@ -93,10 +117,12 @@ class ReportDetailContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	reportDetail: state.getIn(['report', 'reportDetail']),
+	reportFile: state.getIn(['report', 'reportFile']),
 })
 
 const mapDispatchToProps = dispatch => ({
     getReportDetail: bindActionCreators(getReportDetail, dispatch),
+    getReportFile: bindActionCreators(getReportFile, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReportDetailContainer))

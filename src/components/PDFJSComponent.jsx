@@ -17,6 +17,7 @@ function paintWaterMask( canvas){
 		ctx.translate(-width/2,0)
 	    ctx.globalAlpha=0.2;
         ctx.drawImage(image,20,0,width,image.height);
+		ctx.translate(0,0)
 	}
 }
 
@@ -27,21 +28,26 @@ export default class PDFJSComponent extends React.Component {
 			pdf:{}
 		}
 	}
-	componentWillReceiveProps(nextProps){
+	readPDFContent = (props) => {
 		let fileReader = new FileReader()
 		fileReader.onload = e => {
 			let base64 = e.target.result
 			let loadingTask = PDFJS.getDocument({data:atob(base64.split(',')[1])})
 			loadingTask.then(pdf => {
-				console.log(pdf)
 				this.setState({
 					pdf:pdf,
 				})
 			})
 		}
-		if(nextProps.file){
-			fileReader.readAsDataURL(nextProps.file)
+		if(props.file){
+			fileReader.readAsDataURL(props.file)
 		}
+	}
+	componentDidMount(){
+		this.readPDFContent(this.props)
+	}
+	componentWillReceiveProps(nextProps){
+		this.readPDFContent(nextProps)
 	}
 	paintPDFPage(){
 		const pdf = this.state.pdf
@@ -49,7 +55,7 @@ export default class PDFJSComponent extends React.Component {
 			let totalPage = pdf.pdfInfo.numPages
 			for(let i = 1;i<=totalPage;i++){
 				let canvas = this.refs[`page-${i}`]
-				paintWaterMask(canvas)
+				// paintWaterMask(canvas)
 				pdf.getPage(i).then(page => {
 					var scale = 1
 					var viewport = page.getViewport(scale)

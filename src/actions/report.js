@@ -47,6 +47,29 @@ export function getReportDetail(id) {
     }
 }
 
+export const GET_REPORT_FILE = actionNames('GET_REPORT_FILE');
+export function getReportFile(id) {
+    return dispatch => {
+        return fetch(config.api.report.reportFile(id), {
+            method: 'GET',
+            headers: {
+                'enterprise_common_authorization': sessionStorage.getItem('enterpriseAccessToken')
+            }
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                fetch('https://raw.githubusercontent.com/xuyangdong/govern_project/master/src/public/test.pdf').then(res => res.blob()).then(res => {
+                // fetch(res.obj).then(res => res.blob()).then(res => {
+                    dispatch({
+                        type: GET_REPORT_FILE[1],
+                        payload: res
+                    })
+                })
+            }
+            return true
+        })
+    }
+}
+
 export const SEARCH_REPORT = 'SEARCH_REPORT'
 export const searchReport = (formData) => {
     return dispatch => {

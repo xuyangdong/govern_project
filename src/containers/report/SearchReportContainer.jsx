@@ -36,7 +36,7 @@ class SearchReportContainer extends React.Component {
     }
 
     handleCheckDetail = (record) => {
-        this.context.router.history.push(`/search_report/${record.rid}`)
+        this.context.router.history.push(`/search_report/${record.id}`)
     }
 
     handleReportNumberChange = (e) => {
@@ -93,7 +93,7 @@ class SearchReportContainer extends React.Component {
 
                     </div>
                     <div className={styles.reportList}>
-                        <Table onRowClick={this.handleCheckDetail} loading={isLoading} rowKey={record => record.rid} columns={columns} dataSource={data} />
+                        <Table onRowClick={this.handleCheckDetail} loading={isLoading} rowKey={record => record.id} columns={columns} dataSource={data} />
                     </div>
                 </div>
             </div>

@@ -56,6 +56,9 @@ class Breadthumb extends React.Component {
                 {
                     breadthumb[0].name === '检验报告详情' ? <span onClick={this.handleJump.bind(this, '/search_report')} style={{cursor: 'pointer'}}>检验报告列表 > </span> : null
                 }
+                {
+                    breadthumb[0].name === '企业信息查询' ? <span onClick={this.handleJump.bind(this, '/enterprise_user')} style={{cursor: 'pointer'}}>企业用户 > </span> : null
+                }
 				{
 					breadthumb.map((b, index) => {
                         const suffix = index < breadthumb.length - 1 ? '> ' : '';

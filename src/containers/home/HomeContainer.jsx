@@ -16,6 +16,7 @@ import styles from './HomeContainer.scss'
 // import TechCouncilContainer from './TechCouncilContainer.jsx'
 // import RecommendContainer from './RecommendContainer.jsx'
 import CommonButton from '../../components/common/Button'
+import EnterpriseLoginModal from '../../components/modal/EnterpriseLoginModal'
 import { Button } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -37,7 +38,8 @@ class HomeContainer extends React.Component {
             pic: pic4,
             title: '检测中心以优异的成绩顺利通过CNAS现场评审'
         },],
-        notification: []
+        notification: [],
+        enterpriseLoginModalState: false
     }
 
     componentWillMount() {
@@ -65,6 +67,16 @@ class HomeContainer extends React.Component {
     }
 
     handleQueryReport = () => {
+        const token = sessionStorage.getItem('enterpriseAccessToken')
+        if (token) {
+          this.context.router.history.push('/search_report')
+        } else {
+            this.setState({ enterpriseLoginModalState: true })
+        }
+    }
+
+    handleLoginSuccess = () => {
+        this.setState({ enterpriseLoginModalState: false })
         this.context.router.history.push('/search_report')
     }
 
@@ -73,7 +85,7 @@ class HomeContainer extends React.Component {
     }
 
     render() {
-        const { notification } = this.state
+        const { notification, enterpriseLoginModalState } = this.state
     	return (
     		<div className={styles.container}>
                 <div className={styles.top}>
@@ -169,6 +181,11 @@ class HomeContainer extends React.Component {
                         </div>
                     </div>
                 </div>
+                <EnterpriseLoginModal
+                    visible={enterpriseLoginModalState}
+                    onOk={this.handleLoginSuccess}
+                    onCancel={() => { this.setState({ enterpriseLoginModalState: true}) }}
+                />
     		</div>
     	)
     }

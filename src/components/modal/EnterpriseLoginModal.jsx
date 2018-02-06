@@ -1,25 +1,22 @@
 import React from 'react'
 import EnhanceModal from './EnhanceModal'
-import { Form,Input,Button,Select } from 'antd'
+import { Form, Input, Button, Select } from 'antd'
 import styles from './LoginModal.scss'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { login } from '../../actions/user'
+import { enterpriseLogin, enterprisePrivateLogin } from '../../actions/enterprise'
 
 const FormItem = Form.Item
 const Option = Select.Option
 
-class LoginModal extends React.Component {
+class EnterpriseLoginModal extends React.Component {
     static propTypes = {
         visible: PropTypes.bool,
-        onOk:PropTypes.func,
-        onCancel:PropTypes.func
-    }
-
-    handleShowRegisterModal = () => {
-        this.props.handleShowRegister()
+        onOk: PropTypes.func,
+        onCancel: PropTypes.func,
+        isInner: PropTypes.bool
     }
 
     handleShowForgetPasswordModal = () => {
@@ -31,9 +28,23 @@ class LoginModal extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                this.props.login(values.mobile, values.password).then(res => {
+                this.props.enterpriseLogin(values.enterpriseName, values.password).then(res => {
                     if (res) {
-                        this.props.onLoginSuccess()
+                        this.props.onOk()
+                    }
+                })
+            }
+        });
+    }
+
+    handlePrivateSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+                this.props.enterprisePrivateLogin(values.enterpriseName, values.innerPassword).then(res => {
+                    if (res) {
+                        this.props.onOk()
                     }
                 })
             }
@@ -42,6 +53,8 @@ class LoginModal extends React.Component {
 
     render( ) {
         const {getFieldDecorator} = this.props.form
+        const { isInner } = this.props
+
         const formItemLayout = {
             labelCol: {
                 xs: { span: 10 },
@@ -54,23 +67,23 @@ class LoginModal extends React.Component {
         };
         const modalFooter = [
             <div key='ok' className={styles.modalFooter}>
-                <Button onClick={this.handleSubmit}>登录</Button>
+                <Button onClick={isInner ? this.handlePrivateSubmit : this.handleSubmit}>登录</Button>
             </div>
         ]
         return (
             <EnhanceModal
-	            title='登录'
+	            title={isInner ? '登录查看企业信息' : '登录'}
                 {...this.props}
                 footer={modalFooter}
 			>
                 <Form className={styles.form} onSubmit={(e) => e.preventDefault()}>
                     <FormItem
                         {...formItemLayout}
-                        label='手机号码'
+                        label='企业名称'
                     >
                     {
-                        getFieldDecorator('mobile', {
-                            rules:[{required:true, message:'请输入手机号'}]
+                        getFieldDecorator('enterpriseName', {
+                            rules:[{required:true, message:'请输入企业名称'}]
                         })(
                             <Input />
                         )
@@ -81,7 +94,11 @@ class LoginModal extends React.Component {
                         label='密码'
                     >
                     {
-                        getFieldDecorator('password', {
+                        isInner ? getFieldDecorator('innerPassword', {
+                            rules:[{required:true, message:'请输入密码'}]
+                        })(
+                            <Input type="password" />
+                        ) : getFieldDecorator('password', {
                             rules:[{required:true, message:'请输入密码'}]
                         })(
                             <Input type="password" />
@@ -90,7 +107,6 @@ class LoginModal extends React.Component {
                     </FormItem>
                 </Form>
                 <div className={styles.operation}>
-                    <span onClick={this.handleShowRegisterModal}>注册</span>
                     <span onClick={this.handleShowForgetPasswordModal}>忘记密码</span>
                 </div>
 			</EnhanceModal>
@@ -98,14 +114,15 @@ class LoginModal extends React.Component {
     }
 }
 
-const WrappedLoginModal = Form.create()(LoginModal)
+const WrappedLoginModal = Form.create()(EnterpriseLoginModal)
 
 const mapStateToProps = state => ({
     // category: state.getIn(['article', 'category']),
 })
 
 const mapDispatchToProps = dispatch => ({
-    login: bindActionCreators(login, dispatch),
+    enterpriseLogin: bindActionCreators(enterpriseLogin, dispatch),
+    enterprisePrivateLogin: bindActionCreators(enterprisePrivateLogin, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WrappedLoginModal))
