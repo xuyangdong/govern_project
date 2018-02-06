@@ -2,18 +2,33 @@ import React from 'react'
 import {PDFJS} from 'pdfjs-dist'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
+import styles from './PDFJSComponent.scss'
+import waterMask from 'publicRes/img/water-mask.png'
+
+function paintWaterMask( canvas){
+	let ctx = canvas.getContext('2d')
+	let image = new Image()
+	image.src = waterMask
+	image.onload=function(){
+		let height =  parseInt(canvas.style.height.slice(0,canvas.style.height.length-2))
+		let width = parseInt(canvas.style.width.slice(0,canvas.style.width.length-2))
+		ctx.translate(width/2,height/2)
+        ctx.rotate(315*Math.PI/180);
+		ctx.translate(-width/2,0)
+	    ctx.globalAlpha=0.2;
+        ctx.drawImage(image,20,0,width,image.height);
+		ctx.translate(0,0)
+	}
+}
 
 export default class PDFJSComponent extends React.Component {
-	static propTypes = {
-		file:PropTypes.object
-	}
 	constructor(){
 		super()
 		this.state = {
 			pdf:{}
 		}
 	}
-	componentWillReceiveProps(nextProps){
+	readPDFContent = (props) => {
 		let fileReader = new FileReader()
 		fileReader.onload = e => {
 			let base64 = e.target.result
@@ -24,9 +39,15 @@ export default class PDFJSComponent extends React.Component {
 				})
 			})
 		}
-		if(nextProps.file){
-			fileReader.readAsDataURL(nextProps.file)
+		if(props.file){
+			fileReader.readAsDataURL(props.file)
 		}
+	}
+	componentDidMount(){
+		this.readPDFContent(this.props)
+	}
+	componentWillReceiveProps(nextProps){
+		this.readPDFContent(nextProps)
 	}
 	paintPDFPage(){
 		const pdf = this.state.pdf
@@ -34,6 +55,7 @@ export default class PDFJSComponent extends React.Component {
 			let totalPage = pdf.pdfInfo.numPages
 			for(let i = 1;i<=totalPage;i++){
 				let canvas = this.refs[`page-${i}`]
+				// paintWaterMask(canvas)
 				pdf.getPage(i).then(page => {
 					var scale = 1
 					var viewport = page.getViewport(scale)
@@ -69,15 +91,20 @@ export default class PDFJSComponent extends React.Component {
 				      viewport: viewport
 				    }
 					var renderTask = page.render(renderContext)
+
 					renderTask.then(function () {
 				      console.log('Page rendered');
+					  paintWaterMask(canvas)
 				    })
 				})
 			}
 		}
 	}
+
 	componentDidUpdate(){
 		this.paintPDFPage()
+		document.oncontextmenu=new Function("event.returnValue=false;");
+		document.onselectstart=new Function("event.returnValue=false;");
 	}
 	render(){
 		const {pdf} = this.state
@@ -86,10 +113,10 @@ export default class PDFJSComponent extends React.Component {
 			totalPage = pdf.pdfInfo.numPages
 		}
 		return (
-			<div>
+			<div className={styles.container}>
 			{_.range(1,totalPage+1).map(v => {
 				return (
-					<canvas ref={`page-${v}`}  key={`page-${v}`}></canvas>
+					<canvas className={styles.canvas} ref={`page-${v}`}  key={`page-${v}`}></canvas>
 				)
 			})}
 			</div>

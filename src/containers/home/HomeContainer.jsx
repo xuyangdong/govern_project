@@ -93,7 +93,7 @@ class HomeContainer extends React.Component {
                         <div className={styles.inspect}>
                             <div className={styles.inspectLeft}>
                                 <div className={styles.title}>
-                                    <img src={reportLogo} alt="" />
+                                    <img src={reportLogo} alt="" style={{width: 212,height: 42}}/>
                                 </div>
                                 <div className={styles.content} style={{ cursor: 'pointer' }} onClick={this.handleJump.bind(this, '/search_invalid_report')}>
                                       检验报告原件作废查询 >
