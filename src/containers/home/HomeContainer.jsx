@@ -184,7 +184,7 @@ class HomeContainer extends React.Component {
                 <EnterpriseLoginModal
                     visible={enterpriseLoginModalState}
                     onOk={this.handleLoginSuccess}
-                    onCancel={() => { this.setState({ enterpriseLoginModalState: true}) }}
+                    onCancel={() => { this.setState({ enterpriseLoginModalState: false}) }}
                 />
     		</div>
     	)
