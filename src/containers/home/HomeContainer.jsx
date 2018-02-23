@@ -67,12 +67,13 @@ class HomeContainer extends React.Component {
     }
 
     handleQueryReport = () => {
-        const token = sessionStorage.getItem('enterpriseAccessToken')
-        if (token) {
-          this.context.router.history.push('/search_report')
-        } else {
-            this.setState({ enterpriseLoginModalState: true })
-        }
+        this.context.router.history.push('/search_report')
+        // const token = sessionStorage.getItem('enterpriseAccessToken')
+        // if (token) {
+        //   this.context.router.history.push('/search_report')
+        // } else {
+        //     this.setState({ enterpriseLoginModalState: true })
+        // }
     }
 
     handleLoginSuccess = () => {
@@ -181,11 +182,11 @@ class HomeContainer extends React.Component {
                         </div>
                     </div>
                 </div>
-                <EnterpriseLoginModal
+                {/* <EnterpriseLoginModal
                     visible={enterpriseLoginModalState}
                     onOk={this.handleLoginSuccess}
                     onCancel={() => { this.setState({ enterpriseLoginModalState: false}) }}
-                />
+                /> */}
     		</div>
     	)
     }

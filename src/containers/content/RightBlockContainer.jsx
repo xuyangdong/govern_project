@@ -57,6 +57,7 @@ class RightBlockContainer extends React.Component {
     }
 
     handleJump = (path) => {
+        this.props.setDetailId(-1)
         if (path !== this.props.location.pathname) {
             this.context.router.history.push(path)
         }

@@ -108,6 +108,7 @@ class AllFeatures extends React.Component {
         } else {
             this.context.router.history.push(path)
         }
+        // this.context.router.history.push(path)
     }
 
     handleLoginSuccess = () => {

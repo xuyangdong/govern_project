@@ -9,11 +9,13 @@ import { getReportFile, getReportDetail } from '../../actions/report'
 import { Input, Table } from 'antd'
 import CommonButton from '../../components/common/Button'
 import PDFModal from '../../components/modal/PDFModal'
+import EnterpriseLoginModal from '../../components/modal/EnterpriseLoginModal'
 
 class ReportDetailContainer extends React.Component {
     state = {
         isLoading: false,
         PDF_MODAL_STATE: false,
+        enterpriseLoginModalState: false,
     }
 
     constructor(props) {
@@ -27,11 +29,23 @@ class ReportDetailContainer extends React.Component {
     }
 
     handleModalControl = (state) => {
-        this.setState({ PDF_MODAL_STATE: state })
+        const token = sessionStorage.getItem('enterpriseAccessToken')
+        if (token !== '') {
+            this.setState({ PDF_MODAL_STATE: state })
+        } else {
+            this.setState({ enterpriseLoginModalState: true })
+        }
+    }
+
+    handleLoginSuccess = () => {
+        this.setState({ enterpriseLoginModalState: false })
+        this.props.getReportFile(this.props.match.params.id).then(res => {
+            this.setState({ PDF_MODAL_STATE: true })
+        })
     }
 
     render() {
-        const { isLoading, PDF_MODAL_STATE } = this.state
+        const { enterpriseLoginModalState, isLoading, PDF_MODAL_STATE } = this.state
 
         const report = this.props.reportDetail
         const file = this.props.reportFile
@@ -110,6 +124,12 @@ class ReportDetailContainer extends React.Component {
                     onCancel={this.handleModalControl.bind(this, false)}
                     file={file}
                 /> */}
+
+                <EnterpriseLoginModal
+                    visible={enterpriseLoginModalState}
+                    onOk={this.handleLoginSuccess}
+                    onCancel={() => { this.setState({ enterpriseLoginModalState: false}) }}
+                />
             </div>
         )
     }

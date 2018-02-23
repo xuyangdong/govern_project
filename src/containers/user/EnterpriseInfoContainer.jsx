@@ -16,6 +16,22 @@ class EnterpriseInfoContainer extends React.Component {
 
     componentWillMount() {
         // this.props.getEnterprise()
+        // const privateToken = sessionStorage.getItem('enterprisePrivateAccessToken')
+        // if (!privateToken) {
+        //     this.props.history.push('/enterprise_user')
+        // } else if (privateToken) {
+        //     this.props.getEnterprise().then(res => {
+        //         if (!res.obj) {
+        //             this.props.history.push('/enterprise_user')
+        //         } else {
+        //             this.props.getEnterpriseById(res.obj.id).then(res => {
+        //                 if(!res.obj) {
+        //                     this.props.history.push('/enterprise_user')
+        //                 }
+        //             })
+        //         }
+        //     })
+        // }
         const privateToken = sessionStorage.getItem('enterprisePrivateAccessToken')
         const token = sessionStorage.getItem('enterpriseAccessToken')
         if (!token) {

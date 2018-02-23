@@ -122,7 +122,7 @@ export const enterpriseLogin = (enterpriseName, password) => {
             } else {
                 notification.error({
                     message:'登录失败',
-                    description: res.errorMes
+                    description: '用户名或密码错误'
                 })
                 return false
             }
@@ -153,7 +153,7 @@ export const enterprisePrivateLogin = (enterpriseName, innerPassword) => {
             } else {
                 notification.error({
                     message:'登录失败',
-                    description: res.errorMes
+                    description: '用户名或密码错误'
                 })
                 return false
             }
