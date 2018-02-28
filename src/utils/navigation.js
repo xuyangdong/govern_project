@@ -45,16 +45,16 @@ const navigation = [{
 		link:'/inspect_3c'
 	}]
 }, {
-	title:'行业动态',
-	link:'/trends'
-}, {
 	title:'通知公告',
 	link:'/notification'
-// }, {
-// 	title:'报告查询',
-// 	link:'/search_report'
 }, {
-	title:'全部功能',
+	title:'新闻动态',
+	link:'/trends'
+}, {
+	title:'公众留言',
+	link:'/leave_message'
+}, {
+	title:'更多功能',
 	link:'/all_features'
 }]
 

@@ -36,11 +36,15 @@ class Breadthumb extends React.Component {
 
 	handleJump = (path) => {
 		if (path === '') return
+        if (path === '/') {
+	        this.context.router.history.push(path)
+            return
+        }
         if (this.props.goBack) {
             this.props.goBack()
             return
         } else {
-			this.context.router.history.push(path)
+	        this.context.router.history.push(path)
         }
 		// if(path !== this.props.location.pathname) {
 		// } else {

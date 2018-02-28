@@ -175,7 +175,7 @@ class AllFeatures extends React.Component {
                                 onMouseLeave={this.handleLeave}
                                 onMouseEnter={this.handleHover.bind(this, 6)}
                             >
-                                行业动态>
+                                新闻动态>
                             </div>
                             <div
                                 className={styles.box}

@@ -73,11 +73,16 @@
 		left: 5px;
 		color: white;
 		& li{
-			color:white;
+			color: white;
 			opacity: 1;
 			padding: 5px;
 			cursor: pointer;
             text-align: center;
+
+            &:hover {
+                background-color: #f04134;
+
+            }
 		}
 	}
 }

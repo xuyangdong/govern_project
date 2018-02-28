@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './PageHeaderComponent.scss'
 import Navigation from '../common/Navigation'
-import cncfLogo from 'publicRes/img/homepage/cncf-logo.png'
+import cncfLogo from 'publicRes/img/homepage/cncf-logo.jpg'
+// import cncfLogo from 'publicRes/img/homepage/cncf-logo.png'
 import textLogo from 'publicRes/img/homepage/text.png'
 
 class PageHeaderComponent extends React.Component {
@@ -19,10 +20,10 @@ class PageHeaderComponent extends React.Component {
 		return (
 			<div className={styles.container}>
 				<div className={styles.logo}>
-					<img src={cncfLogo} onClick={this.handleGoToIndex}/>
+					<img src={cncfLogo} style={{ width: 220, height: 100 }} onClick={this.handleGoToIndex}/>
 				</div>
 				<div className={styles.rightPanel}>
-					<img src={textLogo} style={{marginTop: 35,width: 912,height: 78}}/>
+					<img src={textLogo} style={{ marginTop: 35, width: 912, height: 78 }}/>
 					<Navigation />
 				</div>
 			</div>

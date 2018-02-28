@@ -65,7 +65,7 @@ const categoryUrl = [{
   }, {
     "id": 13,
     "url": 'trends',
-    "name": "行业动态"
+    "name": "新闻动态"
   }, {
     "id": 11,
     "url": 'notification',

@@ -95,8 +95,8 @@ const routes = [
                 component: createComponent(ListContainer, '通知公告')
             },{
                 path: '/trends',
-                name: '行业动态',
-                component: createComponent(ListContainer, '行业动态')
+                name: '新闻动态',
+                component: createComponent(ListContainer, '新闻动态')
             },{
                 path: '/imgNews',
                 name: '图片新闻',

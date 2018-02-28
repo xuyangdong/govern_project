@@ -17,7 +17,7 @@ import styles from './HomeContainer.scss'
 // import RecommendContainer from './RecommendContainer.jsx'
 import CommonButton from '../../components/common/Button'
 import EnterpriseLoginModal from '../../components/modal/EnterpriseLoginModal'
-import { Button } from 'antd'
+import { Button, Icon } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
@@ -39,14 +39,27 @@ class HomeContainer extends React.Component {
             title: '检测中心以优异的成绩顺利通过CNAS现场评审'
         },],
         notification: [],
-        enterpriseLoginModalState: false
+        enterpriseLoginModalState: false,
+        showMoreContact: false,
     }
 
     componentWillMount() {
         this.props.getCategory().then(res => {
             let categoryId = this.props.category.find(i => i.name === '通知公告').id
             this.props.getArticleListByCategory(categoryId).then(res => {
-                this.setState({notification: res.slice(0, 10)})
+                const original = res
+                const redList = original.filter(a => a.isRed)
+                redList.sort((a,b) => b.publishTime > a.publishTime)
+                const notRedList = original.filter(a => !a.isRed)
+                notRedList.sort((a, b) => {
+                    if (b.isTop && !a.isTop) {
+                        return true
+                    } else {
+                        return b.publishTime > a.publishTime
+                    }
+                })
+                const list = redList.concat(notRedList)
+                this.setState({notification: list.slice(0, 10)})
             })
         })
     }
@@ -82,11 +95,17 @@ class HomeContainer extends React.Component {
     }
 
     handleShowMoreContact = () => {
-        this.context.router.history.push('/contact')
+        // this.context.router.history.push('/contact')
+        this.setState({ showMoreContact: true })
+    }
+
+    handleCloseMoreContact = () => {
+        this.setState({ showMoreContact: false })
     }
 
     render() {
-        const { notification, enterpriseLoginModalState } = this.state
+        const { showMoreContact, notification, enterpriseLoginModalState } = this.state
+
     	return (
     		<div className={styles.container}>
                 <div className={styles.top}>
@@ -155,7 +174,7 @@ class HomeContainer extends React.Component {
                 <div className={styles.bottom}>
                     <div className={styles.bottomInner}>
                         <div className={styles.notice}>
-                            <div className={styles.noticeIcon}>
+                            <div className={styles.noticeIcon} onClick={this.handleJump.bind(this, '/notification')}>
                 				<img src={noticeIcon} alt="" />
                 				<span>通知公告</span>
                     		</div>
@@ -187,6 +206,25 @@ class HomeContainer extends React.Component {
                     onOk={this.handleLoginSuccess}
                     onCancel={() => { this.setState({ enterpriseLoginModalState: false}) }}
                 /> */}
+                {
+                    showMoreContact ?
+                        <div className={styles.moreContact}>
+                            <div className={styles.moreContactTitle}>
+                                <span>联系方式</span>
+                                <Icon type="close" onClick={this.handleCloseMoreContact}/>
+                            </div>
+                            <div className={styles.moreContactBody}>
+                                <div>认证咨询电话：022-58387846，022-58387826</div>
+                                <div>业务咨询电话：022-58387823，022-58387827，022-58387829</div>
+                                <div>业务接待大厅传真：022-58387878</div>
+                                <div>样品库电话：022-58387889</div>
+                                <div>监督投诉电话：022-58387887</div>
+                                <div>总机：022-58387888</div>
+                            </div>
+                        </div>
+                        :
+                        null
+                }
     		</div>
     	)
     }
