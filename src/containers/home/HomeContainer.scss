@@ -11,8 +11,10 @@
         position: absolute;
         width: 625px;
         height: 360px;
-        bottom: 40px;
-        right: 240px;
+        right: calc((100vw - 1130px) / 2);
+        bottom: calc(100% - 880px);
+        // bottom: 40px;
+        // right: 240px;
 
         :local(.moreContactTitle) {
             background-color: #1B5792;
@@ -166,6 +168,7 @@
                    flex-direction: row;
                    justify-content: space-between;
                    :local(.news) {
+                       cursor: pointer;
                        width: 270px;
                        height: 138px;
                        position: relative;

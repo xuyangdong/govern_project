@@ -45,7 +45,11 @@ class HomeContainer extends React.Component {
 
     componentWillMount() {
         this.props.getCategory().then(res => {
-            let categoryId = this.props.category.find(i => i.name === '通知公告').id
+            const categoryId = this.props.category.find(i => i.name === '通知公告').id
+            const imgNews = this.props.category.find(i => i.name === '图片新闻').id
+            this.props.getArticleListByCategory(imgNews).then(res => {
+                this.setState({ news: res.slice(0,4) })
+            })
             this.props.getArticleListByCategory(categoryId).then(res => {
                 const original = res
                 const redList = original.filter(a => a.isRed)
@@ -101,6 +105,13 @@ class HomeContainer extends React.Component {
 
     handleCloseMoreContact = () => {
         this.setState({ showMoreContact: false })
+    }
+
+    handleCheckImgNews = (id) => {
+        this.props.getArticleDetail(id).then(res => {
+            this.props.setDetailId(id)
+            this.context.router.history.push('/imgNews')
+        })
     }
 
     render() {
@@ -161,8 +172,8 @@ class HomeContainer extends React.Component {
                             <div className={styles.body}>
                     			{
                     				this.state.news.map((n, index) => (
-                    				<div key={index} className={styles.news}>
-                    					<img src={n.pic} />
+                    				<div onClick={this.handleCheckImgNews.bind(this, n.articleId)} key={index} className={styles.news}>
+                    					<img src={n.imgUrl} />
                     					<div className={styles.newsTitle}>{n.title}</div>
                     				</div>
                     				))
