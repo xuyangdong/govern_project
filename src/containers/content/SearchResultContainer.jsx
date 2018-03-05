@@ -41,6 +41,17 @@ class SearchResultContainer extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.hasDetailId === -1) {
+            this.setState({ showDetail: false })
+        }
+        if (this.props.match.params.keyword !== nextProps.match.params.keyword) {
+            let formData = new FormData()
+            formData.append('partTitle', nextProps.match.params.keyword)
+            this.props.searchArticle(formData)
+        }
+    }
+
     handleCheckDetail(articleId) {
         this.props.getArticleDetail(articleId).then(res => {
             this.setState({showDetail: true})

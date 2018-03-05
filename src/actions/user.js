@@ -16,7 +16,10 @@ export const getPhoneCode = (phone) => {
             }
         }).then(res => res.json()).then(res => {
             if (res.status === 1) {
-                console.log(res);
+                notification.success({
+                    message: '成功',
+                    description: '验证码发送成功'
+                })
                 return true
             } else {
                 notification.error({

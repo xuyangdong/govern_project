@@ -179,6 +179,25 @@ class HomeContainer extends React.Component {
                     				))
                     			}
                     		</div>
+                            {
+                                showMoreContact ?
+                                    <div className={styles.moreContact}>
+                                        <div className={styles.moreContactTitle}>
+                                            <span>联系方式</span>
+                                            <Icon type="close" onClick={this.handleCloseMoreContact}/>
+                                        </div>
+                                        <div className={styles.moreContactBody}>
+                                            <div>认证咨询电话：022-58387846，022-58387826</div>
+                                            <div>业务咨询电话：022-58387823，022-58387827，022-58387829</div>
+                                            <div>业务接待大厅传真：022-58387878</div>
+                                            <div>样品库电话：022-58387889</div>
+                                            <div>监督投诉电话：022-58387887</div>
+                                            <div>总机：022-58387888</div>
+                                        </div>
+                                    </div>
+                                    :
+                                    null
+                            }
                         </div>
                     </div>
                 </div>
@@ -217,25 +236,6 @@ class HomeContainer extends React.Component {
                     onOk={this.handleLoginSuccess}
                     onCancel={() => { this.setState({ enterpriseLoginModalState: false}) }}
                 /> */}
-                {
-                    showMoreContact ?
-                        <div className={styles.moreContact}>
-                            <div className={styles.moreContactTitle}>
-                                <span>联系方式</span>
-                                <Icon type="close" onClick={this.handleCloseMoreContact}/>
-                            </div>
-                            <div className={styles.moreContactBody}>
-                                <div>认证咨询电话：022-58387846，022-58387826</div>
-                                <div>业务咨询电话：022-58387823，022-58387827，022-58387829</div>
-                                <div>业务接待大厅传真：022-58387878</div>
-                                <div>样品库电话：022-58387889</div>
-                                <div>监督投诉电话：022-58387887</div>
-                                <div>总机：022-58387888</div>
-                            </div>
-                        </div>
-                        :
-                        null
-                }
     		</div>
     	)
     }

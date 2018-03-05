@@ -4,7 +4,7 @@ import { Input, Icon } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { searchArticle } from '../../actions/article'
+import { setDetailId, searchArticle } from '../../actions/article'
 
 class SearchInput extends React.Component {
     state = {
@@ -17,8 +17,11 @@ class SearchInput extends React.Component {
     }
 
     handleSearch = () => {
-        this.props.history.replace(`/search/${this.state.keyword}`)
-        window.location.reload()
+        if (this.state.keyword) {
+            this.props.setDetailId(-1)
+            this.props.history.replace(`/search/${this.state.keyword}`)
+        }
+        // window.location.reload()
     }
 
 	render(){
@@ -39,6 +42,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     searchArticle: bindActionCreators(searchArticle, dispatch),
+    setDetailId: bindActionCreators(setDetailId, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchInput))
