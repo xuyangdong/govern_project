@@ -72,11 +72,11 @@ export const login = (user,password) => {
         }).then(res => res.json()).then(res => {
             if (res.status === 1) {
                 sessionStorage.setItem('accessToken', res.obj.accessToken)
-                sessionStorage.setItem('info', JSON.stringify(res.obj.userBase))
+                sessionStorage.setItem('info', JSON.stringify(res.obj.user))
                 dispatch({
                     type: LOGIN_SUCCESS,
                     isLogin: true,
-                    info: res.obj.userBase
+                    info: res.obj.user
                 })
                 return true
             } else {

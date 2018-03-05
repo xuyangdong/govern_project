@@ -60,6 +60,10 @@ class LeaveMessageContainer extends React.Component {
 
     handleCloseMessageModal = () => {
         this.setState({showMessage: false})
+        this.props.getMessageList().then(res => {
+            const messageList = this.props.messageList.slice(0, 4)
+            this.setState({messageList})
+        })
     }
 
     handleCloseLoginModal = () => {
