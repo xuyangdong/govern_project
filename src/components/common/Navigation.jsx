@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 import { setDetailId } from '../../actions/article'
 import SearchInput from '../common/SearchInput'
+import EnterpriseLoginModal from '../modal/EnterpriseLoginModal'
 const cx = classnames.bind(styles)
 
 class NavigationTab extends React.Component {
@@ -22,6 +23,10 @@ class NavigationTab extends React.Component {
 		subNav:[]
 	}
 
+    state = {
+        enterpriseLoginModalState: false
+    }
+
 	handleMouseEnter = () => {
 		this.props.onMouseEnter()
 	}
@@ -29,13 +34,27 @@ class NavigationTab extends React.Component {
 	handleJump = (e, link) => {
         e.preventDefault()
         this.props.setDetailId(-1)
+        if (link === '/enterprise_user') {
+            this.setState({ enterpriseLoginModalState: true })
+            return
+        }
 		if (link !== '' && link !== this.props.currentPath) {
             this.context.router.history.push(link)
 		}
 	}
 
+    handleLoginSuccess = () => {
+        this.setState({ enterpriseLoginModalState: false })
+        this.context.router.history.push('/enterprise_user')
+    }
+
+    handleModalControl = (state) => {
+        this.setState({ enterpriseLoginModalState: false })
+    }
+
 	render(){
 		const {subNav} = this.props
+        const { enterpriseLoginModalState } = this.state
 		return (
 			<div className={cx('tabContainer',{
 				'tabContainer-enter':this.props.isActive
@@ -50,6 +69,11 @@ class NavigationTab extends React.Component {
 					)}
 					</ul>
 				</div>
+                <EnterpriseLoginModal
+                    visible={enterpriseLoginModalState}
+                    onOk={this.handleLoginSuccess}
+                    onCancel={this.handleModalControl.bind(this, false)}
+                />
 			</div>
 		)
 	}
@@ -144,25 +168,29 @@ class Navigation extends React.Component {
 	constructor(){
 		super()
 		this.state = {
-			activeKey:-1,
-			thirdNavigationItem:{}
+			activeKey: -1,
+			thirdNavigationItem: {},
 		}
 	}
+
 	handleMouseEnter = (key) => {
 		this.setState({
 			activeKey:key
 		})
 	}
+
 	handleMouseLeave = () => {
 		this.setState({
 			activeKey:-1
 		})
 	}
+
 	handleChooseSubItem = (subItem) => {
 		this.setState({
 			thirdNavigationItem:subItem
 		})
 	}
+
 	render(){
 		const navigation = this.props.navigation
 		const navTabItem = navigation[this.state.activeKey] || {}
@@ -183,6 +211,7 @@ class Navigation extends React.Component {
 						<SearchInput />
 					</div>
 				</div>
+
 			</div>
 		)
 	}

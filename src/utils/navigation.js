@@ -54,6 +54,9 @@ const navigation = [{
 	title:'公众留言',
 	link:'/leave_message'
 }, {
+	title:'企业用户',
+	link:'/enterprise_user'
+}, {
 	title:'更多功能',
 	link:'/all_features'
 }]
