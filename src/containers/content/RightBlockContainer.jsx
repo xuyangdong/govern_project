@@ -81,7 +81,7 @@ class RightBlockContainer extends React.Component {
             <div className={styles.container}>
                 <div className={styles.box1}>
                     <div className={styles.title}>
-                        <img src={reportIcon} alt="" />
+                        <img src={reportIcon} style={{ width: 20 }} alt="" />
                         <span>检验报告</span>
                     </div>
                     <div className={styles.reportDes}>
@@ -94,14 +94,14 @@ class RightBlockContainer extends React.Component {
 
                 <div className={styles.box2}>
                     <div className={styles.title}>
-                        <img src={reportIcon} alt="" />
+                        <img src={reportIcon} style={{ width: 20 }} alt="" />
                         <span>检验范围</span>
                     </div>
                     {
                         this.state.products.map((p, index) => (
                             <div key={index}className={styles.product}>
                                 <span onClick={this.handleJump.bind(this, p.url)} >
-                                    <img src={fireIcon} />
+                                    <img src={fireIcon} style={{ width: 20 }} />
                                     {p.name}
                                 </span>
                             </div>

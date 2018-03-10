@@ -8,8 +8,10 @@ import pic4 from 'publicRes/img/pic4.png'
 import picNewsIcon from 'publicRes/img/pic.png'
 import reportLogo from 'publicRes/img/homepage/title-logo.png'
 import reportIcon from 'publicRes/img/report.png'
-import noticeIcon from 'publicRes/img/homepage/notice-logo.png'
-import contactIcon from 'publicRes/img/homepage/contact-logo.png'
+// import noticeIcon from 'publicRes/img/homepage/notice-logo.png'
+// import contactIcon from 'publicRes/img/homepage/contact-logo.png'
+import noticeIcon from 'publicRes/img/notice.png'
+import contactIcon from 'publicRes/img/contact.png'
 import fireIcon from 'publicRes/img/fireicon.png'
 import styles from './HomeContainer.scss'
 // import LawContainer from './LawContainer.jsx'
@@ -136,7 +138,7 @@ class HomeContainer extends React.Component {
                             <div className={styles.inspectRight}>
                                 <div className={styles.productLine}>
                                     <div className={styles.productTitle}>
-                                        <img src={reportIcon} alt="" />
+                                        <img src={reportIcon} style={{ width: 28 }} alt="" />
                                         <span>检验范围</span>
                                     </div>
                                 </div>
@@ -205,7 +207,7 @@ class HomeContainer extends React.Component {
                     <div className={styles.bottomInner}>
                         <div className={styles.notice}>
                             <div className={styles.noticeIcon} onClick={this.handleJump.bind(this, '/notification')}>
-                				<img src={noticeIcon} alt="" />
+                				<img src={noticeIcon} style={{ width: 30 }} alt="" />
                 				<span>通知公告</span>
                     		</div>
                             <div className={styles.lineContaienr}>
@@ -220,7 +222,7 @@ class HomeContainer extends React.Component {
                         </div>
                         <div className={styles.contact}>
                             <div className={styles.contactIcon}>
-                				<img src={contactIcon} alt="" />
+                				<img src={contactIcon} style={{ width: 30 }} alt="" />
                 				<span>联系电话</span>
                     		</div>
                             <div className={styles.tel}>认证咨询电话：022-58387846</div>

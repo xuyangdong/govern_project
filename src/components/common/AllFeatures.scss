@@ -54,11 +54,19 @@
                     align-items: center;
                     cursor: pointer;
 
+                    &:hover {
+                        color: white;
+                    }
+
                     >span {
                         cursor: pointer;
                         font-size: 15px;
                         margin-bottom: 3px;
-                        color: white;
+                        color: #ccc;
+
+                        &:hover {
+                            color: white;
+                        }
                     }
                 }
             }
