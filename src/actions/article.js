@@ -112,6 +112,15 @@ export function getArticleListByCategory(id) {
     }
 }
 
+export const CLEAR_ARTICLE_LIST_BY_CATEGORY = 'CLEAR_ARTICLE_LIST_BY_CATEGORY'
+export function clearArticleListByCategory() {
+    return dispatch => {
+        dispatch({
+            type: CLEAR_ARTICLE_LIST_BY_CATEGORY,
+        })
+    }
+}
+
 export const GET_CATEGORY = actionNames('GET_CATEGORY');
 export function getCategory() {
     return (dispatch, getState) => {

@@ -8,7 +8,7 @@ import RightBlockContainer from './RightBlockContainer'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getCategory, getArticleListByCategory, getArticleDetail, setDetailId } from '../../actions/article'
+import { clearArticleListByCategory, getCategory, getArticleListByCategory, getArticleDetail, setDetailId } from '../../actions/article'
 import moment from 'moment'
 
 class ListContainer extends React.Component {
@@ -22,6 +22,7 @@ class ListContainer extends React.Component {
     }
 
     componentWillMount() {
+        this.props.clearArticleListByCategory()
         if (this.props.hasDetailId !== -1) {
             this.setState({showDetail: true})
         } else {
@@ -41,6 +42,10 @@ class ListContainer extends React.Component {
         if (nextProps.hasDetailId === -1) {
             this.setState({showDetail: false})
         }
+    }
+
+    componentWillUnmount() {
+        this.props.clearArticleListByCategory()
     }
 
     handleCheckDetail(articleId) {
@@ -112,6 +117,7 @@ const mapDispatchToProps = dispatch => ({
     setDetailId: bindActionCreators(setDetailId, dispatch),
     getArticleListByCategory: bindActionCreators(getArticleListByCategory, dispatch),
     getArticleDetail: bindActionCreators(getArticleDetail, dispatch),
+    clearArticleListByCategory: bindActionCreators(clearArticleListByCategory, dispatch),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListContainer))

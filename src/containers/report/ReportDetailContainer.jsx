@@ -62,7 +62,7 @@ class ReportDetailContainer extends React.Component {
                             <div className={styles.header}>
                                 <img src={reportIcon} /> 企业信息
                             </div>
-                            <div className={styles.line}>
+                            <div className={styles.line} style={{ height: 190, overflow: 'scroll' }}>
                                 <div>生产单位：{ report.productUnit }</div>
                                 <div>曾用名：{ report.oldName }</div>
                                 <div>地区：{ report.area }</div>

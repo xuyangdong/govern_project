@@ -16,7 +16,8 @@ export function getMessageList(page, pageSize) {
             if (res.status === 1) {
                 dispatch({
                     type: GET_MESSAGE_LIST[1],
-                    payload: res.obj
+                    // 已通过：1 已驳回：2 待审核：0
+                    payload: res.obj.filter(m => m.pass === 1)
                 })
             } else {
                 notification.error({
