@@ -133,41 +133,36 @@ class HomeContainer extends React.Component {
                                   </div>
                                 <div className={styles.footer}>
                                     <CommonButton onClick={this.handleQueryReport} height={40} width={170} className={styles.checkoutBtn} content="查询报告"/>
+                                    <CommonButton type="ghost" onClick={this.handleQueryReport} height={40} width={170} className={styles.contractBtn} content="合同预签"/>
                                 </div>
                             </div>
                             <div className={styles.inspectRight}>
                                 <div className={styles.productLine}>
                                     <div className={styles.productTitle}>
-                                        <img src={reportIcon} style={{ width: 28 }} alt="" />
-                                        <span>检验范围</span>
+                                        <img src={noticeIcon} style={{ width: 28 }} alt="" />
+                                        <span>通知公告</span>
                                     </div>
                                 </div>
                                 <div className={styles.productLine}>
-                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_outfire')}>
-                                        <img src={fireIcon} />
-                                        灭火设备产品
+                                    <div className={styles.productContainer}>
+                                        {
+                                            notification.map((noti, index) => index%2 === 0 ? (
+                                                <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
+                                                    {noti.title}
+                                                </div>
+                                            ) : null)
+                                        }
                                     </div>
-                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_119')}>
-                                        <img src={fireIcon} />
-                                        火灾警报产品
-                                    </div>
-                                </div>
-                                <div className={styles.productLine}>
-                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_3c')}>
-                                        <img src={fireIcon} />
-                                        非3C认证产品
-                                    </div>
-                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_equipment')}>
-                                        <img src={fireIcon} />
-                                        消防设备产品
-                                    </div>
-                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_protect')}>
-                                        <img src={fireIcon} />
-                                        火灾防护产品
+                                    <div className={styles.productContainer}>
+                                        {
+                                            notification.map((noti, index) => index%2 !== 0 ? (
+                                                <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
+                                                    {noti.title}
+                                                </div>
+                                            ) : null)
+                                        }
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                         <div className={styles.pic}>
@@ -205,19 +200,49 @@ class HomeContainer extends React.Component {
                 </div>
                 <div className={styles.bottom}>
                     <div className={styles.bottomInner}>
-                        <div className={styles.notice}>
-                            <div className={styles.noticeIcon} onClick={this.handleJump.bind(this, '/notification')}>
-                				<img src={noticeIcon} style={{ width: 30 }} alt="" />
-                				<span>通知公告</span>
-                    		</div>
-                            <div className={styles.lineContaienr}>
-                                {
-                                    notification.map((noti, index) => (
-                                        <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
-                                            {noti.title}
-                                        </div>
-                                    ))
-                                }
+                        <div className={styles.bottomLeftPanel}>
+                            <div className={styles.notice}>
+                                <div className={styles.noticeIcon} onClick={this.handleJump.bind(this, '/notification')}>
+                            				<img src={reportIcon} style={{ width: 30 }} alt="" />
+                            				<span>检验范围</span>
+                            		</div>
+                                <div className={styles.lineContaienr}>
+                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_outfire')}>
+                                        <img src={fireIcon} />
+                                        灭火设备产品
+                                    </div>
+                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_119')}>
+                                        <img src={fireIcon} />
+                                        火灾警报产品
+                                    </div>
+                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_3c')}>
+                                        <img src={fireIcon} />
+                                        非3C认证产品
+                                    </div>
+                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_equipment')}>
+                                        <img src={fireIcon} />
+                                        消防设备产品
+                                    </div>
+                                    <div className={styles.product} onClick={this.handleJump.bind(this, '/inspect_protect')}>
+                                        <img src={fireIcon} />
+                                        火灾防护产品
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.socialDutyReport}>
+                                <div className={styles.socialDutyReportIcon} onClick={this.handleJump.bind(this, '/social_duty_report')}>
+                                    <img src={reportIcon} style={{ width: 30 }} alt="" />
+                                    <span>社会责任报告</span>
+                                </div>
+                                <div className={styles.socialDutyReportContainer}>
+                                    {
+                                        notification.map((noti, index) => index%2 !== 0 ? (
+                                            <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
+                                                {noti.title}
+                                            </div>
+                                        ) : null)
+                                    }
+                                </div>
                             </div>
                         </div>
                         <div className={styles.contact}>

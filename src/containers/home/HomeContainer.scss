@@ -27,8 +27,8 @@
 
                 :local(.inspectLeft) {
                     height: 100%;
-                    width: 260px;
-                    padding-top: 85px;
+                    width: 345px;
+                    padding-top: 25px;
                     padding-left: 38px;
 
                     :local(.title) {
@@ -55,6 +55,14 @@
                         :local(.checkoutBtn) {
                             background-color: #CD1F17;
                         }
+
+                        :local(.contractBtn) {
+                            // background-color: #ffffff00;
+                            // border-color: white;
+                            border: 2px solid white;
+                            color: white;
+                            margin-left: 10px;
+                        }
                     }
                 }
                 :local(.inspectRight) {
@@ -77,31 +85,31 @@
                             flex-direction: row;
                             justify-content: center;
                             align-items: center;
+                            width: 60%;
                             >span {
                                 font-size: 16px;
                                 font-weight: bold;
                                 margin-left: 13px;
                             }
                         }
+                        :local(.productContainer){
+                            width: 30%;
+                            height: 154px;
 
-                        :local(.product) {
-                            margin-left: 30px;
-                            cursor: pointer;
-                            background-color: #F2F3F4;
-                            height: 40px;
-                            width: 175px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            flex-direction: row;
-                            border: 1px solid #cccccc;
-                            border-radius: 6px;
-                            font-size: 16px;
-                            color: #333333;
-                            font-weight: bold;
-                            >img {
-                                margin-right: 5px;
-                                width: 18px;
+                            :local(.line){
+                                cursor: pointer;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                font-size: 14px;
+                                width: 255px;
+                                margin-bottom: 15px;
+                                &::before {
+                                   content: '■  ';
+                                   font-size: 10px;
+                                   color: #CD1F17;
+                                   margin-right: 8px;
+                                }
                             }
                         }
                     }
@@ -222,49 +230,102 @@
             display: flex;
             flex-direction: row;
             padding-top: 40px;
+            padding-left: 35px;
 
-            :local(.notice) {
-                width: 685px;
-                height: 100%;
+            :local(.bottomLeftPanel) {
+              width: 685px;
+              height: 100%;
+              display: flex;
+              justify-content: space-between;
 
-                :local(.noticeIcon) {
-                    width: 120px;
-                    cursor: pointer;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    font-size: 16px;
-                    font-weight: bold;
+              :local(.notice) {
+                  width: 50%;
+                  height: 100%;
 
-                    >img {
-                        margin-right: 10px;
-                    }
-                }
+                  :local(.noticeIcon) {
+                      cursor: pointer;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: center;
+                      align-items: center;
+                      font-size: 16px;
+                      font-weight: bold;
 
-                :local(.lineContaienr) {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    flex-wrap: wrap;
-                    margin-top: 25px;
-                    height: 180px;
+                      >img {
+                          margin-right: 10px;
+                      }
+                  }
 
-                    :local(.line){
-                        cursor: pointer;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        font-size: 14px;
-                        width: 255px;
-                        margin-bottom: 15px;
-                        &::before {
-                           content: '■  ';
-                           font-size: 10px;
-                           color: #CD1F17;
-                           margin-right: 8px;
-                        }
-                    }
-                }
+                  :local(.lineContaienr) {
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: flex-start;
+                      flex-wrap: wrap;
+                      margin-top: 25px;
+                      height: 180px;
+
+                      :local(.product) {
+                          margin-bottom: 10px;
+                          cursor: pointer;
+                          background-color: #F2F3F4;
+                          height: 40px;
+                          width: 150px;
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          flex-direction: row;
+                          border: 1px solid #cccccc;
+                          border-radius: 6px;
+                          font-size: 16px;
+                          color: #333333;
+                          font-weight: bold;
+                          >img {
+                              margin-right: 5px;
+                              width: 18px;
+                          }
+                      }
+                  }
+              }
+
+              :local(.socialDutyReport){
+                  width: 50%;
+                  height: 100%;
+
+                  :local(.socialDutyReportIcon) {
+                      cursor: pointer;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: center;
+                      align-items: center;
+                      font-size: 16px;
+                      font-weight: bold;
+
+                      >img {
+                          margin-right: 10px;
+                      }
+                  }
+                  :local(.socialDutyReportContainer){
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      margin-top: 25px;
+                      :local(.line){
+                          cursor: pointer;
+                          white-space: nowrap;
+                          text-overflow: ellipsis;
+                          overflow: hidden;
+                          font-size: 14px;
+                          width: 200px;
+                          margin-bottom: 15px;
+                          &::before {
+                             content: '■  ';
+                             font-size: 10px;
+                             color: #CD1F17;
+                             margin-right: 8px;
+                          }
+                      }
+                  }
+              }
             }
 
             :local(.contact) {
@@ -283,7 +344,7 @@
                     font-size: 16px;
                     font-weight: bold;
                     margin-bottom: 20px;
-
+                    justify-content: flex-end;
                     >img {
                         margin-right: 10px;
                     }

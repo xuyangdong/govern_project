@@ -45,8 +45,8 @@ const navigation = [{
 		link:'/inspect_3c'
 	}]
 }, {
-	title:'通知公告',
-	link:'/notification'
+	title:'认证专栏',
+	link:'/certification'
 }, {
 	title:'新闻动态',
 	link:'/trends'

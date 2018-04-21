@@ -25,6 +25,11 @@ import pic9 from 'publicRes/img/all_features/公众留言.png'
 import pic9_hover from 'publicRes/img/all_features/公众留言hover.png'
 import pic10 from 'publicRes/img/all_features/企业用户.png'
 import pic10_hover from 'publicRes/img/all_features/企业用户hover.png'
+// 替换成正式图片
+import pic11 from 'publicRes/img/all_features/企业用户.png'
+import pic11_hover from 'publicRes/img/all_features/企业用户hover.png'
+import pic12 from 'publicRes/img/all_features/企业用户.png'
+import pic12_hover from 'publicRes/img/all_features/企业用户hover.png'
 import EnterpriseLoginModal from '../../components/modal/EnterpriseLoginModal'
 import { getEnterprise } from '../../actions/enterprise'
 
@@ -222,6 +227,24 @@ class AllFeatures extends React.Component {
                                 onMouseEnter={this.handleHover.bind(this, 10)}
                             >
                                 企业用户>
+                            </div>
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/certification')}
+                                style={hoverIndex === 11 ? {backgroundImage: 'url('+pic11_hover+')'} : {backgroundImage: 'url('+pic11+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 11)}
+                            >
+                                认证专栏>
+                            </div>
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/contract_presign')}
+                                style={hoverIndex === 12 ? {backgroundImage: 'url('+pic12_hover+')'} : {backgroundImage: 'url('+pic12+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 12)}
+                            >
+                                合同预签>
                             </div>
 
                         </div>

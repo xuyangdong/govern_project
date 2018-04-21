@@ -16,11 +16,11 @@ class CommonButton extends React.Component {
     render() {
         const {height, width, content, className, style} = this.props
         return (
-            <Button type="primary" {...this.props} className={classNames(className, styles.container)} style={_.extend({height,width}, style)}>
+            <Button type={this.props.type || "primary"} {...this.props} className={classNames(className, styles.container)} style={_.extend({height,width}, style)}>
                 {content}
             </Button>
         )
-        
+
     }
 }
 
