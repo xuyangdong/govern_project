@@ -30,6 +30,8 @@ import pic11 from 'publicRes/img/all_features/企业用户.png'
 import pic11_hover from 'publicRes/img/all_features/企业用户hover.png'
 import pic12 from 'publicRes/img/all_features/企业用户.png'
 import pic12_hover from 'publicRes/img/all_features/企业用户hover.png'
+import pic13 from 'publicRes/img/all_features/企业用户.png'
+import pic13_hover from 'publicRes/img/all_features/企业用户hover.png'
 import EnterpriseLoginModal from '../../components/modal/EnterpriseLoginModal'
 import { getEnterprise } from '../../actions/enterprise'
 
@@ -246,7 +248,15 @@ class AllFeatures extends React.Component {
                             >
                                 合同预签>
                             </div>
-
+                            <div
+                                className={styles.box}
+                                onClick={this.handleJump.bind(this, '/social_duty_report')}
+                                style={hoverIndex === 13 ? {backgroundImage: 'url('+pic13_hover+')'} : {backgroundImage: 'url('+pic13+')'}}
+                                onMouseLeave={this.handleLeave}
+                                onMouseEnter={this.handleHover.bind(this, 13)}
+                            >
+                                社会责任报告>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.right}>

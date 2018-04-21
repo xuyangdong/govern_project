@@ -95,6 +95,11 @@ class HomeContainer extends React.Component {
         // }
     }
 
+    handleContractPresign = () => {
+        this.props.setDetailId(-1)
+        this.context.router.history.push('/contract_presign')
+    }
+
     handleLoginSuccess = () => {
         this.setState({ enterpriseLoginModalState: false })
         this.context.router.history.push('/search_report')
@@ -133,7 +138,7 @@ class HomeContainer extends React.Component {
                                   </div>
                                 <div className={styles.footer}>
                                     <CommonButton onClick={this.handleQueryReport} height={40} width={170} className={styles.checkoutBtn} content="查询报告"/>
-                                    <CommonButton type="ghost" onClick={this.handleQueryReport} height={40} width={170} className={styles.contractBtn} content="合同预签"/>
+                                    <CommonButton type="ghost" onClick={this.handleContractPresign} height={40} width={170} className={styles.contractBtn} content="合同预签"/>
                                 </div>
                             </div>
                             <div className={styles.inspectRight}>

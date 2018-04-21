@@ -98,6 +98,18 @@ const routes = [
                 name: '新闻动态',
                 component: createComponent(ListContainer, '新闻动态')
             },{
+                path: '/certification',
+                name: '认证专栏',
+                component: createComponent(ListContainer, '认证专栏')// 稍后改为正式的 认证专栏
+            },{
+                path: '/contract_presign',
+                name: '合同预签',
+                component: createComponent(ListContainer, '合同预签')// 稍后改为正式的 合同预签
+            },{
+                path: '/social_duty_report',
+                name: '社会责任报告',
+                component: createComponent(ListContainer, '社会责任报告')// 稍后改为正式的 社会责任报告
+            },{
                 path: '/imgNews',
                 name: '图片新闻',
                 component: createComponent(ListContainer, '图片新闻')
