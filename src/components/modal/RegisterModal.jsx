@@ -120,7 +120,7 @@ class RegisterModal extends React.Component {
                 >
                 {
                     getFieldDecorator('sex',{
-                        rules:[{required:true, message:'请选择性别'}]
+                        // rules:[{required:true, message:'请选择性别'}]
                     })(
                         <Select style={{width:'100%'}} >
                             <Option value='男' key='male'>男</Option>
@@ -135,7 +135,7 @@ class RegisterModal extends React.Component {
                 >
                 {
                     getFieldDecorator('detailAddress',{
-                        rules:[{required:true, message: '请输入地址'}]
+                        // rules:[{required:true, message: '请输入地址'}]
                     })(
                         <Input />
                     )
