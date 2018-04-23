@@ -22,6 +22,7 @@
     }
 
     :local(.content) {
+        overflow: scroll;
         >table {
             width: 100% !important;
         }

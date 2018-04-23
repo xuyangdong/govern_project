@@ -6,7 +6,9 @@ class ArticleContent extends React.Component {
     state = {
         title: '',
         info: {},
-        content: ''
+        content: '',
+        attachName: '',
+        attachUrl: '',
     }
 
     constructor(props) {
@@ -16,7 +18,7 @@ class ArticleContent extends React.Component {
     componentWillMount() {
         if (this.props.article) {
             const article = this.props.article
-            this.setState({title: article.title, content: article.content, info: {time: article.publishTime}})
+            this.setState({attachName: article.attachName, attachUrl:article.attachUrl, title: article.title, content: article.content, info: {time: article.publishTime}})
         }
     }
 
@@ -32,7 +34,7 @@ class ArticleContent extends React.Component {
     // }
 
     render() {
-        const {title, content, info} = this.state
+        const {attachName, attachUrl, title, content, info} = this.state
         return (
             <div className={styles.container}>
                 <div className={styles.title}>
@@ -58,6 +60,12 @@ class ArticleContent extends React.Component {
                     :
                     <div className={styles.content} dangerouslySetInnerHTML={{__html: content}}>
                     </div>
+                }
+                {
+                    attachName && attachUrl ?
+                    <div style={{marginTop: 20}}>附件：<a href={attachUrl} download={attachName}>{attachName}</a></div>
+                    :
+                    null
                 }
             </div>
         )
