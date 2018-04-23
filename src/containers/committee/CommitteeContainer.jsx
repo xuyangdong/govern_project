@@ -7,7 +7,7 @@ import ArticleContent from '../content/ArticleContent'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getCommitteeInfo } from '../../actions/committee'
+import { getCommitteeInfo, committeeLogin } from '../../actions/committee'
 import { getCategory, getArticleByCategory } from '../../actions/article'
 import { Form, Button, Input, Icon } from 'antd'
 import moment from 'moment'
@@ -109,12 +109,44 @@ class CommitteeContainer extends React.Component {
         this.setState({moduleIndex: 4})
     }
 
+    handleLeaveMessage = () => {
+
+      if (!this.props.committeeMember) {
+        // 进行登录操作
+        this.setState({
+          moduleIndex: 5
+        })
+      } else {
+        this.setState({
+          moduleIndex: 2
+        })
+      }
+    }
+
+    handleDownload = () => {
+      if (!this.props.committeeMember) {
+        // 进行登录操作
+        this.setState({
+          moduleIndex: 5
+        })
+      } else {
+        this.setState({
+          moduleIndex: 3
+        })
+      }
+    }
+
     handleLoginPanel() {
         this.setState({moduleIndex: 5})
     }
 
     handleLogin() {
-
+        const { getFieldValue } = this.props.form
+        this.props.committeeLogin(getFieldValue('username'), getFieldValue('password')).then(res => {
+          this.setState({
+            moduleIndex: 2
+          })
+        })
     }
 
     handleGoBack = () => {
@@ -186,10 +218,10 @@ class CommitteeContainer extends React.Component {
                 return this.renderDesc()
                 break;
             case 2:
-                return this.renderDesc()
+                return this.renderLeaveMessage()
                 break;
             case 3:
-                return this.renderDesc()
+                return this.renderDownload()
                 break;
             case 4:
                 return this.renderContact()
@@ -208,6 +240,22 @@ class CommitteeContainer extends React.Component {
             <div className={styles.desc}>
                 <div className={styles.text} dangerouslySetInnerHTML={{__html: this.state.btcBrief}}></div>
                 <a onClick={this.handleShowMore.bind(this, 'btcBrief')}>更多></a>
+            </div>
+        )
+    }
+
+    renderDownload() {
+        return (
+            <div>
+            下载专区
+            </div>
+        )
+    }
+
+    renderLeaveMessage() {
+        return (
+            <div>
+            留言专区
             </div>
         )
     }
@@ -250,6 +298,7 @@ class CommitteeContainer extends React.Component {
     }
 
     render() {
+      console.log(this.props)
         const { committeeName, moduleIndex, standardIndex, showMore, moreContent } = this.state
         return (
             <div className={styles.container}>
@@ -269,9 +318,9 @@ class CommitteeContainer extends React.Component {
                                 <div className={styles.navigate}>
                                     <span onClick={this.handleDesc} style={moduleIndex === 1 ? {color: '#203065'} : null}>分委简介</span>
                                     <span>|</span>
-                                    <span>留言专区</span>
+                                    <span onClick={this.handleLeaveMessage}>留言专区</span>
                                     <span>|</span>
-                                    <span>下载专区</span>
+                                    <span onClick={this.handleDownload}>下载专区</span>
                                     <span>|</span>
                                     <span onClick={this.handleContact} style={moduleIndex === 4 ? {color: '#203065'} : null}>联系我们</span>
                                     <span>|</span>
@@ -331,12 +380,14 @@ const mapStateToProps = state => ({
     category: state.getIn(['article', 'category']),
     articleByCategory: state.getIn(['article', 'articleByCategory']),
 	committeeInfo: state.getIn(['committee', 'committeeInfo']),
+  committeeMember: state.getIn(['committee', 'committeeMember'])
 })
 
 const mapDispatchToProps = dispatch => ({
     getCommitteeInfo: bindActionCreators(getCommitteeInfo, dispatch),
     getArticleByCategory: bindActionCreators(getArticleByCategory, dispatch),
     getCategory: bindActionCreators(getCategory, dispatch),
+    committeeLogin: bindActionCreators(committeeLogin, dispatch)
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WrappedCommitteeContainer))

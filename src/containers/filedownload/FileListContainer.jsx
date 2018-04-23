@@ -1,10 +1,9 @@
 import React from 'react'
-import styles from './ListContainer.scss'
+import styles from './FileTypeListContainer.scss'
 import CommonButton from '../../components/common/Button'
 import Breadthumb from '../../components/common/Breadthumb'
-import ListContent from './ListContent'
-import ArticleContent from './ArticleContent'
-import RightBlockContainer from './RightBlockContainer'
+import ArticleContent from '../content/ArticleContent'
+import RightBlockContainer from '../content/RightBlockContainer'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
@@ -64,7 +63,6 @@ class ListContainer extends React.Component {
     }
 
     render() {
-      console.log('67', this.props)
         const original = this.props.articleByCategory
         const redList = original.filter(a => a.isRed)
         redList.sort((a,b) => b.publishTime > a.publishTime)
@@ -88,10 +86,10 @@ class ListContainer extends React.Component {
                             this.state.showDetail ? <ArticleContent article={this.props.articleDetail}/> :
                             list.map((l, index) => (
                                 <div key={index} className={styles.line}>
-                                    {this.props.contentName === '文件下载' ? <a href={l.fileUrl} download>{l.title}</a> : <div className={styles.title} onClick={this.handleCheckDetail.bind(null, l.articleId)}>
+                                    <div className={styles.title} onClick={this.handleCheckDetail.bind(null, l.articleId)}>
                                         <span style={l.isRed ? {color: '#d23d38'} : null}>{l.title}</span>
                                         <span className={styles.time}>{moment(l.publishTime).format('YYYY-MM-DD')}</span>
-                                    </div>}
+                                    </div>
                                 </div>
 
                             ))

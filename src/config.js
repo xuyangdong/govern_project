@@ -23,6 +23,7 @@ const config = _.extend({
 		},
 		committee: {
 			getById: (id) => `${baseURL}/btc/btc/selectBtcById?id=${id}`,
+      login: `${baseURL}/btc/btcm/login`
 		},
 		user: {
 			getPhoneCode: `${baseURL}/user/user/getRegisterVerifyCode`,

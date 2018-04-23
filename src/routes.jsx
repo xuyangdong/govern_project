@@ -110,6 +110,10 @@ const routes = [
                 name: '社会责任报告',
                 component: createComponent(ListContainer, '社会责任报告')// 稍后改为正式的 社会责任报告
             },{
+                path: '/file_download',
+                name: '文件下载',
+                component: createComponent(ListContainer, '文件下载')
+            },{
                 path: '/imgNews',
                 name: '图片新闻',
                 component: createComponent(ListContainer, '图片新闻')

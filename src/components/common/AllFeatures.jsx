@@ -206,6 +206,7 @@ class AllFeatures extends React.Component {
                             </div>
                             <div
                                 className={styles.box}
+                                onClick={this.handleJump.bind(this, '/file_download')}
                                 style={hoverIndex === 8 ? {backgroundImage: 'url('+pic8_hover+')'} : {backgroundImage: 'url('+pic8+')'}}
                                 onMouseLeave={this.handleLeave}
                                 onMouseEnter={this.handleHover.bind(this, 8)}

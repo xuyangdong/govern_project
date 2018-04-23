@@ -25,3 +25,30 @@ export function getCommitteeInfo(id) {
         })
     }
 }
+
+export const COMMITTEE_LOGIN = actionNames('COMMITTEE_LOGIN')
+export function committeeLogin(code, password) {
+    return dispatch => {
+        let formData = new FormData()
+        formData.append('code', code)
+        formData.append('password', password)
+        return fetch(config.api.committee.login, {
+            method: 'post',
+            body: formData
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                dispatch({
+                    type: COMMITTEE_LOGIN[1],
+                    payload: res.obj
+                })
+                return true
+            } else {
+                notification.error({
+                    message: '失败',
+                    description: '服务器错误，登录失败'
+                })
+                return false
+            }
+        })
+    }
+}

@@ -41,6 +41,7 @@ class HomeContainer extends React.Component {
             title: '检测中心以优异的成绩顺利通过CNAS现场评审'
         },],
         notification: [],
+        socialDutyReport: [],
         enterpriseLoginModalState: false,
         showMoreContact: false,
     }
@@ -49,6 +50,7 @@ class HomeContainer extends React.Component {
         this.props.getCategory().then(res => {
             const categoryId = this.props.category.find(i => i.name === '通知公告').id
             const imgNews = this.props.category.find(i => i.name === '图片新闻').id
+            const socialDutyReport = this.props.category.find(i => i.name === '社会责任报告').id
             this.props.getArticleListByCategory(imgNews).then(res => {
                 this.setState({ news: res.slice(0,4) })
             })
@@ -66,6 +68,22 @@ class HomeContainer extends React.Component {
                 })
                 const list = redList.concat(notRedList)
                 this.setState({notification: list.slice(0, 10)})
+            })
+            this.props.getArticleListByCategory(socialDutyReport).then(res => {
+                const original = res
+                const redList = original.filter(a => a.isRed)
+                redList.sort((a,b) => b.publishTime > a.publishTime)
+                const notRedList = original.filter(a => !a.isRed)
+                notRedList.sort((a, b) => {
+                    if (b.isTop && !a.isTop) {
+                        return true
+                    } else {
+                        return b.publishTime > a.publishTime
+                    }
+                })
+                const list = redList.concat(notRedList)
+                console.log(84, list)
+                this.setState({socialDutyReport: list.slice(0, 10)})
             })
         })
     }
@@ -122,7 +140,7 @@ class HomeContainer extends React.Component {
     }
 
     render() {
-        const { showMoreContact, notification, enterpriseLoginModalState } = this.state
+        const { showMoreContact, notification, enterpriseLoginModalState, socialDutyReport } = this.state
 
     	return (
     		<div className={styles.container}>
@@ -241,11 +259,11 @@ class HomeContainer extends React.Component {
                                 </div>
                                 <div className={styles.socialDutyReportContainer}>
                                     {
-                                        notification.map((noti, index) => index%2 !== 0 ? (
+                                        socialDutyReport.map((noti, index) => (
                                             <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
                                                 {noti.title}
                                             </div>
-                                        ) : null)
+                                        ))
                                     }
                                 </div>
                             </div>
