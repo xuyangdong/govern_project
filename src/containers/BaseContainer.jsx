@@ -28,7 +28,7 @@ class BaseContainer extends React.Component {
     					</div>
                     }
 					<div className={styles.footer}>
-						国家固定灭火系统和耐火构件质量检验中心 版权所有 @2010 津ICP备05000541号 技术支持：公安部天津消防研究所网管中心
+						国家固定灭火系统和耐火构件质量监督检验中心 版权所有 @2010 津ICP备05000541号 技术支持：公安部天津消防研究所网管中心
 					</div>
 				</div>
 			</div>
