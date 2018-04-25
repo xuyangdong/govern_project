@@ -56,33 +56,22 @@ class HomeContainer extends React.Component {
             })
             this.props.getArticleListByCategory(categoryId).then(res => {
                 const original = res
-                const redList = original.filter(a => a.isRed)
-                redList.sort((a,b) => b.publishTime > a.publishTime)
-                const notRedList = original.filter(a => !a.isRed)
-                notRedList.sort((a, b) => {
-                    if (b.isTop && !a.isTop) {
-                        return true
-                    } else {
-                        return b.publishTime > a.publishTime
-                    }
-                })
-                const list = redList.concat(notRedList)
+                const isTopList = original.filter(a => a.isTop)
+                isTopList.sort((a, b) => b.publishTime > a.publishTime)
+                const notTopList = original.filter(a => !a.isTop)
+                notTopList.sort((a, b) => b.publishTime > a.publishTime)
+                const list = isTopList.concat(notTopList)
+
                 this.setState({notification: list.slice(0, 10)})
             })
             this.props.getArticleListByCategory(socialDutyReport).then(res => {
                 const original = res
-                const redList = original.filter(a => a.isRed)
-                redList.sort((a,b) => b.publishTime > a.publishTime)
-                const notRedList = original.filter(a => !a.isRed)
-                notRedList.sort((a, b) => {
-                    if (b.isTop && !a.isTop) {
-                        return true
-                    } else {
-                        return b.publishTime > a.publishTime
-                    }
-                })
-                const list = redList.concat(notRedList)
-                console.log(84, list)
+                const isTopList = original.filter(a => a.isTop)
+                isTopList.sort((a, b) => b.publishTime > a.publishTime)
+                const notTopList = original.filter(a => !a.isTop)
+                notTopList.sort((a, b) => b.publishTime > a.publishTime)
+                const list = isTopList.concat(notTopList)
+
                 this.setState({socialDutyReport: list.slice(0, 10)})
             })
         })
@@ -141,6 +130,7 @@ class HomeContainer extends React.Component {
 
     render() {
         const { showMoreContact, notification, enterpriseLoginModalState, socialDutyReport } = this.state
+        console.log(notification);
 
     	return (
     		<div className={styles.container}>
@@ -170,7 +160,7 @@ class HomeContainer extends React.Component {
                                     <div className={styles.productContainer}>
                                         {
                                             notification.map((noti, index) => index%2 === 0 ? (
-                                                <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
+                                                <div style={noti.isRed ? {color: 'red'}: null} key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
                                                     {noti.title}
                                                 </div>
                                             ) : null)
@@ -179,7 +169,7 @@ class HomeContainer extends React.Component {
                                     <div className={styles.productContainer}>
                                         {
                                             notification.map((noti, index) => index%2 !== 0 ? (
-                                                <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
+                                                <div style={noti.isRed ? {color: 'red'}: null} key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
                                                     {noti.title}
                                                 </div>
                                             ) : null)
@@ -260,7 +250,7 @@ class HomeContainer extends React.Component {
                                 <div className={styles.socialDutyReportContainer}>
                                     {
                                         socialDutyReport.map((noti, index) => (
-                                            <div key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
+                                            <div style={noti.isRed ? {color: 'red'}: null} key={index} onClick={this.handleNotificationDetail.bind(this, noti.articleId)} className={styles.line}>
                                                 {noti.title}
                                             </div>
                                         ))

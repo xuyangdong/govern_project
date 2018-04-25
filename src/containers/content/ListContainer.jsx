@@ -64,26 +64,21 @@ class ListContainer extends React.Component {
     }
 
     render() {
-        // const original = this.props.articleByCategory
-        // const redList = original.filter(a => a.isRed)
-        // redList.sort((a,b) => b.publishTime > a.publishTime)
-        // const notRedList = original.filter(a => !a.isRed)
-        // notRedList.sort((a, b) => {
+        // let list = this.props.articleByCategory
+        // list.sort((a, b) => {
         //     if (b.isTop && !a.isTop) {
         //         return true
         //     } else {
         //         return b.publishTime > a.publishTime
         //     }
         // })
-        // const list = redList.concat(notRedList)
-        let list = this.props.articleByCategory
-        list.sort((a, b) => {
-            if (b.isTop && !a.isTop) {
-                return true
-            } else {
-                return b.publishTime > a.publishTime
-            }
-        })
+
+        const original = this.props.articleByCategory
+        const isTopList = original.filter(a => a.isTop)
+        isTopList.sort((a, b) => b.publishTime > a.publishTime)
+        const notTopList = original.filter(a => !a.isTop)
+        notTopList.sort((a, b) => b.publishTime > a.publishTime)
+        const list = isTopList.concat(notTopList)
         return (
             <div className={styles.container}>
                 <div className={styles.breadthumb}>
